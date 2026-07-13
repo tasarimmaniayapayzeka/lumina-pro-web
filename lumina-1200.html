@@ -143,13 +143,28 @@ header .btn{padding:10px 20px;font-size:.86rem}
 .thermo .rowz b{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--ink)}
 .thermo .rowz span{display:block;font-size:.78rem;color:var(--mut)}
 
-/* teknik tablo */
-.spec{margin-top:38px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;max-width:880px;background:#fff}
-.spec .row{display:grid;grid-template-columns:230px 1fr;gap:18px;padding:15px 24px;font-size:.94rem}
-.spec .row:nth-child(even){background:var(--bg2)}
-.spec .row span{color:var(--mut)}
-.spec .row b{font-weight:600}
-@media(max-width:640px){.spec .row{grid-template-columns:1fr;gap:2px}}
+/* teknik tablo — minimal künye: ince ayraç çizgileri */
+.spec{margin-top:34px;max-width:780px;border-top:1px solid var(--line)}
+.spec .row{display:grid;grid-template-columns:230px 1fr;gap:20px;padding:12px 2px;font-size:.9rem;border-bottom:1px solid var(--line);align-items:baseline;transition:padding-left .25s}
+.spec .row:hover{padding-left:10px}
+.spec .row span{color:var(--mut);font-size:.82rem}
+.spec .row b{font-weight:600;color:var(--ink)}
+@media(max-width:640px){.spec .row{grid-template-columns:1fr;gap:1px}}
+
+/* tetikleyici CTA bandı — aydınlık tema */
+.cta-band{position:relative;overflow:hidden;border:1px solid rgba(15,163,200,.28);border-radius:22px;background:
+  radial-gradient(520px 260px at 88% 50%,rgba(15,163,200,.1),transparent 70%),
+  linear-gradient(120deg,#fff,var(--bg2));padding:34px 36px;
+  display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center;box-shadow:0 18px 46px rgba(22,35,44,.1)}
+.cta-band::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:linear-gradient(180deg,var(--teal),var(--teal-d))}
+.cta-band .kicker{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d);margin-bottom:8px}
+.cta-band .kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 10px var(--teal);animation:pulseDot 1.8s ease-in-out infinite}
+@keyframes pulseDot{0%,100%{opacity:.5;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
+.cta-band h3{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.4vw,1.7rem);font-weight:600;line-height:1.22}
+.cta-band h3 em{font-style:italic;color:var(--teal-d)}
+.cta-band p{color:var(--mut);font-size:.93rem;margin-top:8px;max-width:520px}
+.cta-band .acts{display:flex;flex-direction:column;gap:10px;min-width:210px}
+@media(max-width:820px){.cta-band{grid-template-columns:1fr;padding:28px 24px}.cta-band .acts{flex-direction:row;flex-wrap:wrap;min-width:0}}
 
 /* karşılaştırma */
 .compare{background:var(--bg2)}
@@ -171,14 +186,20 @@ header .btn{padding:10px 20px;font-size:.86rem}
 .step h3{font-size:1rem;margin:12px 0 8px}
 .step p{color:var(--mut);font-size:.88rem}
 
-/* sss */
-.faq-list{margin-top:36px;display:grid;gap:12px;max-width:860px}
-.faq{border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}
-.faq button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;color:var(--ink);font:inherit;font-weight:600;font-size:.99rem;padding:19px 22px;cursor:pointer;text-align:left}
-.faq button::after{content:"+";font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--teal);transition:.3s;flex:none}
-.faq.open button::after{transform:rotate(45deg)}
+/* sss — minimal akordiyon: kartsız, alt çizgili */
+.faq-list{margin-top:34px;display:grid;max-width:800px;border-top:1px solid var(--line)}
+.faq{border-bottom:1px solid var(--line)}
+.faq button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;color:var(--ink);font:inherit;font-weight:600;font-size:.95rem;padding:16px 2px;cursor:pointer;text-align:left;transition:color .2s}
+.faq button:hover{color:var(--teal-d)}
+.faq button::after{content:"";width:11px;height:11px;flex:none;background:linear-gradient(currentColor,currentColor) center/11px 1.6px no-repeat,linear-gradient(currentColor,currentColor) center/1.6px 11px no-repeat;color:var(--teal);transition:transform .3s}
+.faq.open button::after{transform:rotate(135deg)}
+.faq.open button{color:var(--teal-d)}
 .faq .a{max-height:0;overflow:hidden;transition:max-height .35s ease}
-.faq .a p{padding:0 22px 20px;color:var(--mut);font-size:.93rem}
+.faq .a p{padding:0 2px 18px;color:var(--mut);font-size:.91rem;max-width:660px}
+
+/* bölüm geçiş dikişi — aydınlık tema */
+.seam{position:relative}
+.seam::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(680px,86%);height:1px;background:linear-gradient(90deg,transparent,rgba(15,163,200,.35),transparent)}
 
 /* teklif cta */
 .offer{background:var(--dark);color:#fff}
@@ -338,7 +359,7 @@ footer a{color:var(--teal-d);font-weight:600}
 </section>
 
 <!-- NEDEN -->
-<section class="why" id="neden">
+<section class="why seam" id="neden">
   <div class="wrap">
     <span class="eyebrow reveal">Klinik Sahipleri İçin</span>
     <h2 class="sec reveal">Neden <em>Lumina</em>?</h2>
@@ -461,6 +482,23 @@ footer a{color:var(--teal-d);font-weight:600}
   </div>
 </section>
 
+<!-- TETİKLEYİCİ CTA 1 — yatırım / ROI -->
+<section class="seam" style="padding:44px 0">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div>
+        <span class="kicker"><span class="dot"></span>Klinik Yatırımı</span>
+        <h3>Cihazın bedeli, <em>ilk sezonda</em> kendini amorti eder.</h3>
+        <p>Tek platformda 4 dalga boyu ile tüm cilt tiplerine hizmet verin; ikinci bir cihaza yatırım yapmayın. Kliniğinize özel ödeme planını birlikte kuralım.</p>
+      </div>
+      <div class="acts">
+        <a class="btn btn-teal" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%201200W%20fiyat%20ve%20%C3%B6deme%20plan%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">Fiyat &amp; Ödeme Planı</a>
+        <a class="btn btn-line" href="tel:+902163899580">📞 0216 389 95 80</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TEKNİK -->
 <section id="teknik">
   <div class="wrap">
@@ -509,8 +547,25 @@ footer a{color:var(--teal-d);font-weight:600}
   </div>
 </section>
 
+<!-- TETİKLEYİCİ CTA 2 — demo / aciliyet -->
+<section class="seam" style="padding:44px 0">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div>
+        <span class="kicker"><span class="dot"></span>Bugün Aksiyon Alın</span>
+        <h3>Modelleri karşılaştırdınız. <em>Sırada demo var.</em></h3>
+        <p>Showroomumuzda cihazı canlı deneyin ya da kliniğinize özel video demo isteyin. Talebinize aynı gün dönüş yapıyoruz — karar vermeden önce farkı kendiniz görün.</p>
+      </div>
+      <div class="acts">
+        <a class="btn btn-teal" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%201200W%20i%C3%A7in%20%C3%BCcretsiz%20demo%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener">Ücretsiz Demo Randevusu</a>
+        <a class="btn btn-wa" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%201200W%20i%C3%A7in%20video%20demo%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan Yaz</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SÜREÇ -->
-<section id="surec">
+<section id="surec" class="seam">
   <div class="wrap">
     <span class="eyebrow reveal">Satın Alma Yolculuğunuz</span>
     <h2 class="sec reveal">Teklif'ten <em>ilk seansa</em> 4 adım</h2>

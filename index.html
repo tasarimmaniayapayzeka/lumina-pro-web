@@ -178,22 +178,44 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,24,38,.88);backdrop-fi
 .kstat b{font-family:'Sora';font-size:2.2rem;font-weight:800;color:var(--ice)}
 .kstat h3{font-size:.98rem;margin:8px 0 6px}
 
-/* teknik tablo */
-.spec{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;max-width:880px;background:var(--panel)}
-.spec .row{display:grid;grid-template-columns:225px 1fr;gap:18px;padding:13px 22px;font-size:.92rem}
-.spec .row:nth-child(even){background:#0b2438}
-.spec .row span{color:var(--mut)}
-.spec .row b{font-weight:600}
-@media(max-width:640px){.spec .row{grid-template-columns:1fr;gap:2px}}
+/* teknik tablo — minimal künye: kart yok, ince ayraç çizgileri */
+.spec{max-width:780px;border-top:1px solid var(--line)}
+.spec .row{display:grid;grid-template-columns:230px 1fr;gap:20px;padding:11px 2px;font-size:.88rem;border-bottom:1px solid var(--line);align-items:baseline;transition:padding-left .25s}
+.spec .row:hover{padding-left:10px}
+.spec .row span{color:var(--mut);font-size:.8rem;letter-spacing:.02em}
+.spec .row b{font-weight:600;color:var(--txt)}
+@media(max-width:640px){.spec .row{grid-template-columns:1fr;gap:1px}}
 
-/* sss */
-.faq-list{display:grid;gap:11px;max-width:860px}
-.faq{border:1px solid var(--line);border-radius:13px;background:var(--panel);overflow:hidden}
-.faq button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;color:var(--txt);font:inherit;font-weight:600;font-size:.97rem;padding:17px 20px;cursor:pointer;text-align:left}
-.faq button::after{content:"+";font-family:'Sora';font-size:1.35rem;color:var(--ice);transition:.3s;flex:none}
-.faq.open button::after{transform:rotate(45deg)}
+/* sss — minimal akordiyon: ince, kartsız, alt çizgili */
+.faq-list{display:grid;max-width:800px;border-top:1px solid var(--line)}
+.faq{border-bottom:1px solid var(--line)}
+.faq button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;color:var(--txt);font:inherit;font-weight:600;font-size:.94rem;padding:16px 2px;cursor:pointer;text-align:left;transition:color .2s}
+.faq button:hover{color:var(--ice2)}
+.faq button::after{content:"";width:11px;height:11px;flex:none;background:linear-gradient(currentColor,currentColor) center/11px 1.6px no-repeat,linear-gradient(currentColor,currentColor) center/1.6px 11px no-repeat;color:var(--ice);transition:transform .3s,opacity .2s}
+.faq.open button::after{transform:rotate(135deg)}
+.faq.open button{color:var(--ice2)}
 .faq .a{max-height:0;overflow:hidden;transition:max-height .35s ease}
-.faq .a p{padding:0 20px 18px;color:var(--mut);font-size:.92rem}
+.faq .a p{padding:0 2px 18px;color:var(--mut);font-size:.9rem;max-width:640px}
+
+/* bölüm geçiş dikişi — üstte yumuşak ışık hattı (diğer EsteTouch sitesi hissi) */
+.seam{position:relative}
+.seam::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(680px,86%);height:1px;background:linear-gradient(90deg,transparent,rgba(154,232,255,.4),transparent)}
+.seam::after{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:340px;height:120px;background:radial-gradient(closest-side,rgba(95,217,255,.09),transparent);pointer-events:none}
+
+/* tetikleyici CTA bandı — müşteri/klinik odaklı dönüşüm bloğu */
+.cta-band{position:relative;overflow:hidden;border:1px solid rgba(95,217,255,.28);border-radius:22px;background:
+  radial-gradient(520px 260px at 88% 50%,rgba(23,110,145,.5),transparent 70%),
+  linear-gradient(120deg,rgba(13,42,64,.9),rgba(8,28,43,.9));padding:34px 36px;
+  display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center;box-shadow:0 20px 50px rgba(0,0,0,.32)}
+.cta-band::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:linear-gradient(180deg,var(--ice),#2eb8e6)}
+.cta-band .kicker{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ice);margin-bottom:8px}
+.cta-band .kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--ice);box-shadow:0 0 10px var(--ice);animation:pulseDot 1.8s ease-in-out infinite}
+@keyframes pulseDot{0%,100%{opacity:.5;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
+.cta-band h3{font-family:'Sora';font-size:clamp(1.2rem,2.3vw,1.55rem);font-weight:800;line-height:1.22}
+.cta-band h3 span{color:var(--ice2)}
+.cta-band p{color:var(--mut);font-size:.92rem;margin-top:6px;max-width:520px}
+.cta-band .acts{display:flex;flex-direction:column;gap:10px;min-width:210px}
+@media(max-width:820px){.cta-band{grid-template-columns:1fr;padding:28px 24px}.cta-band .acts{flex-direction:row;flex-wrap:wrap;min-width:0}}
 
 /* teklif + harita */
 .offer{background:radial-gradient(660px 400px at 50% 0%,rgba(23,110,145,.38),transparent 65%)}
@@ -355,7 +377,7 @@ footer a{color:var(--ice2);font-weight:600}
 </div>
 
 <!-- DALGA BOYLARI -->
-<section id="dalga">
+<section id="dalga" class="seam">
   <div class="wrap">
     <div class="sec-head">
       <div>
@@ -415,7 +437,7 @@ footer a{color:var(--ice2);font-weight:600}
 </section>
 
 <!-- DONANIM -->
-<section id="donanim">
+<section id="donanim" class="seam">
   <div class="wrap">
     <div class="sec-head">
       <div>
@@ -476,16 +498,22 @@ footer a{color:var(--ice2);font-weight:600}
   </div>
 </section>
 
-<!-- CTA ŞERİDİ 2 -->
-<div class="ribbon">
+<!-- TETİKLEYİCİ CTA 1 — yatırım / ROI -->
+<section class="seam" style="padding:48px 0">
   <div class="wrap">
-    <p>Cihazı yerinde görün: <span>showroomumuzda canlı demo</span>.</p>
-    <div class="side">
-      <a class="btn btn-ice btn-sm" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%20Pro%20demo%20randevusu%20planlamak%20istiyorum." target="_blank" rel="noopener">Demo Randevusu Al</a>
-      <a class="btn btn-ghost btn-sm" href="#harita"><svg class="ico" style="width:16px;height:16px"><use href="#i-pin"/></svg>Showroom Konumu</a>
+    <div class="cta-band reveal">
+      <div>
+        <span class="kicker"><span class="dot"></span>Klinik Yatırımı</span>
+        <h3>Cihazın bedeli, <span>ilk sezonda</span> kendini amorti eder.</h3>
+        <p>Tek platformda 4 dalga boyu ile tüm cilt tiplerine hizmet verin; ikinci bir cihaza yatırım yapmayın. Kliniğinize özel ödeme planını birlikte kuralım.</p>
+      </div>
+      <div class="acts">
+        <a class="btn btn-ice" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%20Pro%20fiyat%20ve%20%C3%B6deme%20plan%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">Fiyat &amp; Ödeme Planı</a>
+        <a class="btn btn-ghost" href="tel:+902163899580"><svg class="ico" style="width:17px;height:17px"><use href="#i-phone"/></svg>0216 389 95 80</a>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- KLİNİK ETKİ -->
 <section id="klinik">
@@ -532,8 +560,25 @@ footer a{color:var(--ice2);font-weight:600}
   </div>
 </section>
 
+<!-- TETİKLEYİCİ CTA 2 — demo / aciliyet -->
+<section class="seam" style="padding:48px 0">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div>
+        <span class="kicker"><span class="dot"></span>Bugün Aksiyon Alın</span>
+        <h3>Teknik özellikleri gördünüz. <span>Sırada demo var.</span></h3>
+        <p>Showroomumuzda cihazı canlı deneyin ya da kliniğinize özel video demo isteyin. Talebinize aynı gün dönüş yapıyoruz — karar vermeden önce farkı kendiniz görün.</p>
+      </div>
+      <div class="acts">
+        <a class="btn btn-ice" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%20Pro%20i%C3%A7in%20%C3%BCcretsiz%20demo%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener">Ücretsiz Demo Randevusu</a>
+        <a class="btn btn-wa" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%20Pro%20i%C3%A7in%20video%20demo%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan Yaz</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SSS -->
-<section id="sss">
+<section id="sss" class="seam">
   <div class="wrap">
     <div class="sec-head">
       <div>

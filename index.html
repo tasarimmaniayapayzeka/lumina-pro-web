@@ -170,9 +170,11 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,24,38,.88);backdrop-fi
 @keyframes ptCool{0%,100%{opacity:.45}50%{opacity:.85}}
 .pt-beam{animation:ptBeam 1.6s ease-in-out infinite}
 @keyframes ptBeam{0%,55%,100%{opacity:.18}70%{opacity:.5}}
-.pt-lbl{fill:#9db8c6;font:600 9px 'Inter',sans-serif}
-.pt-lbl.cool{fill:#9ae8ff}
-.pt-lbl.hot{fill:#ffb27a}
+.pt-lbl{fill:#f4faff;font:700 10.5px 'Inter',sans-serif;letter-spacing:.02em;paint-order:stroke;stroke:rgba(6,16,24,.72);stroke-width:3.2px;stroke-linejoin:round}
+.pt-lbl.cool{fill:#d7f4ff}
+.pt-lbl.hot{fill:#ffd7ac}
+.pt-tag{fill:#04141f;font:800 9px 'Inter',sans-serif;letter-spacing:.06em}
+.pt-lead{stroke:rgba(244,250,255,.5);stroke-width:1.2;stroke-dasharray:2 3}
 @media(prefers-reduced-motion:reduce){.pt-shot,.pt-heat,.pt-follicle,.pt-cool,.pt-beam{animation:none}}
 
 /* galeri */
@@ -740,10 +742,12 @@ footer a{color:var(--ice2);font-weight:600}
           <g class="pt-shot s3"><ellipse cx="170" cy="58" rx="4.5" ry="10" fill="#cdf2ff"/></g>
           <!-- safir soğutma ucu + korunan epidermis -->
           <rect class="pt-cool" x="30" y="50" width="280" height="16" fill="rgba(95,217,255,.45)"/>
-          <rect x="120" y="10" width="100" height="34" rx="9" fill="url(#ptTip)"/>
-          <text x="170" y="32" text-anchor="middle" style="fill:#04141f;font:800 8.5px 'Inter',sans-serif;letter-spacing:.05em">SAFİR ❄</text>
-          <text class="pt-lbl" x="36" y="82">Epidermis korunur</text>
-          <text class="pt-lbl hot" x="192" y="204">Melanin · folikül</text>
+          <rect x="118" y="10" width="104" height="34" rx="9" fill="url(#ptTip)"/>
+          <text class="pt-tag" x="170" y="31" text-anchor="middle">❄ SAFİR SOĞUTMA</text>
+          <!-- etiketler + gösterge çizgileri -->
+          <text class="pt-lbl cool" x="40" y="84">Epidermis korunur</text>
+          <line class="pt-lead" x1="188" y1="200" x2="214" y2="200"/>
+          <text class="pt-lbl hot" x="218" y="204">Melanin · folikül</text>
         </svg>
       </div>
       <h3>Hedefe Odaklanan Enerji</h3>

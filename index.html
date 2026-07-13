@@ -357,7 +357,8 @@ footer a{color:var(--ice2);font-weight:600}
 .spot-size{font-family:'Sora';font-weight:800;font-size:1.12rem;color:var(--ice)}
 .spot-use{color:var(--mut);font-size:.76rem;margin:2px 0 12px}
 .spot-areas{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
-.spot-areas span{font-size:.71rem;color:var(--ice2);background:rgba(95,217,255,.08);border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+.spot-areas span{font-size:.71rem;color:var(--ice2);background:rgba(95,217,255,.08);border:1px solid var(--line);border-radius:999px;padding:4px 10px;cursor:help;transition:background .18s,border-color .18s,transform .18s;-webkit-tap-highlight-color:transparent}
+.spot-areas span[data-tip]:hover,.spot-areas span.on{background:rgba(95,217,255,.2);border-color:rgba(95,217,255,.6);transform:translateY(-2px)}
 .head-feats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
 @media(max-width:760px){.head-feats{grid-template-columns:1fr}}
 .head-feat{display:flex;gap:14px;align-items:flex-start;background:rgba(95,217,255,.045);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
@@ -428,7 +429,7 @@ footer a{color:var(--ice2);font-weight:600}
   .hrp-params b{font-size:1.05rem}
   .hrp-result{padding:14px}
 }
-.hrp-tip{position:fixed;z-index:90;max-width:230px;background:rgba(7,24,38,.97);border:1px solid rgba(95,217,255,.35);border-radius:10px;padding:9px 12px;font-size:.74rem;color:var(--ice2);line-height:1.45;pointer-events:none;opacity:0;transition:opacity .15s;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.hrp-tip{position:fixed;z-index:90;max-width:230px;background:#081a29;border:1px solid rgba(95,217,255,.45);border-radius:10px;padding:9px 12px;font-size:.74rem;color:var(--ice2);line-height:1.45;pointer-events:none;opacity:0;transition:opacity .15s;box-shadow:0 12px 34px rgba(0,0,0,.62)}
 .hrp-tip.on{opacity:1}
 .hrp-result{position:absolute;inset:0;z-index:5;background:rgba(10,18,26,.97);display:flex;align-items:center;justify-content:center;padding:22px;opacity:0;pointer-events:none;transition:.35s;overflow:auto}
 .hrp.done .hrp-result{opacity:1;pointer-events:auto}
@@ -793,25 +794,25 @@ footer a{color:var(--ice2);font-weight:600}
         <div class="spot-viz"><img src="assets/img/cap-16x40.png" alt="16×40mm tedavi başlığı"></div>
         <div class="spot-size">16×40mm</div>
         <div class="spot-use">En geniş kapsama</div>
-        <div class="spot-areas"><span>Sırt</span><span>Bacak</span><span>Göbek</span></div>
+        <div class="spot-areas"><span data-tip="Sırt — geniş ve düz yüzey; 16×40mm en büyük spot ile en hızlı tarama.">Sırt</span><span data-tip="Bacak — vücudun en geniş bölgesi; büyük spot seans süresini belirgin kısaltır.">Bacak</span><span data-tip="Göbek/karın — geniş düz alan; büyük başlıkla akıcı kaydırma uygulaması.">Göbek</span></div>
       </div>
       <div class="spot-card reveal">
         <div class="spot-viz"><img src="assets/img/cap-14x28.png" alt="14×28mm tedavi başlığı"></div>
         <div class="spot-size">14×28mm</div>
         <div class="spot-use">Orta bölgeler</div>
-        <div class="spot-areas"><span>Kol</span><span>Kol altı</span><span>Bikini</span></div>
+        <div class="spot-areas"><span data-tip="Kol — orta genişlikte bölge; 14×28mm dengeli hız ve kontrol sağlar.">Kol</span><span data-tip="Koltuk altı — küçük ama yoğun kıllı bölge; 14×28mm orta spot dengeli, kontrollü uygulama sağlar.">Kol altı</span><span data-tip="Bikini bölgesi — hassas; orta spot kontrollü ve konforlu uygulama sunar.">Bikini</span></div>
       </div>
       <div class="spot-card reveal">
         <div class="spot-viz"><img src="assets/img/cap-14x14.png" alt="14×14mm tedavi başlığı"></div>
         <div class="spot-size">14×14mm</div>
         <div class="spot-use">Küçük bölgeler</div>
-        <div class="spot-areas"><span>Yüz</span><span>Çene</span><span>Ense</span></div>
+        <div class="spot-areas"><span data-tip="Yüz — hassas ve dar hatlar; 14×14mm küçük spot ile isabetli uygulama.">Yüz</span><span data-tip="Çene/üst dudak — küçük alan; 14×14mm kare spot köşelere net erişir.">Çene</span><span data-tip="Ense — dar ve kavisli bölge; küçük spot kıvrımlara rahat oturur.">Ense</span></div>
       </div>
       <div class="spot-card reveal">
         <div class="spot-viz"><img src="assets/img/cap-5.png" alt="Φ5mm tedavi başlığı"></div>
         <div class="spot-size">Φ5mm</div>
         <div class="spot-use">En hassas noktalar</div>
-        <div class="spot-areas"><span>Burun</span><span>Kulak</span><span>İnce hatlar</span></div>
+        <div class="spot-areas"><span data-tip="Burun kenarı — çok dar nokta; Φ5mm yuvarlak uç milimetrik çalışır.">Burun</span><span data-tip="Kulak kenarı — küçük kıvrımlı bölge; Φ5mm en küçük uç güvenle erişir.">Kulak</span><span data-tip="İnce hatlar — kaş arası/şekillendirme; Φ5mm en küçük uç ile hassas detay.">İnce hatlar</span></div>
       </div>
     </div>
 
@@ -1676,6 +1677,49 @@ document.querySelectorAll('.faq button').forEach(btn => {
     t.classList.add('active');
     Object.entries(panels).forEach(([k, el]) => { if (el) el.hidden = (k !== t.dataset.target); });
   }));
+})();
+
+// BAŞLIK BÖLGE ÇİPLERİ — tooltip (masaüstü hover + mobil dokunma; Pointer Events ile touch/mouse ayrımı)
+// NOT: tooltip her gösterimde TAZE oluşturulur. Sayfa yüklenirken opacity:0 ile kurulan tek bir
+// node, Chrome'da bozuk bir compositing katmanına takılıp akış-içi metnin ALTINDA boyanıyor
+// (z-index/parent değişikliği kurtarmıyor). Taze node bu tuzağa düşmez.
+(function () {
+  const grid = document.querySelector('.spot-grid');
+  if (!grid) return;
+  let tip = null, cur = null;
+  function hide() {
+    if (tip) { tip.remove(); tip = null; }
+    if (cur) { cur.classList.remove('on'); cur = null; }
+  }
+  function show(t) {
+    hide();
+    tip = document.createElement('div');
+    tip.className = 'hrp-tip on';
+    tip.style.opacity = '1'; tip.style.transition = 'none';   // opacity geçişi = compositing tuzağı → kapat
+    tip.textContent = t.dataset.tip;
+    document.body.appendChild(tip);
+    const r = t.getBoundingClientRect();
+    tip.style.left = Math.max(8, Math.min(innerWidth - 238, r.left + r.width / 2 - 115)) + 'px';
+    const above = r.top - 10 - tip.offsetHeight;               // üstte yer yoksa alta çevir (kart üstte / mobil)
+    tip.style.top = (above < 8 ? r.bottom + 10 : above) + 'px';
+    cur = t; t.classList.add('on');
+  }
+  grid.addEventListener('pointerover', e => {                  // masaüstü: fare ile üzerine gelince
+    if (e.pointerType === 'touch') return;
+    const t = e.target.closest('[data-tip]'); if (t) show(t);
+  });
+  grid.addEventListener('pointerout', e => {
+    if (e.pointerType === 'touch') return;
+    const t = e.target.closest('[data-tip]'); if (t && !t.contains(e.relatedTarget)) hide();
+  });
+  grid.addEventListener('pointerup', e => {                    // dokunma: tıkla-aç-kapa
+    if (e.pointerType !== 'touch') return;
+    const t = e.target.closest('[data-tip]'); if (!t) return;
+    (cur === t) ? hide() : show(t);
+  });
+  document.addEventListener('pointerdown', e => { if (!e.target.closest('.spot-areas span[data-tip]')) hide(); });
+  addEventListener('scroll', () => { if (cur) hide(); }, { passive: true });
+  addEventListener('resize', hide);
 })();
 
 // LIGHTBOX (galeri tıkla-büyüt + ok tuşları)

@@ -153,10 +153,27 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,24,38,.88);backdrop-fi
 .flist li b{color:var(--ice2)}
 .flist .ico{color:var(--ice);margin-top:2px;width:20px;height:20px}
 .beam{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:radial-gradient(460px 300px at 50% 38%,rgba(23,110,145,.5),#081c2b);padding:38px 30px;text-align:center}
-.beam .pulse{width:104px;height:104px;margin:0 auto 20px;border-radius:50%;background:radial-gradient(circle,rgba(154,232,255,.9),rgba(95,217,255,.25) 55%,transparent 72%);animation:pl 2.6s ease-in-out infinite}
-@keyframes pl{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.12);opacity:1}}
 .beam h3{font-size:1.15rem;margin-bottom:8px}
 .beam p{color:var(--mut);font-size:.9rem}
+/* fototermal kesit infografiği */
+.pt-fig{width:100%;max-width:330px;margin:0 auto 18px;display:block}
+.pt-fig svg{width:100%;height:auto;display:block}
+.pt-shot{animation:ptShot 1.6s linear infinite}
+.pt-shot.s2{animation-delay:.53s}
+.pt-shot.s3{animation-delay:1.06s}
+@keyframes ptShot{0%{transform:translateY(0);opacity:0}12%{opacity:1}80%{opacity:1}100%{transform:translateY(118px);opacity:0}}
+.pt-heat{transform-box:fill-box;transform-origin:center;animation:ptHeat 1.6s ease-in-out infinite}
+@keyframes ptHeat{0%,50%{opacity:0;transform:scale(.5)}78%{opacity:1;transform:scale(1.25)}100%{opacity:.15;transform:scale(.8)}}
+.pt-follicle{animation:ptFoll 1.6s ease-in-out infinite}
+@keyframes ptFoll{0%,50%{fill:#241408}72%{fill:#b8551f}82%{fill:#e8781f}100%{fill:#3a2214}}
+.pt-cool{animation:ptCool 2.6s ease-in-out infinite}
+@keyframes ptCool{0%,100%{opacity:.45}50%{opacity:.85}}
+.pt-beam{animation:ptBeam 1.6s ease-in-out infinite}
+@keyframes ptBeam{0%,55%,100%{opacity:.18}70%{opacity:.5}}
+.pt-lbl{fill:#9db8c6;font:600 9px 'Inter',sans-serif}
+.pt-lbl.cool{fill:#9ae8ff}
+.pt-lbl.hot{fill:#ffb27a}
+@media(prefers-reduced-motion:reduce){.pt-shot,.pt-heat,.pt-follicle,.pt-cool,.pt-beam{animation:none}}
 
 /* galeri */
 .gallery{margin-top:18px}
@@ -698,9 +715,39 @@ footer a{color:var(--ice2);font-weight:600}
       </ul>
     </div>
     <div class="beam reveal">
-      <div class="pulse"></div>
+      <div class="pt-fig">
+        <svg viewBox="0 0 340 300" role="img" aria-label="Ayrışma seçici fototermal etki — cilt kesiti animasyonu">
+          <defs>
+            <linearGradient id="ptEpi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eed2ad"/><stop offset="1" stop-color="#ddb98d"/></linearGradient>
+            <linearGradient id="ptDerm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cf9d73"/><stop offset="1" stop-color="#a06b45"/></linearGradient>
+            <linearGradient id="ptTip" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6f8ff"/><stop offset="1" stop-color="#5fd9ff"/></linearGradient>
+            <radialGradient id="ptHeatG"><stop offset="0" stop-color="#ffbf72"/><stop offset="55%" stop-color="rgba(255,120,40,.45)"/><stop offset="100%" stop-color="rgba(255,120,40,0)"/></radialGradient>
+            <linearGradient id="ptBeamG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(95,217,255,.6)"/><stop offset="1" stop-color="rgba(95,217,255,0)"/></linearGradient>
+          </defs>
+          <!-- deri katmanları -->
+          <rect x="30" y="50" width="280" height="234" rx="14" fill="url(#ptDerm)"/>
+          <rect x="30" y="50" width="280" height="48" fill="url(#ptEpi)"/>
+          <!-- kıl + folikül -->
+          <path d="M170 52 C 167 104 175 152 170 190" stroke="#3a2414" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <ellipse class="pt-follicle" cx="170" cy="200" rx="15" ry="21" fill="#2c1a10"/>
+          <!-- ısı halesi -->
+          <circle class="pt-heat" cx="170" cy="200" r="36" fill="url(#ptHeatG)"/>
+          <!-- lazer huzmesi konisi -->
+          <path class="pt-beam" d="M151 48 L189 48 L182 194 L158 194 Z" fill="url(#ptBeamG)"/>
+          <!-- lazer atışları (tepeden foliküle) -->
+          <g class="pt-shot"><ellipse cx="170" cy="58" rx="4.5" ry="10" fill="#cdf2ff"/></g>
+          <g class="pt-shot s2"><ellipse cx="170" cy="58" rx="4.5" ry="10" fill="#cdf2ff"/></g>
+          <g class="pt-shot s3"><ellipse cx="170" cy="58" rx="4.5" ry="10" fill="#cdf2ff"/></g>
+          <!-- safir soğutma ucu + korunan epidermis -->
+          <rect class="pt-cool" x="30" y="50" width="280" height="16" fill="rgba(95,217,255,.45)"/>
+          <rect x="120" y="10" width="100" height="34" rx="9" fill="url(#ptTip)"/>
+          <text x="170" y="32" text-anchor="middle" style="fill:#04141f;font:800 8.5px 'Inter',sans-serif;letter-spacing:.05em">SAFİR ❄</text>
+          <text class="pt-lbl" x="36" y="82">Epidermis korunur</text>
+          <text class="pt-lbl hot" x="192" y="204">Melanin · folikül</text>
+        </svg>
+      </div>
       <h3>Hedefe Odaklanan Enerji</h3>
-      <p>Enerji melanin tarafından emilir, ısıya dönüşür, folikülü devre dışı bırakır. Cilt yüzeyi safir buz başlıkla korunur.</p>
+      <p>Lazer atışı safir soğutma ucundan geçer, melanin tarafından emilir ve ısıya dönüşerek folikülü devre dışı bırakır — epidermis yüzeyi soğuk kalır, korunur.</p>
     </div>
   </div>
 </section>

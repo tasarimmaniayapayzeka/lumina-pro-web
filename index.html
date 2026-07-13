@@ -292,6 +292,13 @@ footer a{color:var(--ice2);font-weight:600}
 .cool-hero .txt{position:relative;padding:26px;background:linear-gradient(0deg,rgba(7,24,38,.92),rgba(7,24,38,.2) 70%,transparent);width:100%}
 .cool-hero .txt h3{font-size:1.15rem;margin-bottom:4px}
 .cool-hero .txt p{color:var(--ice2);font-size:.86rem;max-width:520px}
+/* mobilde metin görselin üstüne binmesin → dikey istifle */
+@media(max-width:640px){
+  .cool-hero{display:block;min-height:0}
+  .cool-hero img{position:relative;inset:auto;height:auto;aspect-ratio:16/9}
+  .cool-hero .txt{background:linear-gradient(160deg,var(--panel),#0b2438);padding:16px 16px 18px}
+  .cool-hero .txt h3{font-size:1.02rem}
+}
 
 /* sıcaklık göstergesi */
 .gauge{position:relative;width:100%;max-width:300px;margin:6px auto 0}

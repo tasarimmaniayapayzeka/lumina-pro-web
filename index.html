@@ -355,10 +355,12 @@ footer a{color:var(--ice2);font-weight:600}
 .hrp-back{width:34px;height:34px;flex:none;border-radius:10px;border:1px solid rgba(154,232,255,.22);background:none;color:#9ae8ff;cursor:pointer;font-size:1rem;transition:.25s}
 .hrp-back:hover{background:rgba(95,217,255,.12)}
 .hrp-body{padding:12px 14px 14px;display:grid;gap:11px}
-.hrp-panel{background:#141f2b;border-radius:13px;padding:9px 11px 11px}
-.hrp-glabel{text-align:center;font-size:.64rem;font-weight:700;letter-spacing:.24em;color:#8fb2c4;margin-bottom:8px;text-transform:uppercase}
+.hrp-body>*{min-width:0}
+.hrp-panel{background:#141f2b;border-radius:13px;padding:9px 11px 11px;border:1px solid transparent;transition:border-color .3s}
+.hrp-panel.miss{border-color:rgba(255,138,120,.7);animation:hrpMiss 1s ease-in-out 2}
+@keyframes hrpMiss{0%,100%{box-shadow:0 0 0 rgba(255,138,120,0)}50%{box-shadow:0 0 18px rgba(255,138,120,.45)}}
+.hrp-glabel{text-align:center;font-size:.64rem;font-weight:700;letter-spacing:.24em;color:#8fb2c4;margin-bottom:8px}
 .hrp-cards{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
-@media(max-width:640px){.hrp-cards{grid-template-columns:repeat(4,1fr)}}
 .hrp-card{position:relative;border-radius:9px;overflow:hidden;border:2px solid rgba(154,232,255,.12);cursor:pointer;transition:.22s;background:#0d1620}
 .hrp-card img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;pointer-events:none}
 .hrp-card i{display:block;font-style:normal;text-align:center;font-size:.62rem;color:#9db8c6;padding:4px 2px;transition:.2s}
@@ -376,11 +378,30 @@ footer a{color:var(--ice2);font-weight:600}
 .hrp-pill i{display:block;font-style:normal;font-size:.6rem;color:#9db8c6;margin-top:5px;transition:.2s}
 .hrp-pill.sel i{color:#9ae8ff;font-weight:700}
 .hrp-status{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;padding:10px 12px;background:#141f2b;border-radius:13px;min-height:46px}
-.hrp-status .lbl{font-size:.66rem;font-weight:700;letter-spacing:.16em;color:#8fb2c4;text-transform:uppercase;margin-right:2px}
-.hrp-wl{font-family:'Sora';font-weight:700;font-size:.7rem;padding:6px 13px;border-radius:999px;border:1px solid rgba(154,232,255,.16);color:#41586b;transition:.35s}
+.hrp-status .lbl{font-size:.66rem;font-weight:700;letter-spacing:.16em;color:#8fb2c4;margin-right:2px}
+.hrp-wl{font-family:'Sora';font-weight:700;font-size:.7rem;padding:6px 13px;border-radius:999px;border:1px solid rgba(154,232,255,.16);color:#41586b;transition:.3s;cursor:help}
+.hrp-wl:hover{transform:translateY(-3px);border-color:rgba(95,217,255,.65);color:#9ae8ff;box-shadow:0 6px 16px rgba(95,217,255,.25)}
 .hrp-wl.on{color:#04141f;background:linear-gradient(135deg,var(--ice),#2eb8e6);border-color:transparent;box-shadow:0 0 12px rgba(95,217,255,.45)}
+.hrp-wl.on:hover{transform:translateY(-3px);color:#04141f;box-shadow:0 0 22px rgba(95,217,255,.75)}
 .hrp-warn{width:100%;text-align:center;font-size:.74rem;color:#ffb3a7;display:none}
 .hrp-warn.on{display:block}
+/* mobil uyarlama */
+@media(max-width:640px){
+  .demo-shell{padding:8px;border-radius:18px}
+  .hrp-body{padding:10px 10px 12px;gap:9px}
+  .hrp-top{padding:9px 10px;gap:8px}
+  .hrp-title span{display:none}
+  .hrp-mode{font-size:.72rem}
+  .hrp-confirm{padding:8px 13px;font-size:.66rem}
+  .hrp-back{width:30px;height:30px}
+  .hrp-cards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:5px;scrollbar-width:thin}
+  .hrp-card{flex:0 0 94px;scroll-snap-align:start}
+  .hrp-groups{grid-template-columns:1fr}
+  .hrp-pill{max-width:44px}
+  .hrp-pill .sw{height:64px}
+  .hrp-params b{font-size:1.05rem}
+  .hrp-result{padding:14px}
+}
 .hrp-tip{position:fixed;z-index:90;max-width:230px;background:rgba(7,24,38,.97);border:1px solid rgba(95,217,255,.35);border-radius:10px;padding:9px 12px;font-size:.74rem;color:var(--ice2);line-height:1.45;pointer-events:none;opacity:0;transition:opacity .15s;box-shadow:0 10px 30px rgba(0,0,0,.5)}
 .hrp-tip.on{opacity:1}
 .hrp-result{position:absolute;inset:0;z-index:5;background:rgba(10,18,26,.97);display:flex;align-items:center;justify-content:center;padding:22px;opacity:0;pointer-events:none;transition:.35s;overflow:auto}
@@ -693,7 +714,7 @@ footer a{color:var(--ice2);font-weight:600}
         <div class="hrp-body">
           <!-- AREA -->
           <div class="hrp-panel">
-            <div class="hrp-glabel">Area</div>
+            <div class="hrp-glabel">AREA</div>
             <div class="hrp-cards" id="hrpArea">
               <figure class="hrp-card" data-v="Face" data-tip="Yüz — hassas bölge; küçük spot ve düşük enerjiyle çalışılır."><img src="assets/img/area-face.jpg" alt="Face"><i>Face</i></figure>
               <figure class="hrp-card" data-v="Arm" data-tip="Kol — orta boy bölge; dengeli hız ve kontrol."><img src="assets/img/area-arm.jpg" alt="Arm"><i>Arm</i></figure>
@@ -708,7 +729,7 @@ footer a{color:var(--ice2);font-weight:600}
           <!-- 4 SEÇİM GRUBU -->
           <div class="hrp-groups">
             <div class="hrp-panel">
-              <div class="hrp-glabel">Skin Type</div>
+              <div class="hrp-glabel">SKIN TYPE</div>
               <div class="hrp-pills" id="hrpSkin">
                 <div class="hrp-pill" data-v="1" data-tip="Fototip I — çok açık ten. 755nm Alexandrite ağırlıklı, yüksek verim."><span class="sw" style="background:linear-gradient(180deg,#f7ece2,#f0ddc9)"></span><i>I</i></div>
                 <div class="hrp-pill" data-v="2" data-tip="Fototip II — açık ten. 755nm + 808nm kombinasyonu idealdir."><span class="sw" style="background:linear-gradient(180deg,#f2ddc6,#eaceb0)"></span><i>II</i></div>
@@ -719,7 +740,7 @@ footer a{color:var(--ice2);font-weight:600}
               </div>
             </div>
             <div class="hrp-panel">
-              <div class="hrp-glabel">Hair Color</div>
+              <div class="hrp-glabel">HAIR COLOR</div>
               <div class="hrp-pills" id="hrpColor">
                 <div class="hrp-pill" data-v="Black" data-tip="Siyah kıl — en yüksek melanin; lazer enerjisini en güçlü emer."><span class="sw" style="background:linear-gradient(180deg,#2a2a2e,#101013)"></span><i>Black</i></div>
                 <div class="hrp-pill" data-v="Brown" data-tip="Kahverengi kıl — yüksek melanin; çok iyi yanıt verir."><span class="sw" style="background:linear-gradient(180deg,#6b4526,#4a2d16)"></span><i>Brown</i></div>
@@ -729,7 +750,7 @@ footer a{color:var(--ice2);font-weight:600}
               </div>
             </div>
             <div class="hrp-panel">
-              <div class="hrp-glabel">Hair Density</div>
+              <div class="hrp-glabel">HAIR DENSITY</div>
               <div class="hrp-pills" id="hrpDensity">
                 <div class="hrp-pill" data-v="Thin" data-tip="Seyrek kıl — standart enerji ile hızlı tarama."><span class="sw"><svg viewBox="0 0 30 54"><path d="M15 4 C13 20 16 36 14 50" stroke="#c9a17c" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><i>Thin</i></div>
                 <div class="hrp-pill" data-v="Middle" data-tip="Orta yoğunluk — dengeli parametre seti."><span class="sw"><svg viewBox="0 0 30 54"><path d="M9 4 C7 20 10 36 8 50" stroke="#c9a17c" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M15 4 C13 20 16 36 14 50" stroke="#b98d5f" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M21 4 C19 20 22 36 20 50" stroke="#c9a17c" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><i>Middle</i></div>
@@ -737,7 +758,7 @@ footer a{color:var(--ice2);font-weight:600}
               </div>
             </div>
             <div class="hrp-panel">
-              <div class="hrp-glabel">Hair Thickness</div>
+              <div class="hrp-glabel">HAIR THICKNESS</div>
               <div class="hrp-pills" id="hrpThickness">
                 <div class="hrp-pill" data-v="Light" data-tip="İnce tel — kısa pals, hassas enerji."><span class="sw"><svg viewBox="0 0 30 54"><path d="M15 4 C13 20 16 36 14 50" stroke="#c9a17c" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg></span><i>Light</i></div>
                 <div class="hrp-pill" data-v="Middle" data-tip="Orta tel — dengeli pals genişliği."><span class="sw"><svg viewBox="0 0 30 54"><path d="M15 4 C13 20 16 36 14 50" stroke="#a87a4e" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span><i>Middle</i></div>
@@ -748,11 +769,11 @@ footer a{color:var(--ice2);font-weight:600}
 
           <!-- DURUM / DALGA BOYU -->
           <div class="hrp-status">
-            <span class="lbl">Aktif Dalga Boyu</span>
-            <span class="hrp-wl" data-wl="755">755nm</span>
-            <span class="hrp-wl" data-wl="808">808nm</span>
-            <span class="hrp-wl" data-wl="940">940nm</span>
-            <span class="hrp-wl" data-wl="1064">1064nm</span>
+            <span class="lbl">AKTİF DALGA BOYU</span>
+            <span class="hrp-wl" data-wl="755" data-tip="755nm Alexandrite — açık tenlerde (Fototip I-II) yüksek melanin emilimi; ince tüylerde bile etkili.">755nm</span>
+            <span class="hrp-wl" data-wl="808" data-tip="808nm Diode — epilasyonun altın standardı; geniş cilt ve kıl yelpazesinde hızlı, derinlemesine etki.">808nm</span>
+            <span class="hrp-wl" data-wl="940" data-tip="940nm Derin Diode — kalın ve inatçı kıllarda folikülün derin katmanlarına ulaşır.">940nm</span>
+            <span class="hrp-wl" data-wl="1064" data-tip="1064nm ND:YAG — koyu ve bronz tenlerde (Fototip IV-VI) en güvenli derin iletim.">1064nm</span>
             <span class="hrp-warn" id="hrpWarn"></span>
           </div>
         </div>
@@ -1163,11 +1184,13 @@ document.querySelectorAll('.faq button').forEach(btn => {
       el.querySelectorAll('.sel').forEach(s => s.classList.remove('sel'));
       item.classList.add('sel');
       st[key] = item.dataset.v;
+      el.closest('.hrp-panel').classList.remove('miss');
       update();
     });
   });
 
   function allSelected() { return Object.values(st).every(v => v !== null); }
+  function selCount() { return Object.values(st).filter(Boolean).length; }
 
   // dalga boyu eşleşmesi: 755→açık ten (I-II), 808→altın standart (I-V),
   // 940→kalın/inatçı kıl, 1064→koyu ten (IV-VI)  [broşür + klinik kaynak]
@@ -1188,7 +1211,9 @@ document.querySelectorAll('.faq button').forEach(btn => {
     warn.classList.remove('on'); warn.textContent = '';
     if (st.color === 'White') { warn.textContent = '⚠ Beyaz kıl melanin içermez — lazer epilasyon beyaz kılda etkili değildir.'; warn.classList.add('on'); }
     else if (st.color === 'Grey') { warn.textContent = '⚠ Gri kılda melanin çok düşüktür — yanıt sınırlı olabilir.'; warn.classList.add('on'); }
-    confirmBtn.classList.toggle('ready', allSelected());
+    const n = selCount();
+    confirmBtn.textContent = n === 5 ? 'CONFIRM' : 'CONFIRM · ' + n + '/5';
+    confirmBtn.classList.toggle('ready', n === 5);
   }
 
   // parametre önerisi — OEM kılavuz başlangıç tablosu (cilt tipi) + yön kuralları,
@@ -1208,7 +1233,15 @@ document.querySelectorAll('.faq button').forEach(btn => {
   confirmBtn.addEventListener('click', () => {
     if (!allSelected()) {
       confirmBtn.classList.remove('shake'); void confirmBtn.offsetWidth; confirmBtn.classList.add('shake');
-      warn.textContent = 'Lütfen tüm seçimleri tamamlayın (bölge + 4 profil).'; warn.classList.add('on');
+      warn.textContent = 'Lütfen kalan seçimleri tamamlayın (' + selCount() + '/5).'; warn.classList.add('on');
+      // eksik grupları vurgula ve ilkine kaydır
+      let first = null;
+      Object.entries(groups).forEach(([key, id]) => {
+        const panel = document.getElementById(id).closest('.hrp-panel');
+        panel.classList.remove('miss'); void panel.offsetWidth;
+        if (!st[key]) { panel.classList.add('miss'); if (!first) first = panel; }
+      });
+      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
     const sum = document.getElementById('hrpSum');
@@ -1231,6 +1264,7 @@ document.querySelectorAll('.faq button').forEach(btn => {
   function reset() {
     Object.keys(st).forEach(k => st[k] = null);
     hrp.querySelectorAll('.sel').forEach(s => s.classList.remove('sel'));
+    hrp.querySelectorAll('.miss').forEach(s => s.classList.remove('miss'));
     hrp.classList.remove('done');
     update();
   }

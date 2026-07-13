@@ -177,8 +177,13 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,24,38,.88);backdrop-fi
 .kstat b{font-family:'Sora';font-size:2.2rem;font-weight:800;color:var(--ice)}
 .kstat h3{font-size:.98rem;margin:8px 0 6px}
 
+/* teknik + sss iki kolon */
+.tech-faq{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+.tech-faq .col-head{font-family:'Sora';font-size:clamp(1.3rem,2.5vw,1.75rem);font-weight:800;line-height:1.2;margin:10px 0 20px}
+@media(max-width:900px){.tech-faq{grid-template-columns:1fr;gap:46px}}
+
 /* teknik tablo — minimal künye: kart yok, ince ayraç çizgileri */
-.spec{max-width:780px;border-top:1px solid var(--line)}
+.spec{border-top:1px solid var(--line)}
 .spec .row{display:grid;grid-template-columns:230px 1fr;gap:20px;padding:11px 2px;font-size:.88rem;border-bottom:1px solid var(--line);align-items:baseline;transition:padding-left .25s}
 .spec .row:hover{padding-left:10px}
 .spec .row span{color:var(--mut);font-size:.8rem;letter-spacing:.02em}
@@ -532,29 +537,55 @@ footer a{color:var(--ice2);font-weight:600}
   </div>
 </section>
 
-<!-- TEKNİK -->
-<section id="teknik" style="background:linear-gradient(180deg,#081c2b,#0a2235)">
+<!-- TEKNİK + SSS (iki kolon) -->
+<section id="teknik" class="seam" style="background:linear-gradient(180deg,#081c2b,#0a2235)">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="tech-faq">
+      <!-- SOL: teknik künye -->
       <div>
         <span class="eyebrow reveal">Teknik Parametreler</span>
-        <h2 class="reveal">Lumina Pro <span class="grad">1600W</span> Özellikleri</h2>
+        <h2 class="col-head reveal">Lumina Pro <span class="grad">1600W</span> Özellikleri</h2>
+        <div class="spec reveal">
+          <div class="row"><span>Lazer Gücü</span><b>1600W</b></div>
+          <div class="row"><span>Dalga Boyu</span><b>755nm, 808nm, 940nm, 1064nm</b></div>
+          <div class="row"><span>Spot Büyüklüğü</span><b>Φ5mm, 14×14mm, 14×28mm, 16×40mm</b></div>
+          <div class="row"><span>Pals Genişliği</span><b>10ms ~ 200ms</b></div>
+          <div class="row"><span>Frekans</span><b>1Hz ~ 10Hz</b></div>
+          <div class="row"><span>Lazer Yoğunluğu</span><b>%5 ~ %100</b></div>
+          <div class="row"><span>Kontak Sıcaklığı</span><b>-5°C ~ +5°C</b></div>
+          <div class="row"><span>Soğutma Sistemi</span><b>Hava + Su + Kompresör + Safir</b></div>
+          <div class="row"><span>Ekran</span><b>15.6" Renkli Dokunmatik + HD başlık ekranı</b></div>
+          <div class="row"><span>Voltaj</span><b>AC 220V/50Hz, 110V/60Hz</b></div>
+        </div>
+        <a class="btn btn-ghost btn-sm reveal" style="margin-top:22px" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%20Pro%20teknik%20%C5%9Fartname%20ve%20fiyat%20bilgisi%20rica%20ediyorum." target="_blank" rel="noopener"><svg class="ico" style="width:16px;height:16px"><use href="#i-doc"/></svg>Teknik Şartname İsteyin</a>
       </div>
-      <div class="side reveal">
-        <a class="btn btn-ice btn-sm" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%20Pro%20teknik%20%C5%9Fartname%20ve%20fiyat%20bilgisi%20rica%20ediyorum." target="_blank" rel="noopener">Teknik Şartname İsteyin</a>
+      <!-- SAĞ: SSS -->
+      <div id="sss">
+        <span class="eyebrow reveal">Merak Edilenler</span>
+        <h2 class="col-head reveal">Sıkça Sorulan <span class="grad">Sorular</span></h2>
+        <div class="faq-list">
+          <div class="faq reveal">
+            <button>Lumina Pro hangi cilt ve kıl tiplerinde kullanılabilir?</button>
+            <div class="a"><p>Dört dalga boyu (755nm, 808nm, 940nm, 1064nm) sayesinde en açık tenden en koyu ve bronz tene, ince tüylerden kalın ve inatçı kıllara kadar tüm profillerde güvenle kullanılır. Her vaka için uygun dalga boyu seçilerek kişiselleştirilmiş uygulama yapılır.</p></div>
+          </div>
+          <div class="faq reveal">
+            <button>Uygulama acı verir mi?</button>
+            <div class="a"><p>Hava + Su + Kompresör + Safir soğutma sistemi, kontak sıcaklığını -5°C ~ +5°C aralığında tutar. TEC sistemlerden daha hızlı ve verimli olan kompresörlü soğutma sayesinde seanslar danışanlar için son derece konforlu geçer ve yanma riski en aza iner.</p></div>
+          </div>
+          <div class="faq reveal">
+            <button>Cihaz yoğun kullanımda ısınır mı, lazerin ömrü etkilenir mi?</button>
+            <div class="a"><p>Gelişmiş kompresörlü soğutma, lazeri en uygun sıcaklık aralığında (yaklaşık 20°C) sabit tutar: kompresör ≥22°C'de devreye girer, ≤19°C'de durur. Bu hassas kontrol, ABD menşeli Coherent lazer barının ömrünü önemli ölçüde uzatır ve 24 saat kesintisiz çalışmada bile kararlı enerji çıkışı sağlar.</p></div>
+          </div>
+          <div class="faq reveal">
+            <button>Kurulum ve eğitim desteği veriyor musunuz?</button>
+            <div class="a"><p>Evet. EsteTouch Medikal olarak Türkiye genelinde cihaz kurulumu, uygulamalı kullanım eğitimi ve satış sonrası teknik destek hizmetlerini sağlıyoruz.</p></div>
+          </div>
+          <div class="faq reveal">
+            <button>Cihazı yerinde görmek veya demo talep etmek mümkün mü?</button>
+            <div class="a"><p>Elbette. İstanbul Kartal'daki showroomumuzda cihazı yakından inceleyebilir, demo talebinizi telefon veya WhatsApp üzerinden iletebilirsiniz. Aşağıdaki haritadan konumumuza ulaşabilirsiniz.</p></div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="spec reveal">
-      <div class="row"><span>Lazer Gücü</span><b>1600W</b></div>
-      <div class="row"><span>Dalga Boyu</span><b>755nm, 808nm, 940nm, 1064nm</b></div>
-      <div class="row"><span>Spot Büyüklüğü</span><b>Φ5mm, 14×14mm, 14×28mm, 16×40mm</b></div>
-      <div class="row"><span>Pals Genişliği</span><b>10ms ~ 200ms</b></div>
-      <div class="row"><span>Frekans</span><b>1Hz ~ 10Hz</b></div>
-      <div class="row"><span>Lazer Yoğunluğu</span><b>%5 ~ %100</b></div>
-      <div class="row"><span>Kontak Sıcaklığı</span><b>-5°C ~ +5°C</b></div>
-      <div class="row"><span>Soğutma Sistemi</span><b>Hava + Su + Kompresör + Safir</b></div>
-      <div class="row"><span>Ekran</span><b>15.6" Renkli Dokunmatik + HD senkronize başlık ekranı</b></div>
-      <div class="row"><span>Voltaj</span><b>AC 220V/50Hz, 110V/60Hz</b></div>
     </div>
   </div>
 </section>
@@ -571,40 +602,6 @@ footer a{color:var(--ice2);font-weight:600}
       <div class="acts">
         <a class="btn btn-ice" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%20Pro%20i%C3%A7in%20%C3%BCcretsiz%20demo%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener">Ücretsiz Demo Randevusu</a>
         <a class="btn btn-wa" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%20Pro%20i%C3%A7in%20video%20demo%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan Yaz</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SSS -->
-<section id="sss" class="seam">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <span class="eyebrow reveal">Merak Edilenler</span>
-        <h2 class="reveal">Sıkça Sorulan <span class="grad">Sorular</span></h2>
-      </div>
-    </div>
-    <div class="faq-list">
-      <div class="faq reveal">
-        <button>Lumina Pro hangi cilt ve kıl tiplerinde kullanılabilir?</button>
-        <div class="a"><p>Dört dalga boyu (755nm, 808nm, 940nm, 1064nm) sayesinde en açık tenden en koyu ve bronz tene, ince tüylerden kalın ve inatçı kıllara kadar tüm profillerde güvenle kullanılır. Her vaka için uygun dalga boyu seçilerek kişiselleştirilmiş uygulama yapılır.</p></div>
-      </div>
-      <div class="faq reveal">
-        <button>Uygulama acı verir mi?</button>
-        <div class="a"><p>Hava + Su + Kompresör + Safir soğutma sistemi, kontak sıcaklığını -5°C ~ +5°C aralığında tutar. TEC sistemlerden daha hızlı ve verimli olan kompresörlü soğutma sayesinde seanslar danışanlar için son derece konforlu geçer ve yanma riski en aza iner.</p></div>
-      </div>
-      <div class="faq reveal">
-        <button>Cihaz yoğun kullanımda ısınır mı, lazerin ömrü etkilenir mi?</button>
-        <div class="a"><p>Gelişmiş kompresörlü soğutma, lazeri en uygun sıcaklık aralığında (yaklaşık 20°C) sabit tutar: kompresör ≥22°C'de devreye girer, ≤19°C'de durur. Bu hassas kontrol, ABD menşeli Coherent lazer barının ömrünü önemli ölçüde uzatır ve 24 saat kesintisiz çalışmada bile kararlı enerji çıkışı sağlar.</p></div>
-      </div>
-      <div class="faq reveal">
-        <button>Kurulum ve eğitim desteği veriyor musunuz?</button>
-        <div class="a"><p>Evet. EsteTouch Medikal olarak Türkiye genelinde cihaz kurulumu, uygulamalı kullanım eğitimi ve satış sonrası teknik destek hizmetlerini sağlıyoruz.</p></div>
-      </div>
-      <div class="faq reveal">
-        <button>Cihazı yerinde görmek veya demo talep etmek mümkün mü?</button>
-        <div class="a"><p>Elbette. İstanbul Kartal'daki showroomumuzda cihazı yakından inceleyebilir, demo talebinizi telefon veya WhatsApp üzerinden iletebilirsiniz. Aşağıdaki haritadan konumumuza ulaşabilirsiniz.</p></div>
       </div>
     </div>
   </div>

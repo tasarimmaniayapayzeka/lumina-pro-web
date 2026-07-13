@@ -142,6 +142,13 @@ header .btn{padding:10px 20px;font-size:.86rem}
 .thermo .rowz b{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--ink)}
 .thermo .rowz span{display:block;font-size:.78rem;color:var(--mut)}
 
+/* teknik + sss iki kolon */
+.tech-faq{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+.tech-faq .col-head{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.35rem,2.5vw,1.85rem);font-weight:600;line-height:1.2;margin:12px 0 4px}
+.tech-faq .col-head em{font-style:italic;color:var(--teal-d)}
+.tech-faq .spec,.tech-faq .faq-list{margin-top:20px}
+@media(max-width:900px){.tech-faq{grid-template-columns:1fr;gap:46px}}
+
 /* teknik tablo — minimal künye: ince ayraç çizgileri */
 .spec{margin-top:34px;max-width:780px;border-top:1px solid var(--line)}
 .spec .row{display:grid;grid-template-columns:230px 1fr;gap:20px;padding:12px 2px;font-size:.9rem;border-bottom:1px solid var(--line);align-items:baseline;transition:padding-left .25s}
@@ -501,25 +508,59 @@ footer a{color:var(--teal-d);font-weight:600}
 <!-- TEKNİK -->
 <section id="teknik">
   <div class="wrap">
-    <span class="eyebrow reveal">Teknik Özellikler</span>
-    <h2 class="sec reveal">Lumina <em>1200W</em> — tüm parametreler</h2>
-    <div class="spec reveal">
-      <div class="row"><span>Dalga Boyu</span><b>755nm, 808nm, 940nm, 1064nm</b></div>
-      <div class="row"><span>Kol Gücü</span><b>1200W</b></div>
-      <div class="row"><span>Nokta (Spot) Boyutu</span><b>20×40mm, 12×20mm, 10×10mm, 5×5mm, Φ8mm</b></div>
-      <div class="row"><span>Darbe Genişliği</span><b>5ms ~ 400ms</b></div>
-      <div class="row"><span>Frekans</span><b>1Hz ~ 10Hz</b></div>
-      <div class="row"><span>Akıcılık (Fluence)</span><b>0 ~ 120 J/cm²</b></div>
-      <div class="row"><span>Lazer Yoğunluğu</span><b>%5 ~ %100</b></div>
-      <div class="row"><span>Temas Sıcaklığı</span><b>-5°C ~ +5°C</b></div>
-      <div class="row"><span>Soğutma Sistemi</span><b>Hava + Su + TEC/Yarı İletken + Safir</b></div>
-      <div class="row"><span>Ekran</span><b>15.6" Renkli Dokunmatik Ekran</b></div>
-      <div class="row"><span>Voltaj</span><b>AC 220V/50Hz, 110V/60Hz</b></div>
-      <div class="row"><span>Sertifikalar</span><b>CE · FDA · ISO · ROHS</b></div>
-    </div>
-    <div class="cta-row reveal" style="margin-top:28px">
-      <a class="btn btn-line" href="assets/docs/lumina-1200-brosur.pdf" target="_blank" rel="noopener">📄 Broşürü İndir (PDF)</a>
-      <a class="btn btn-teal" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%201200W%20teknik%20%C5%9Fartnamesi%20ve%20fiyat%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">Teknik Şartname İsteyin</a>
+    <span class="eyebrow reveal">Teknik &amp; Merak Edilenler</span>
+    <h2 class="sec reveal">Lumina <em>1200W</em> — <span style="white-space:nowrap">her detay</span></h2>
+    <div class="tech-faq" style="margin-top:34px">
+      <!-- SOL: teknik künye -->
+      <div>
+        <span class="eyebrow reveal">Teknik Özellikler</span>
+        <h3 class="col-head reveal">Tüm <em>parametreler</em></h3>
+        <div class="spec reveal" style="margin-top:20px">
+          <div class="row"><span>Dalga Boyu</span><b>755nm, 808nm, 940nm, 1064nm</b></div>
+          <div class="row"><span>Kol Gücü</span><b>1200W</b></div>
+          <div class="row"><span>Nokta (Spot) Boyutu</span><b>20×40mm, 12×20mm, 10×10mm, 5×5mm, Φ8mm</b></div>
+          <div class="row"><span>Darbe Genişliği</span><b>5ms ~ 400ms</b></div>
+          <div class="row"><span>Frekans</span><b>1Hz ~ 10Hz</b></div>
+          <div class="row"><span>Akıcılık (Fluence)</span><b>0 ~ 120 J/cm²</b></div>
+          <div class="row"><span>Lazer Yoğunluğu</span><b>%5 ~ %100</b></div>
+          <div class="row"><span>Temas Sıcaklığı</span><b>-5°C ~ +5°C</b></div>
+          <div class="row"><span>Soğutma Sistemi</span><b>Hava + Su + TEC + Safir</b></div>
+          <div class="row"><span>Ekran</span><b>15.6" Renkli Dokunmatik</b></div>
+          <div class="row"><span>Voltaj</span><b>AC 220V/50Hz, 110V/60Hz</b></div>
+          <div class="row"><span>Sertifikalar</span><b>CE · FDA · ISO · ROHS</b></div>
+        </div>
+        <div class="cta-row reveal" style="margin-top:24px">
+          <a class="btn btn-line" style="padding:11px 20px;font-size:.85rem" href="assets/docs/lumina-1200-brosur.pdf" target="_blank" rel="noopener">📄 Broşür (PDF)</a>
+          <a class="btn btn-teal" style="padding:11px 20px;font-size:.85rem" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%201200W%20teknik%20%C5%9Fartnamesi%20ve%20fiyat%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">Teknik Şartname</a>
+        </div>
+      </div>
+      <!-- SAĞ: SSS -->
+      <div id="sss">
+        <span class="eyebrow reveal">Merak Edilenler</span>
+        <h3 class="col-head reveal">Sıkça sorulan <em>sorular</em></h3>
+        <div class="faq-list" style="margin-top:20px">
+          <div class="faq reveal">
+            <button>Lumina hangi cilt tiplerinde ve kıl renklerinde etkili?</button>
+            <div class="a"><p>4 dalga boyu sayesinde fototip I'den VI'ya kadar tüm cilt tiplerinde güvenle kullanılır; beyaz kıl hariç tüm kıl renklerinde etkilidir. 1064nm ND:YAG dalga boyu, koyu ve bronz tenlerde de güvenli uygulama sağlar.</p></div>
+          </div>
+          <div class="faq reveal">
+            <button>Klinik sonuçları nasıl?</button>
+            <div class="a"><p>Klinik testler, vakaların %95'inde 3–5 seanstan sonra %80'den fazla tüy azalması rapor edildiğini göstermektedir. 1–2 seans sonrasında dahi %30–50 arasında azalma gözlemlenir. Sonuçlar cilt ve kıl tipine göre değişebilir.</p></div>
+          </div>
+          <div class="faq reveal">
+            <button>Kaç başlık var, hangi bölgelerde kullanılır?</button>
+            <div class="a"><p>5 çıkarılabilir başlık bulunur: 20×40mm (sırt/bacak), 12×20mm (kol/kol altı), 10×10mm (bikini), 5×5mm (yüz) ve Φ8mm (burun/kulak). Hızlı tak-çıkar tasarım seans akışını yavaşlatmaz.</p></div>
+          </div>
+          <div class="faq reveal">
+            <button>Atış garantisi ve cihaz ömrü nedir?</button>
+            <div class="a"><p>Lumina, ABD menşeli tutarlı lazer çubuğu ve 100 milyon atış garantisiyle gelir. Akıllı termostatik soğutma lazerin ömrünü uzatır; yoğun kullanımda dahi kararlı enerji çıkışı sağlar.</p></div>
+          </div>
+          <div class="faq reveal">
+            <button>Kurulum, eğitim ve servis nasıl işliyor?</button>
+            <div class="a"><p>Türkiye genelinde yerinde kurulum yapıyor, ekibinize uygulamalı eğitim veriyoruz. Satış sonrası teknik servis ve yedek parça desteğimiz sürer. Detaylar için 0216 389 95 80 numarasından bize ulaşabilirsiniz.</p></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -573,36 +614,6 @@ footer a{color:var(--teal-d);font-weight:600}
       <div class="step reveal"><div class="n">2</div><h3>Demo &amp; İnceleme</h3><p>İstanbul Kartal'daki merkezimizde cihazı yakından inceleyin, uygulamayı canlı görün.</p></div>
       <div class="step reveal"><div class="n">3</div><h3>Kurulum + Eğitim</h3><p>Türkiye genelinde yerinde kurulum ve ekibinize uygulamalı kullanım eğitimi veriyoruz.</p></div>
       <div class="step reveal"><div class="n">4</div><h3>Satış Sonrası Destek</h3><p>Teknik servis ve yedek parça desteğiyle cihazınız hep çalışır durumda kalır.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- SSS -->
-<section class="wave" id="sss">
-  <div class="wrap">
-    <span class="eyebrow reveal">Merak Edilenler</span>
-    <h2 class="sec reveal">Sıkça sorulan <em>sorular</em></h2>
-    <div class="faq-list">
-      <div class="faq reveal">
-        <button>Lumina hangi cilt tiplerinde ve kıl renklerinde etkili?</button>
-        <div class="a"><p>4 dalga boyu sayesinde fototip I'den VI'ya kadar tüm cilt tiplerinde güvenle kullanılır; beyaz kıl hariç tüm kıl renklerinde etkilidir. 1064nm ND:YAG dalga boyu, koyu ve bronz tenlerde de güvenli uygulama sağlar.</p></div>
-      </div>
-      <div class="faq reveal">
-        <button>Klinik sonuçları nasıl?</button>
-        <div class="a"><p>Klinik testler, vakaların %95'inde 3–5 seanstan sonra %80'den fazla tüy azalması rapor edildiğini göstermektedir. 1–2 seans sonrasında dahi %30–50 arasında azalma gözlemlenir. Sonuçlar cilt ve kıl tipine göre değişebilir.</p></div>
-      </div>
-      <div class="faq reveal">
-        <button>Kaç başlık var, hangi bölgelerde kullanılır?</button>
-        <div class="a"><p>5 çıkarılabilir başlık bulunur: 20×40mm (sırt/bacak), 12×20mm (kol/kol altı), 10×10mm (bikini), 5×5mm (yüz) ve Φ8mm (burun/kulak). Hızlı tak-çıkar tasarım seans akışını yavaşlatmaz.</p></div>
-      </div>
-      <div class="faq reveal">
-        <button>Atış garantisi ve cihaz ömrü nedir?</button>
-        <div class="a"><p>Lumina, ABD menşeli tutarlı lazer çubuğu ve 100 milyon atış garantisiyle gelir. Akıllı termostatik soğutma lazerin ömrünü uzatır; yoğun kullanımda dahi kararlı enerji çıkışı sağlar.</p></div>
-      </div>
-      <div class="faq reveal">
-        <button>Kurulum, eğitim ve servis nasıl işliyor?</button>
-        <div class="a"><p>Türkiye genelinde yerinde kurulum yapıyor, ekibinize uygulamalı eğitim veriyoruz. Satış sonrası teknik servis ve yedek parça desteğimiz sürer. Detaylar için 0216 389 95 80 numarasından bize ulaşabilirsiniz.</p></div>
-      </div>
     </div>
   </div>
 </section>

@@ -473,6 +473,25 @@ footer a{color:var(--ice2);font-weight:600}
 .hrpro-hint{text-align:center;margin-top:12px;font-size:.74rem;color:#7fb0c8}
 .hrpro-hint b{color:var(--ice2)}
 .hrpro-hint.warn b{color:#ffb3a7}
+
+/* SKIN REJUVENATION */
+.srj-types{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px}
+.srj-type{width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(154,232,255,.28);background:radial-gradient(circle at 40% 35%,#263a4c,#141f2b);color:#cdeafc;font-family:'Sora';font-weight:800;font-size:.86rem;cursor:pointer;transition:.2s}
+.srj-type:hover{transform:translateY(-3px);border-color:rgba(95,217,255,.7);color:#fff}
+.srj-type.sel{border-color:var(--ice);color:#04141f;background:linear-gradient(135deg,var(--ice),#2eb8e6);box-shadow:0 0 14px rgba(95,217,255,.55)}
+.skinrej .dial-freq .d-arc{stroke:var(--ice);filter:drop-shadow(0 0 6px rgba(95,217,255,.7))}
+.skinrej .dial-freq .d-lbl{color:#7fb0c8}
+.skinrej .dial-freq.sel::after{background:var(--ice);box-shadow:0 0 10px var(--ice)}
+.srj-count{display:flex;gap:16px;justify-content:center}
+.srj-count>div{text-align:center}
+.srj-count b{font-family:'Sora';font-weight:800;font-size:1.35rem;color:var(--ice2)}
+.srj-count>div:last-child b{color:#eaf6fb}
+.skinrej.done-srj .srj-type{opacity:.5}
+@media(max-width:640px){
+  .srj-type{width:40px;height:40px;font-size:.78rem}
+  .srj-count{gap:10px}
+  .srj-count b{font-size:1.15rem}
+}
 @media(max-width:640px){
   .hrpro-body{padding:12px 12px 14px}
   .hrpro-dials{grid-template-columns:1fr 1fr;gap:4px}
@@ -766,6 +785,7 @@ footer a{color:var(--ice2);font-weight:600}
       <div class="demo-tabs">
         <button class="demo-tab active" type="button" data-target="hrp">HR HAZIR AYAR</button>
         <button class="demo-tab" type="button" data-target="hrpro">HR PROFESSIONAL</button>
+        <button class="demo-tab" type="button" data-target="skinrej">CİLT YENİLEME</button>
       </div>
       <div class="hrp" id="hrp">
         <!-- üst bar -->
@@ -904,6 +924,56 @@ footer a{color:var(--ice2);font-weight:600}
             </div>
           </div>
           <div class="hrpro-hint" id="hrproHint">Ayarlamak için bir kadranı seçin, <b>▼ ▲</b> ile değiştirin; <b>▶</b> ile atış yapın.</div>
+        </div>
+      </div>
+
+      <!-- SKIN REJUVENATION / CİLT YENİLEME paneli -->
+      <div class="hrp hrpro skinrej" id="skinrej" hidden>
+        <div class="hrp-top">
+          <span class="hrp-mode">SKIN REJUVENATION</span>
+          <div class="hrp-title"><b>DIODE LASER</b><span>755nm+808nm+940nm+1064nm</span></div>
+          <button class="hrpro-reset" id="srjReset" type="button" aria-label="Sıfırla">↺</button>
+        </div>
+        <div class="hrpro-body">
+          <div class="srj-types" id="srjTypes">
+            <button class="srj-type" type="button" data-t="1" data-tip="Fototip I — çok açık ten; en yüksek yoğunluk, cilt yenileme için nazik enerji.">I</button>
+            <button class="srj-type" type="button" data-t="2" data-tip="Fototip II — açık ten; dengeli yenileme parametreleri.">II</button>
+            <button class="srj-type" type="button" data-t="3" data-tip="Fototip III — buğday ten; orta enerji, kolajen uyarımı.">III</button>
+            <button class="srj-type" type="button" data-t="4" data-tip="Fototip IV — esmer ten; enerji kademeli düşürülür.">IV</button>
+            <button class="srj-type" type="button" data-t="5" data-tip="Fototip V — koyu ten; düşük enerji, uzun pals ile güvenli.">V</button>
+            <button class="srj-type" type="button" data-t="6" data-tip="Fototip VI — çok koyu ten; en düşük enerji, en uzun pals.">VI</button>
+          </div>
+          <div class="hrpro-dials">
+            <div class="dial dial-freq">
+              <svg viewBox="0 0 200 150"><ellipse class="d-track" cx="100" cy="75" rx="86" ry="52"/><path class="d-arc" d="M14 75 A86 52 0 1 1 186 75 A86 52 0 1 1 14 75" pathLength="100"/></svg>
+              <span class="d-val"><b id="srjFreq">—</b><i>Hz</i></span>
+              <span class="d-lbl">FREQUENCY</span>
+            </div>
+            <div class="dial dial-pulse">
+              <svg viewBox="0 0 220 160"><ellipse class="d-track" cx="110" cy="80" rx="98" ry="60"/><path class="d-arc" d="M12 80 A98 60 0 1 1 208 80 A98 60 0 1 1 12 80" pathLength="100"/></svg>
+              <span class="d-val"><b id="srjPulse">—</b><i>ms</i></span>
+              <span class="d-lbl">PULSE WIDTH</span>
+            </div>
+            <div class="dial dial-int">
+              <svg viewBox="0 0 200 150"><ellipse class="d-track" cx="100" cy="75" rx="86" ry="52"/><path class="d-arc" d="M14 75 A86 52 0 1 1 186 75 A86 52 0 1 1 14 75" pathLength="100"/></svg>
+              <span class="d-val"><b id="srjInt">—</b><i>%</i></span>
+              <span class="d-lbl">LASER INTENSITY</span>
+            </div>
+          </div>
+          <div class="hrpro-ctrl">
+            <div class="hrpro-count srj-count">
+              <div><span class="c-lbl">CURRENT COUNT</span><b id="srjCurrent">0</b></div>
+              <div><span class="c-lbl">SET COUNT</span><b id="srjSet">—</b></div>
+            </div>
+            <div class="hrpro-pad">
+              <button class="pad-fire" id="srjFire" type="button" aria-label="Başlat"><svg viewBox="0 0 24 24" class="ic-play"><path d="M8 5v14l11-7z"/></svg><svg viewBox="0 0 24 24" class="ic-stop"><rect x="7" y="7" width="10" height="10" rx="1.5"/></svg></button>
+            </div>
+            <div class="hrpro-fluence">
+              <span class="c-lbl">FLUENCE</span>
+              <b><span id="srjFluence">—</span> <i>J/cm²</i></b>
+            </div>
+          </div>
+          <div class="hrpro-hint" id="srjHint">Bir <b>cilt tipi (I–VI)</b> seçin; sistem cilt yenileme parametrelerini yükler, <b>▶</b> ile seansı başlatın.</div>
         </div>
       </div>
     </div>
@@ -1458,19 +1528,96 @@ document.querySelectorAll('.faq button').forEach(btn => {
   }
   fireBtn.addEventListener('click', () => firing ? stopFire() : startFire());
   document.getElementById('hrproReset').addEventListener('click', () => { stopFire(); state.freq = 5; state.pulse = 30; state.int = 40; sel = 'pulse'; countEl.textContent = '0'; setHint(); render(); });
+  (window.__demoStop = window.__demoStop || []).push(stopFire);
+  setHint(); render();
+})();
 
-  // MOD SEKMELERİ
+// SKIN REJUVENATION / CİLT YENİLEME canlı demo
+(function () {
+  const srj = document.getElementById('skinrej');
+  if (!srj) return;
+  // cilt tipine göre yenileme hazır ayarları (düşük enerji; koyu ten → düşük int, uzun pals) — temsili
+  const PRESETS = {
+    1: { f: 8, p: 20, i: 32, set: 300 }, 2: { f: 8, p: 20, i: 28, set: 320 },
+    3: { f: 7, p: 25, i: 25, set: 350 }, 4: { f: 6, p: 30, i: 22, set: 380 },
+    5: { f: 5, p: 35, i: 18, set: 400 }, 6: { f: 5, p: 40, i: 15, set: 420 }
+  };
+  const PMAX = { 5: 100, 6: 80, 7: 70, 8: 60 };
+  let cur = null;
+  const types = srj.querySelectorAll('.srj-type');
+  const fluence = i => Math.round(i * 1.2);
+  const arc = (v, min, max) => Math.max(3, Math.min(100, (v - min) / (max - min) * 100));
+  const setDial = (id, val, aVal) => { document.getElementById(id).textContent = val; const d = document.getElementById(id).closest('.dial'); d.querySelector('.d-arc').setAttribute('stroke-dasharray', aVal.toFixed(1) + ' 100'); };
+  const hint = document.getElementById('srjHint');
+  const curEl = document.getElementById('srjCurrent'), setEl = document.getElementById('srjSet');
+
+  function load(t) {
+    cur = t; const p = PRESETS[t];
+    types.forEach(x => x.classList.toggle('sel', x.dataset.t === t));
+    setDial('srjFreq', p.f, arc(p.f, 1, 10));
+    setDial('srjPulse', p.p, arc(p.p, 10, 200));
+    setDial('srjInt', p.i, arc(p.i, 5, 100));
+    document.getElementById('srjFluence').textContent = fluence(p.i);
+    setEl.textContent = p.set; curEl.textContent = '0';
+    srj.classList.remove('done-srj');
+    hint.classList.remove('warn');
+    hint.innerHTML = '<b>Fototip ' + ['I', 'II', 'III', 'IV', 'V', 'VI'][t - 1] + '</b> yenileme ayarı yüklendi — <b>▶</b> ile seansı başlatın.';
+  }
+  types.forEach(x => x.addEventListener('click', () => { stopFire(); load(x.dataset.t); }));
+
+  // atış: CURRENT COUNT, SET COUNT hedefine kadar hızlıca sayar, sonra otomatik durur
+  let firing = false, timer = null;
+  const fireBtn = document.getElementById('srjFire');
+  function stopFire() { if (!firing) return; firing = false; srj.classList.remove('firing'); clearInterval(timer); }
+  function startFire() {
+    if (!cur) { hint.innerHTML = 'Önce bir <b>cilt tipi (I–VI)</b> seçin.'; hint.classList.add('warn'); return; }
+    const target = PRESETS[cur].set;
+    if (+curEl.textContent >= target) curEl.textContent = '0';
+    firing = true; srj.classList.add('firing');
+    hint.classList.remove('warn');
+    hint.innerHTML = '⏵ Cilt yenileme seansı — hedef <b>' + target + '</b> atış...';
+    timer = setInterval(() => {
+      let c = +curEl.textContent + 4;
+      if (c >= target) { c = target; stopFire(); srj.classList.add('done-srj'); hint.innerHTML = '✓ Seans hedefi tamamlandı (<b>' + target + '</b> atış). Cilt yenileme uygulaması bitti.'; }
+      curEl.textContent = c;
+    }, 55);
+  }
+  fireBtn.addEventListener('click', () => firing ? stopFire() : startFire());
+  document.getElementById('srjReset').addEventListener('click', () => {
+    stopFire(); cur = null;
+    types.forEach(x => x.classList.remove('sel'));
+    ['srjFreq', 'srjPulse', 'srjInt', 'srjFluence', 'srjSet'].forEach(id => document.getElementById(id).textContent = '—');
+    srj.querySelectorAll('.d-arc').forEach(a => a.setAttribute('stroke-dasharray', '0 100'));
+    curEl.textContent = '0'; srj.classList.remove('done-srj');
+    hint.classList.remove('warn');
+    hint.innerHTML = 'Bir <b>cilt tipi (I–VI)</b> seçin; sistem cilt yenileme parametrelerini yükler, <b>▶</b> ile seansı başlatın.';
+  });
+  (window.__demoStop = window.__demoStop || []).push(stopFire);
+
+  // rozet tooltip (aynı .hrp-tip stili)
+  const tip = document.createElement('div'); tip.className = 'hrp-tip'; document.body.appendChild(tip);
+  srj.addEventListener('mouseover', e => {
+    const t = e.target.closest('[data-tip]');
+    if (!t) { tip.classList.remove('on'); return; }
+    tip.textContent = t.dataset.tip; tip.classList.add('on');
+    const r = t.getBoundingClientRect();
+    tip.style.left = Math.max(8, Math.min(innerWidth - 240, r.left + r.width / 2 - 115)) + 'px';
+    tip.style.top = (r.top - 10 - tip.offsetHeight) + 'px';
+  });
+  srj.addEventListener('mouseleave', () => tip.classList.remove('on'));
+})();
+
+// MOD SEKMELERİ (üç panel geçişi)
+(function () {
   const tabs = document.querySelectorAll('.demo-tab');
-  const panels = { hrp: document.getElementById('hrp'), hrpro: pro };
+  const panels = { hrp: document.getElementById('hrp'), hrpro: document.getElementById('hrpro'), skinrej: document.getElementById('skinrej') };
   tabs.forEach(t => t.addEventListener('click', () => {
     if (t.classList.contains('active')) return;
-    stopFire();
+    (window.__demoStop || []).forEach(fn => { try { fn(); } catch (e) {} });
     tabs.forEach(x => x.classList.remove('active'));
     t.classList.add('active');
-    Object.entries(panels).forEach(([k, el]) => { el.hidden = (k !== t.dataset.target); });
+    Object.entries(panels).forEach(([k, el]) => { if (el) el.hidden = (k !== t.dataset.target); });
   }));
-
-  setHint(); render();
 })();
 
 // LIGHTBOX (galeri tıkla-büyüt + ok tuşları)

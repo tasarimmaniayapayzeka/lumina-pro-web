@@ -136,6 +136,25 @@ header .btn{padding:10px 18px;font-size:.88rem}
 footer{border-top:1px solid var(--line);padding:34px 0;color:var(--mut);font-size:.85rem}
 footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
 
+/* ---------- galeri ---------- */
+.gallery{margin-top:26px}
+.shot{background:#f4f8fb;border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.shot img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.shot figcaption{padding:12px 18px;font-size:.85rem;color:#33566b;background:#eaf2f7;font-weight:600}
+
+/* ---------- modlar ---------- */
+.modes{display:grid;gap:14px;margin-top:24px}
+.modes .card{padding:20px 22px}
+.modes h3{margin:0 0 6px;font-size:1rem;color:var(--ice2)}
+
+/* ---------- teknik tablo ---------- */
+.spec{margin-top:34px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;max-width:860px}
+.spec .row{display:grid;grid-template-columns:220px 1fr;gap:18px;padding:14px 22px;font-size:.94rem;background:var(--panel)}
+.spec .row:nth-child(even){background:#0b2438}
+.spec .row span{color:var(--mut)}
+.spec .row b{color:var(--txt);font-weight:600}
+@media(max-width:640px){.spec .row{grid-template-columns:1fr;gap:2px}}
+
 /* ---------- reveal ---------- */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
@@ -155,6 +174,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;
       <a href="#dalga">Dalga Boyları</a>
       <a href="#teknoloji">Teknoloji</a>
       <a href="#donanim">Donanım</a>
+      <a href="#teknik">Teknik</a>
       <a href="#sss">SSS</a>
       <a href="#iletisim">İletişim</a>
     </nav>
@@ -166,9 +186,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;
 <section class="hero" id="top">
   <div class="wrap">
     <div>
-      <span class="eyebrow">Yeni Nesil Buz Lazer Epilasyon</span>
+      <span class="eyebrow">1600W Diyot Lazer — Çığır Açan Teknoloji</span>
       <h1>Dört Dalga Boyu.<br>Tek Cihaz. <span class="grad">Lumina Pro.</span></h1>
-      <p>755nm, 808nm, 940nm ve 1064nm dalga boylarını tek güçlü platformda birleştiren Lumina Pro ile en açık tenden en koyu tene, en ince tüyden en inatçı kıla kadar her danışanınıza özel, güvenli ve rakipsiz sonuçlar sunun.</p>
+      <p>755nm, 808nm, 940nm ve 1064nm dalga boylarını 1600W gücündeki tek platformda birleştiren Lumina Pro ile tüm cilt fototiplerinde ve kıl renklerinde etkili, daha hızlı uygulama, daha güçlü etki ve maksimum konfor sunun.</p>
       <div class="chips">
         <span class="chip">755nm<small>Alexandrite</small></span>
         <span class="chip">808nm<small>Diode — Altın Standart</small></span>
@@ -178,6 +198,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;
       <div class="cta-row">
         <a class="btn btn-ice" href="tel:+902163899580">📞 Fiyat Teklifi Alın</a>
         <a class="btn btn-wa" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%20Pro%20lazer%20epilasyon%20cihaz%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan Yazın</a>
+        <a class="btn btn-ghost" href="assets/docs/lumina-pro-brosur.pdf" target="_blank" rel="noopener">📄 Broşür (PDF)</a>
       </div>
     </div>
     <div class="hero-img reveal in">
@@ -258,19 +279,108 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;
     <div class="grid3">
       <div class="card reveal">
         <div class="ic">🖐️</div>
-        <h3>Akıllı Tedavi Kolu + 5 Farklı Başlık</h3>
-        <p>Ergonomik tedavi kolu üzerindeki akıllı dokunmatik ekran kullanım kolaylığı sağlar. 20x40mm'den Φ8mm'e kadar 5 farklı spot ucu ile sırt gibi geniş alanlardan burun gibi hassas bölgelere kusursuz uygulama yapın.</p>
+        <h3>Akıllı Başlık + 4 Tedavi Ucu</h3>
+        <p>Ana ekranla senkronize, renkli dokunmatik ekrana sahip ergonomik akıllı başlık. Φ5mm, 14×14mm, 14×28mm ve 16×40mm — hızlı tak-çıkar 4 tedavi ucu ile hassas bölgelerden geniş alanlara kusursuz uygulama.</p>
       </div>
       <div class="card reveal">
         <div class="ic">❄️</div>
-        <h3>Gelişmiş Buz Başlık Teknolojisi</h3>
-        <p>Hava + Su + TEC destekli güçlü soğutma sistemi ve safir temas yüzeyi, uygulama sırasında cilt sıcaklığını -5°C'ye kadar düşürür. Danışanlarınız için yanma riski olmayan, son derece konforlu bir seans.</p>
+        <h3>Kompresörlü Soğutma Sistemi</h3>
+        <p>Hava + Su + Kompresör + Safir soğutma; TEC sistemlerden daha hızlı ve daha verimli. -5°C ~ +5°C kontak sıcaklığı ile konforlu seans, 24 saat kesintisiz çalışma kapasitesi.</p>
       </div>
       <div class="card reveal">
         <div class="ic">⚡</div>
         <h3>Rakipsiz Güç ve Dayanıklılık</h3>
-        <p>1600W sistem gücü ve 100 milyon atış garantili Amerikan üretimi lazer barı; en yoğun kullanımda bile tutarlı performans ve uzun ömürlü bir yatırım sunar.</p>
+        <p>1600W sistem gücü ve ABD menşeli Coherent lazer barı; daha uzun kullanım ömrü, en yoğun kullanımda bile tutarlı performans ve uzun ömürlü bir yatırım.</p>
       </div>
+    </div>
+    <div class="grid2 gallery">
+      <figure class="shot reveal"><img src="assets/img/lumina-pro-on.jpg" alt="Lumina Pro önden görünüm" loading="lazy"><figcaption>15.6" renkli dokunmatik ana ekran</figcaption></figure>
+      <figure class="shot reveal"><img src="assets/img/lumina-pro-arka.jpg" alt="Lumina Pro yandan görünüm" loading="lazy"><figcaption>Ergonomik gövde, akıllı başlık yuvası</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- BAŞLIK ANATOMİSİ + ARAYÜZ -->
+<section class="tech" id="anatomi">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow reveal">Başlığın İçinde</span>
+      <h2 class="sec reveal">5 Katmanlı <span class="grad">Başlık Mühendisliği</span></h2>
+      <p class="lead reveal">Lumina Pro'nun uygulama başlığı, tedavinin etkinliğini ve konforunu garanti altına alan beş kritik bileşenle donatılmıştır.</p>
+      <ul>
+        <li class="reveal"><span class="dot">1</span><p><b>Safir kristal:</b> En iyi ışık ve soğuk iletkenliği ile etkinlik ve konforu bir arada sağlar.</p></li>
+        <li class="reveal"><span class="dot">2</span><p><b>Akıllı sıcaklık izleme:</b> Başlık yüzey sıcaklığının gerçek zamanlı takibi.</p></li>
+        <li class="reveal"><span class="dot">3</span><p><b>360° Peltier soğutma:</b> Halka şeklinde (dairesel) hızlı soğutma.</p></li>
+        <li class="reveal"><span class="dot">4</span><p><b>Kolimatör lens odaklı ışın:</b> Optik yolu hizalayarak ışın dağılmasını engeller; enerjinin her noktada eşit ve güvenli iletilmesini garanti eder.</p></li>
+        <li class="reveal"><span class="dot">5</span><p><b>ABD menşeli Coherent lazer bar:</b> Daha uzun kullanım ömrü.</p></li>
+      </ul>
+    </div>
+    <div>
+      <span class="eyebrow reveal">Akıllı Kullanıcı Arayüzü</span>
+      <h2 class="sec reveal" style="font-size:clamp(1.3rem,2.6vw,1.8rem)">3 Uygulama Modu, <span class="grad">15.6" Dokunmatik Ekran</span></h2>
+      <div class="modes">
+        <div class="card reveal">
+          <h3>HR Hazır Ayar Modu</h3>
+          <p>Sistem, önceden ayarlanan duruma göre uygun parametreleri otomatik eşleştirir — cihaza yeni başlayan operatörler için ideal.</p>
+        </div>
+        <div class="card reveal">
+          <h3>HR Professional Modu</h3>
+          <p>Deneyimli operatörler, klinik tecrübelerine dayanarak tüm parametreleri özgürce ayarlayabilir; uygulamada üstün esneklik.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Cilt Gençleştirme &amp; Yenileme Modu</h3>
+          <p>Kolay kullanım için altı farklı cilt tipine uygun hazır ayar seçeneği sunar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KLİNİK ETKİ -->
+<section id="klinik">
+  <div class="wrap">
+    <span class="eyebrow reveal">Kanıtlanmış Klinik Etki</span>
+    <h2 class="sec reveal">Klinik Testlerle <span class="grad">Doğrulanmış Sonuçlar</span></h2>
+    <div class="grid3">
+      <div class="card reveal" style="text-align:center">
+        <div class="nm" style="font-size:2.4rem">%95</div>
+        <h3>Vaka Başarısı</h3>
+        <p>Klinik testlerde vakaların %95'inde belirgin sonuç raporlanmıştır.</p>
+      </div>
+      <div class="card reveal" style="text-align:center">
+        <div class="nm" style="font-size:2.4rem">%80+</div>
+        <h3>Kıl Yoğunluğunda Azalma</h3>
+        <p>Sadece 3–5 seans sonunda kıl yoğunluğunda %80'in üzerinde azalma.</p>
+      </div>
+      <div class="card reveal" style="text-align:center">
+        <div class="nm" style="font-size:2.4rem">%30–50</div>
+        <h3>İlk Seanslarda Etki</h3>
+        <p>Henüz 1–2 seans gibi kısa sürede vakaların tamamında %30–50 arasında etkili azalma.</p>
+      </div>
+    </div>
+    <p class="lead reveal" style="margin-top:22px;font-size:.85rem">* Üretici klinik test raporlarına dayanmaktadır; sonuçlar cilt ve kıl tipine göre değişiklik gösterebilir.</p>
+  </div>
+</section>
+
+<!-- TEKNİK PARAMETRELER -->
+<section class="tech" id="teknik">
+  <div class="wrap" style="display:block">
+    <span class="eyebrow reveal">Teknik Parametreler</span>
+    <h2 class="sec reveal">Lumina Pro <span class="grad">1600W Diyot Lazer</span> Özellikleri</h2>
+    <div class="spec reveal">
+      <div class="row"><span>Lazer Gücü</span><b>1600W</b></div>
+      <div class="row"><span>Dalga Boyu</span><b>755nm, 808nm, 940nm, 1064nm</b></div>
+      <div class="row"><span>Spot Büyüklüğü</span><b>Φ5mm, 14×14mm, 14×28mm, 16×40mm</b></div>
+      <div class="row"><span>Pals Genişliği</span><b>10ms ~ 200ms</b></div>
+      <div class="row"><span>Frekans</span><b>1Hz ~ 10Hz</b></div>
+      <div class="row"><span>Lazer Yoğunluğu</span><b>%5 ~ %100</b></div>
+      <div class="row"><span>Kontak Sıcaklığı</span><b>-5°C ~ +5°C</b></div>
+      <div class="row"><span>Soğutma Sistemi</span><b>Hava + Su + Kompresör + Safir</b></div>
+      <div class="row"><span>Ekran</span><b>15.6" Renkli Dokunmatik + HD senkronize başlık ekranı</b></div>
+      <div class="row"><span>Voltaj</span><b>AC 220V/50Hz, 110V/60Hz</b></div>
+    </div>
+    <div class="cta-row reveal" style="margin-top:28px">
+      <a class="btn btn-ghost" href="assets/docs/lumina-pro-brosur.pdf" target="_blank" rel="noopener">📄 Ürün Broşürünü İndir (PDF)</a>
     </div>
   </div>
 </section>
@@ -315,11 +425,11 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;
       </div>
       <div class="faq reveal">
         <button>Uygulama acı verir mi?</button>
-        <div class="a"><p>Hava + Su + TEC destekli soğutma sistemi ve safir temas yüzeyi, cilt sıcaklığını -5°C'ye kadar düşürür. Bu sayede seanslar danışanlar için son derece konforlu geçer ve yanma riski en aza iner.</p></div>
+        <div class="a"><p>Hava + Su + Kompresör + Safir soğutma sistemi, kontak sıcaklığını -5°C ~ +5°C aralığında tutar. TEC sistemlerden daha hızlı ve verimli olan kompresörlü soğutma sayesinde seanslar danışanlar için son derece konforlu geçer ve yanma riski en aza iner.</p></div>
       </div>
       <div class="faq reveal">
-        <button>Lazer barının ömrü ne kadar?</button>
-        <div class="a"><p>Lumina Pro, 100 milyon atış garantili Amerikan üretimi lazer barı ile gelir. Yoğun klinik kullanımında dahi atış kalitesi düşmeden uzun yıllar tutarlı performans sunar.</p></div>
+        <button>Cihaz yoğun kullanımda ısınır mı, lazerin ömrü etkilenir mi?</button>
+        <div class="a"><p>Gelişmiş kompresörlü soğutma, lazeri en uygun sıcaklık aralığında (yaklaşık 20°C) sabit tutar: kompresör ≥22°C'de devreye girer, ≤19°C'de durur. Bu hassas kontrol, ABD menşeli Coherent lazer barının ömrünü önemli ölçüde uzatır ve 24 saat kesintisiz çalışmada bile kararlı enerji çıkışı sağlar.</p></div>
       </div>
       <div class="faq reveal">
         <button>Kurulum ve eğitim desteği veriyor musunuz?</button>

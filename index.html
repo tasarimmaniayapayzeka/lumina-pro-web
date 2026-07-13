@@ -111,8 +111,15 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,24,38,.88);backdrop-fi
 .vlist .ico{color:var(--ice);margin-top:2px;width:19px;height:19px}
 .vlist b{color:var(--txt)}
 .phone{position:relative;justify-self:center;width:min(320px,84vw);aspect-ratio:9/16;border-radius:34px;padding:10px;background:linear-gradient(160deg,#10344e,#0d2a40);border:1px solid var(--line);box-shadow:0 34px 80px rgba(0,0,0,.55),0 0 70px rgba(95,217,255,.14)}
-.phone::after{content:"";position:absolute;top:20px;left:50%;transform:translateX(-50%);width:84px;height:5px;border-radius:5px;background:rgba(255,255,255,.14)}
-.phone iframe{width:100%;height:100%;border:0;border-radius:26px;background:#000}
+.phone::after{content:"";position:absolute;top:20px;left:50%;transform:translateX(-50%);width:84px;height:5px;border-radius:5px;background:rgba(255,255,255,.14);z-index:4;pointer-events:none}
+.phone .screen{position:absolute;inset:10px;border-radius:26px;overflow:hidden;background:#000}
+.phone iframe{width:100%;height:100%;border:0;display:block}
+.phone .facade{position:absolute;inset:0;cursor:pointer;border:0;padding:0;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center}
+.phone .facade::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,15,24,.15),rgba(4,15,24,.45))}
+.phone .facade .play{position:relative;width:66px;height:66px;border-radius:50%;background:rgba(95,217,255,.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 26px rgba(4,15,24,.5),0 0 0 8px rgba(95,217,255,.18);transition:.25s}
+.phone .facade:hover .play{transform:scale(1.08);background:var(--ice2)}
+.phone .facade .play svg{width:26px;height:26px;margin-left:4px;fill:#04141f}
+.phone .facade .cap{position:absolute;left:0;right:0;bottom:16px;text-align:center;font-size:.78rem;font-weight:600;color:#eaf6fb;text-shadow:0 1px 6px rgba(0,0,0,.7)}
 
 /* cta şeridi */
 .ribbon{background:linear-gradient(92deg,rgba(95,217,255,.12),rgba(46,184,230,.06));border-block:1px solid var(--line)}
@@ -326,7 +333,12 @@ footer a{color:var(--ice2);font-weight:600}
       </div>
     </div>
     <div class="phone reveal">
-      <iframe src="https://www.youtube-nocookie.com/embed/45xBSxbZSZo?rel=0&modestbranding=1&playsinline=1" title="Lumina Pro tanıtım videosu" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      <div class="screen">
+        <button type="button" class="facade" id="ytFacade" style="background-image:url('assets/img/video-poster.jpg')" aria-label="Lumina Pro tanıtım videosunu oynat">
+          <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="cap">▶ Tanıtım videosunu izle</span>
+        </button>
+      </div>
     </div>
   </div>
 </section>
@@ -606,10 +618,11 @@ footer a{color:var(--ice2);font-weight:600}
 </div>
 
 <script>
-// görünürlük yardımcıları — IO'ya bağımlılık yok, her ortamda deterministik
+// görünürlük yardımcıları — IO'ya bağımlılık yok, her ortamda deterministik.
+// Öğe viewport'a girmiş VEYA yukarısında kalmışsa göster: çapa zıplaması / hızlı
+// kaydırmada atlanan bölümler gizli kalmaz.
 function etInView(el, margin) {
-  const r = el.getBoundingClientRect();
-  return r.top < innerHeight + margin && r.bottom > -margin;
+  return el.getBoundingClientRect().top < innerHeight + margin;
 }
 const etRevs = Array.from(document.querySelectorAll('.reveal'));
 function etTick() {
@@ -626,6 +639,20 @@ let etLastY = -1, etLastH = -1;
 })();
 addEventListener('load', etTick);
 setInterval(etTick, 900); // kısılmış/arka plan sekmelerde de akışı garantiler
+
+// YouTube facade → tıklayınca gerçek videoyu yükle (autoplay)
+(function () {
+  const f = document.getElementById('ytFacade');
+  if (!f) return;
+  f.addEventListener('click', () => {
+    const ifr = document.createElement('iframe');
+    ifr.src = 'https://www.youtube-nocookie.com/embed/45xBSxbZSZo?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+    ifr.title = 'Lumina Pro tanıtım videosu';
+    ifr.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    ifr.allowFullscreen = true;
+    f.replaceWith(ifr);
+  });
+})();
 
 // SSS akordiyon
 document.querySelectorAll('.faq button').forEach(btn => {

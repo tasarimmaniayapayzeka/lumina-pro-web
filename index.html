@@ -339,6 +339,68 @@ footer a{color:var(--ice2);font-weight:600}
 .head-feat b{display:block;color:var(--ice2);font-size:.95rem;margin-bottom:2px}
 .head-feat p{color:var(--mut);font-size:.86rem}
 
+/* ---------- HR HAZIR AYAR canlı demo ---------- */
+.demo-shell{max-width:960px;margin:34px auto 0;background:linear-gradient(160deg,#10344e,#0d2a40);border:1px solid var(--line);border-radius:24px;padding:12px;box-shadow:0 34px 80px rgba(0,0,0,.5),0 0 70px rgba(95,217,255,.1)}
+.hrp{position:relative;background:#0e1822;border-radius:15px;overflow:hidden;user-select:none}
+.hrp-top{display:flex;align-items:center;gap:12px;padding:11px 16px;background:#152230;border-bottom:1px solid rgba(154,232,255,.12)}
+.hrp-mode{font-family:'Sora';font-weight:800;letter-spacing:.05em;color:#fff;font-size:clamp(.78rem,1.7vw,1rem);white-space:nowrap}
+.hrp-title{margin:0 auto;text-align:center;line-height:1.25}
+.hrp-title b{display:block;font-family:'Sora';font-weight:800;letter-spacing:.14em;font-size:clamp(.72rem,1.5vw,.95rem)}
+.hrp-title span{font-size:.6rem;color:#7fdbff;letter-spacing:.06em}
+.hrp-confirm{background:linear-gradient(135deg,var(--ice),#2eb8e6);color:#04141f;font-family:'Sora';font-weight:800;font-size:.74rem;letter-spacing:.1em;border:none;border-radius:999px;padding:9px 20px;cursor:pointer;transition:.25s;opacity:.38;white-space:nowrap}
+.hrp-confirm.ready{opacity:1;animation:hrpPulse 1.6s ease-in-out infinite}
+@keyframes hrpPulse{0%,100%{box-shadow:0 0 10px rgba(95,217,255,.35)}50%{box-shadow:0 0 24px rgba(95,217,255,.7)}}
+.hrp-confirm.shake{animation:hrpShake .4s}
+@keyframes hrpShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.hrp-back{width:34px;height:34px;flex:none;border-radius:10px;border:1px solid rgba(154,232,255,.22);background:none;color:#9ae8ff;cursor:pointer;font-size:1rem;transition:.25s}
+.hrp-back:hover{background:rgba(95,217,255,.12)}
+.hrp-body{padding:12px 14px 14px;display:grid;gap:11px}
+.hrp-panel{background:#141f2b;border-radius:13px;padding:9px 11px 11px}
+.hrp-glabel{text-align:center;font-size:.64rem;font-weight:700;letter-spacing:.24em;color:#8fb2c4;margin-bottom:8px;text-transform:uppercase}
+.hrp-cards{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
+@media(max-width:640px){.hrp-cards{grid-template-columns:repeat(4,1fr)}}
+.hrp-card{position:relative;border-radius:9px;overflow:hidden;border:2px solid rgba(154,232,255,.12);cursor:pointer;transition:.22s;background:#0d1620}
+.hrp-card img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;pointer-events:none}
+.hrp-card i{display:block;font-style:normal;text-align:center;font-size:.62rem;color:#9db8c6;padding:4px 2px;transition:.2s}
+.hrp-card:hover{transform:translateY(-3px);border-color:rgba(95,217,255,.5)}
+.hrp-card.sel{border-color:var(--ice);box-shadow:0 0 14px rgba(95,217,255,.5)}
+.hrp-card.sel i{color:#9ae8ff;font-weight:700}
+.hrp-groups{display:grid;grid-template-columns:6fr 5fr 3.2fr 3.2fr;gap:11px}
+@media(max-width:860px){.hrp-groups{grid-template-columns:1fr 1fr}}
+.hrp-pills{display:flex;gap:7px;justify-content:center}
+.hrp-pill{flex:1;max-width:46px;cursor:pointer;text-align:center}
+.hrp-pill .sw{height:72px;border-radius:999px;border:2px solid rgba(154,232,255,.28);transition:.2s;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#0d1620}
+.hrp-pill .sw svg{width:70%;height:78%}
+.hrp-pill:hover .sw{transform:translateY(-2px);border-color:rgba(95,217,255,.65)}
+.hrp-pill.sel .sw{border-color:var(--ice);box-shadow:0 0 12px rgba(95,217,255,.6)}
+.hrp-pill i{display:block;font-style:normal;font-size:.6rem;color:#9db8c6;margin-top:5px;transition:.2s}
+.hrp-pill.sel i{color:#9ae8ff;font-weight:700}
+.hrp-status{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;padding:10px 12px;background:#141f2b;border-radius:13px;min-height:46px}
+.hrp-status .lbl{font-size:.66rem;font-weight:700;letter-spacing:.16em;color:#8fb2c4;text-transform:uppercase;margin-right:2px}
+.hrp-wl{font-family:'Sora';font-weight:700;font-size:.7rem;padding:6px 13px;border-radius:999px;border:1px solid rgba(154,232,255,.16);color:#41586b;transition:.35s}
+.hrp-wl.on{color:#04141f;background:linear-gradient(135deg,var(--ice),#2eb8e6);border-color:transparent;box-shadow:0 0 12px rgba(95,217,255,.45)}
+.hrp-warn{width:100%;text-align:center;font-size:.74rem;color:#ffb3a7;display:none}
+.hrp-warn.on{display:block}
+.hrp-tip{position:fixed;z-index:90;max-width:230px;background:rgba(7,24,38,.97);border:1px solid rgba(95,217,255,.35);border-radius:10px;padding:9px 12px;font-size:.74rem;color:var(--ice2);line-height:1.45;pointer-events:none;opacity:0;transition:opacity .15s;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.hrp-tip.on{opacity:1}
+.hrp-result{position:absolute;inset:0;z-index:5;background:rgba(10,18,26,.97);display:flex;align-items:center;justify-content:center;padding:22px;opacity:0;pointer-events:none;transition:.35s;overflow:auto}
+.hrp.done .hrp-result{opacity:1;pointer-events:auto}
+.hrp-result .box{max-width:560px;width:100%;text-align:center}
+.hrp-result .okic{width:54px;height:54px;margin:0 auto 12px;border-radius:50%;background:linear-gradient(135deg,var(--ice),#2eb8e6);display:flex;align-items:center;justify-content:center;animation:hrpPop .45s ease}
+@keyframes hrpPop{0%{transform:scale(.4);opacity:0}70%{transform:scale(1.12)}100%{transform:scale(1)}}
+.hrp-result .okic svg{width:28px;height:28px;stroke:#04141f;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.hrp-result h4{font-family:'Sora';font-size:1.1rem;font-weight:800;margin-bottom:4px}
+.hrp-result .sum{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:10px 0 4px}
+.hrp-result .sum span{font-size:.7rem;color:var(--ice2);background:rgba(95,217,255,.08);border:1px solid rgba(154,232,255,.2);border-radius:999px;padding:4px 11px}
+.hrp-params{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 6px}
+.hrp-params div{background:#141f2b;border:1px solid rgba(154,232,255,.18);border-radius:12px;padding:12px 8px}
+.hrp-params b{display:block;font-family:'Sora';font-weight:800;font-size:1.25rem;color:var(--ice)}
+.hrp-params span{font-size:.62rem;color:#8fb2c4;letter-spacing:.1em;text-transform:uppercase}
+.hrp-result .expl{font-size:.82rem;color:var(--mut);line-height:1.6;margin:8px 0 16px}
+.hrp-result .expl b{color:var(--ice2)}
+.hrp-result .acts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.hrp-note{text-align:center;margin-top:13px;font-size:.74rem;color:var(--mut)}
+
 /* reveal + float + mobil bar */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
@@ -389,8 +451,8 @@ footer a{color:var(--ice2);font-weight:600}
     <nav class="menu">
       <a href="#video">Video</a>
       <a href="#dalga">Dalga Boyları</a>
-      <a href="#teknoloji">Teknoloji</a>
       <a href="#basliklar">Başlıklar</a>
+      <a href="#canli-demo">Canlı Demo</a>
       <a href="#sogutma">Soğutma</a>
       <a href="#teknik">Teknik</a>
       <a href="#sss">SSS</a>
@@ -604,6 +666,118 @@ footer a{color:var(--ice2);font-weight:600}
         <div><b>HD senkronize renkli dokunmatik ekran</b><p>Başlık ekranı ana ekranla eş zamanlı çalışır; parametreleri başlığın üzerinden anında görün ve yönetin.</p></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- CANLI ARAYÜZ DEMOSU (HR HAZIR AYAR MODU) -->
+<section id="canli-demo" class="seam" style="background:linear-gradient(180deg,#0a2235,#081c2b)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow reveal">Akıllı Kullanıcı Arayüzü</span>
+        <h2 class="reveal">HR Hazır Ayar Modu — <span class="grad">Canlı Demo</span></h2>
+      </div>
+      <p class="reveal">Cihazın dokunmatik arayüzünü birebir deneyin: bölge ve danışan profilini seçin, sistem uygun parametreleri otomatik eşleştirsin. Bu özellik cihazı yeni başlayan operatörler için ideal kılar.</p>
+    </div>
+
+    <div class="demo-shell reveal">
+      <div class="hrp" id="hrp">
+        <!-- üst bar -->
+        <div class="hrp-top">
+          <span class="hrp-mode">HR PRESET</span>
+          <div class="hrp-title"><b>DIODE LASER</b><span>755nm+808nm+940nm+1064nm</span></div>
+          <button class="hrp-confirm" id="hrpConfirm" type="button">CONFIRM</button>
+          <button class="hrp-back" id="hrpBack" type="button" aria-label="Sıfırla">↺</button>
+        </div>
+
+        <div class="hrp-body">
+          <!-- AREA -->
+          <div class="hrp-panel">
+            <div class="hrp-glabel">Area</div>
+            <div class="hrp-cards" id="hrpArea">
+              <figure class="hrp-card" data-v="Face" data-tip="Yüz — hassas bölge; küçük spot ve düşük enerjiyle çalışılır."><img src="assets/img/area-face.jpg" alt="Face"><i>Face</i></figure>
+              <figure class="hrp-card" data-v="Arm" data-tip="Kol — orta boy bölge; dengeli hız ve kontrol."><img src="assets/img/area-arm.jpg" alt="Arm"><i>Arm</i></figure>
+              <figure class="hrp-card" data-v="Armpit" data-tip="Koltuk altı — yoğun kıl; kısa sürede etkili sonuç alınan bölge."><img src="assets/img/area-armpit.jpg" alt="Armpit"><i>Armpit</i></figure>
+              <figure class="hrp-card" data-v="Back" data-tip="Sırt — geniş alan; büyük spot ile hızlı tarama."><img src="assets/img/area-back.jpg" alt="Back"><i>Back</i></figure>
+              <figure class="hrp-card" data-v="Abdomen" data-tip="Karın — geniş, düz yüzey; kaydırma tekniğiyle uygulanır."><img src="assets/img/area-abdomen.jpg" alt="Abdomen"><i>Abdomen</i></figure>
+              <figure class="hrp-card" data-v="Bikini" data-tip="Bikini — hassas bölge; kontrollü enerji gerektirir."><img src="assets/img/area-bikini.jpg" alt="Bikini"><i>Bikini</i></figure>
+              <figure class="hrp-card" data-v="Leg" data-tip="Bacak — en geniş bölge; 16×40mm başlıkla maksimum hız."><img src="assets/img/area-leg.jpg" alt="Leg"><i>Leg</i></figure>
+            </div>
+          </div>
+
+          <!-- 4 SEÇİM GRUBU -->
+          <div class="hrp-groups">
+            <div class="hrp-panel">
+              <div class="hrp-glabel">Skin Type</div>
+              <div class="hrp-pills" id="hrpSkin">
+                <div class="hrp-pill" data-v="1" data-tip="Fototip I — çok açık ten. 755nm Alexandrite ağırlıklı, yüksek verim."><span class="sw" style="background:linear-gradient(180deg,#f7ece2,#f0ddc9)"></span><i>I</i></div>
+                <div class="hrp-pill" data-v="2" data-tip="Fototip II — açık ten. 755nm + 808nm kombinasyonu idealdir."><span class="sw" style="background:linear-gradient(180deg,#f2ddc6,#eaceb0)"></span><i>II</i></div>
+                <div class="hrp-pill" data-v="3" data-tip="Fototip III — buğday ten. 808nm altın standart dalga boyu."><span class="sw" style="background:linear-gradient(180deg,#e8c9a5,#dcb689)"></span><i>III</i></div>
+                <div class="hrp-pill" data-v="4" data-tip="Fototip IV — esmer ten. 808/940nm; enerji kademeli düşürülür."><span class="sw" style="background:linear-gradient(180deg,#d2a171,#c08c58)"></span><i>IV</i></div>
+                <div class="hrp-pill" data-v="5" data-tip="Fototip V — koyu ten. 1064nm ND:YAG ağırlıklı güvenli uygulama."><span class="sw" style="background:linear-gradient(180deg,#a97248,#8d5c38)"></span><i>V</i></div>
+                <div class="hrp-pill" data-v="6" data-tip="Fototip VI — çok koyu ten. 1064nm + düşük enerji + uzun pals."><span class="sw" style="background:linear-gradient(180deg,#7a4e2f,#5d3a22)"></span><i>VI</i></div>
+              </div>
+            </div>
+            <div class="hrp-panel">
+              <div class="hrp-glabel">Hair Color</div>
+              <div class="hrp-pills" id="hrpColor">
+                <div class="hrp-pill" data-v="Black" data-tip="Siyah kıl — en yüksek melanin; lazer enerjisini en güçlü emer."><span class="sw" style="background:linear-gradient(180deg,#2a2a2e,#101013)"></span><i>Black</i></div>
+                <div class="hrp-pill" data-v="Brown" data-tip="Kahverengi kıl — yüksek melanin; çok iyi yanıt verir."><span class="sw" style="background:linear-gradient(180deg,#6b4526,#4a2d16)"></span><i>Brown</i></div>
+                <div class="hrp-pill" data-v="Blond" data-tip="Sarı kıl — düşük melanin; daha uzun pals ile çalışılır, yanıt sınırlıdır."><span class="sw" style="background:linear-gradient(180deg,#d9b06a,#b98d45)"></span><i>Blond</i></div>
+                <div class="hrp-pill" data-v="Grey" data-tip="Gri kıl — çok düşük melanin; yanıt zayıftır."><span class="sw" style="background:linear-gradient(180deg,#b9b9bd,#8f8f95)"></span><i>Grey</i></div>
+                <div class="hrp-pill" data-v="White" data-tip="Beyaz kıl — melanin içermez; lazer epilasyon beyaz kılda etkili değildir."><span class="sw" style="background:linear-gradient(180deg,#f2f2f4,#d8d8de)"></span><i>White</i></div>
+              </div>
+            </div>
+            <div class="hrp-panel">
+              <div class="hrp-glabel">Hair Density</div>
+              <div class="hrp-pills" id="hrpDensity">
+                <div class="hrp-pill" data-v="Thin" data-tip="Seyrek kıl — standart enerji ile hızlı tarama."><span class="sw"><svg viewBox="0 0 30 54"><path d="M15 4 C13 20 16 36 14 50" stroke="#c9a17c" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><i>Thin</i></div>
+                <div class="hrp-pill" data-v="Middle" data-tip="Orta yoğunluk — dengeli parametre seti."><span class="sw"><svg viewBox="0 0 30 54"><path d="M9 4 C7 20 10 36 8 50" stroke="#c9a17c" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M15 4 C13 20 16 36 14 50" stroke="#b98d5f" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M21 4 C19 20 22 36 20 50" stroke="#c9a17c" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><i>Middle</i></div>
+                <div class="hrp-pill" data-v="Thick" data-tip="Sık kıl — toplu ısınmayı önlemek için enerji düşürülür."><span class="sw"><svg viewBox="0 0 30 54"><path d="M6 4 C4 20 7 36 5 50" stroke="#c9a17c" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M11 4 C9 20 12 36 10 50" stroke="#a87a4e" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M16 4 C14 20 17 36 15 50" stroke="#c9a17c" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M21 4 C19 20 22 36 20 50" stroke="#a87a4e" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M26 4 C24 20 27 36 25 50" stroke="#c9a17c" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><i>Thick</i></div>
+              </div>
+            </div>
+            <div class="hrp-panel">
+              <div class="hrp-glabel">Hair Thickness</div>
+              <div class="hrp-pills" id="hrpThickness">
+                <div class="hrp-pill" data-v="Light" data-tip="İnce tel — kısa pals, hassas enerji."><span class="sw"><svg viewBox="0 0 30 54"><path d="M15 4 C13 20 16 36 14 50" stroke="#c9a17c" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg></span><i>Light</i></div>
+                <div class="hrp-pill" data-v="Middle" data-tip="Orta tel — dengeli pals genişliği."><span class="sw"><svg viewBox="0 0 30 54"><path d="M15 4 C13 20 16 36 14 50" stroke="#a87a4e" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span><i>Middle</i></div>
+                <div class="hrp-pill" data-v="Bold" data-tip="Kalın tel — derin folikül; uzun pals + 940nm katkısı."><span class="sw"><svg viewBox="0 0 30 54"><path d="M15 4 C13 20 16 36 14 50" stroke="#7d5230" stroke-width="5.5" fill="none" stroke-linecap="round"/></svg></span><i>Bold</i></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DURUM / DALGA BOYU -->
+          <div class="hrp-status">
+            <span class="lbl">Aktif Dalga Boyu</span>
+            <span class="hrp-wl" data-wl="755">755nm</span>
+            <span class="hrp-wl" data-wl="808">808nm</span>
+            <span class="hrp-wl" data-wl="940">940nm</span>
+            <span class="hrp-wl" data-wl="1064">1064nm</span>
+            <span class="hrp-warn" id="hrpWarn"></span>
+          </div>
+        </div>
+
+        <!-- SONUÇ KATMANI -->
+        <div class="hrp-result" id="hrpResult">
+          <div class="box">
+            <div class="okic"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></svg></div>
+            <h4>Parametreler Eşleştirildi</h4>
+            <div class="sum" id="hrpSum"></div>
+            <div class="hrp-params">
+              <div><b id="hrpPInt">—</b><span>Yoğunluk</span></div>
+              <div><b id="hrpPPulse">—</b><span>Pals Genişliği</span></div>
+              <div><b id="hrpPFreq">—</b><span>Frekans</span></div>
+            </div>
+            <p class="expl" id="hrpExpl"></p>
+            <div class="acts">
+              <button class="btn btn-ghost btn-sm" id="hrpAgain" type="button">↺ Yeni Seçim</button>
+              <a class="btn btn-ice btn-sm" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%20Pro%20aray%C3%BCz%C3%BCn%C3%BC%20canl%C4%B1%20g%C3%B6rmek%20i%C3%A7in%20demo%20randevusu%20istiyorum." target="_blank" rel="noopener">Bu Deneyimi Canlı Yaşayın</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="hrp-note reveal">* Web uyarlaması — temsili canlı demodur. Gösterilen başlangıç değerleri aynı platform ailesinin klinik kullanım kılavuzlarından derlenmiştir; gerçek cihaz, fabrika kalibrasyonuna göre eşleştirme yapar.</p>
   </div>
 </section>
 
@@ -969,6 +1143,113 @@ document.querySelectorAll('.faq button').forEach(btn => {
     if (!open) { f.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
   });
 });
+
+// HR HAZIR AYAR canlı demo — seçimler + dalga boyu eşleşmesi + parametre önerisi
+// Kaynak: aynı OEM platform ailesinin klinik kullanım kılavuzu başlangıç tabloları + yön kuralları
+(function () {
+  const hrp = document.getElementById('hrp');
+  if (!hrp) return;
+  const st = { area: null, skin: null, color: null, density: null, thickness: null };
+  const groups = { area: 'hrpArea', skin: 'hrpSkin', color: 'hrpColor', density: 'hrpDensity', thickness: 'hrpThickness' };
+  const confirmBtn = document.getElementById('hrpConfirm');
+  const warn = document.getElementById('hrpWarn');
+
+  // seçim işleme (grup içinde tek seçim)
+  Object.entries(groups).forEach(([key, id]) => {
+    const el = document.getElementById(id);
+    el.addEventListener('click', e => {
+      const item = e.target.closest('[data-v]');
+      if (!item) return;
+      el.querySelectorAll('.sel').forEach(s => s.classList.remove('sel'));
+      item.classList.add('sel');
+      st[key] = item.dataset.v;
+      update();
+    });
+  });
+
+  function allSelected() { return Object.values(st).every(v => v !== null); }
+
+  // dalga boyu eşleşmesi: 755→açık ten (I-II), 808→altın standart (I-V),
+  // 940→kalın/inatçı kıl, 1064→koyu ten (IV-VI)  [broşür + klinik kaynak]
+  function activeWl() {
+    if (st.color === 'White') return [];
+    const s = parseInt(st.skin || 0), wl = [];
+    if (s >= 1 && s <= 2) wl.push(755);
+    if (s >= 1 && s <= 5) wl.push(808);
+    if (st.thickness === 'Bold' || st.density === 'Thick' || ['Back', 'Leg'].includes(st.area)) wl.push(940);
+    if (s >= 4) wl.push(1064);
+    return wl;
+  }
+
+  function update() {
+    const wl = activeWl();
+    hrp.querySelectorAll('.hrp-wl').forEach(c => c.classList.toggle('on', wl.includes(parseInt(c.dataset.wl))));
+    // uyarılar (kılavuz: gri/beyaz kılda melanin yok/az → yanıt zayıf/yok)
+    warn.classList.remove('on'); warn.textContent = '';
+    if (st.color === 'White') { warn.textContent = '⚠ Beyaz kıl melanin içermez — lazer epilasyon beyaz kılda etkili değildir.'; warn.classList.add('on'); }
+    else if (st.color === 'Grey') { warn.textContent = '⚠ Gri kılda melanin çok düşüktür — yanıt sınırlı olabilir.'; warn.classList.add('on'); }
+    confirmBtn.classList.toggle('ready', allSelected());
+  }
+
+  // parametre önerisi — OEM kılavuz başlangıç tablosu (cilt tipi) + yön kuralları,
+  // Lumina Pro spec aralıklarına kelepçeli (%5-100, 10-200ms, 1-10Hz)
+  const BASE = { 1: { e: 35, p: 80, f: 5 }, 2: { e: 30, p: 80, f: 4 }, 3: { e: 30, p: 80, f: 4 }, 4: { e: 25, p: 52, f: 4 }, 5: { e: 15, p: 20, f: 2 }, 6: { e: 15, p: 20, f: 2 } };
+  function computeParams() {
+    const b = { ...BASE[parseInt(st.skin)] }, notes = [];
+    if (st.thickness === 'Bold') { b.p += 20; b.e -= 5; notes.push('kalın tel için pals uzatıldı, enerji düşürüldü'); }
+    if (st.thickness === 'Light') { b.p -= 10; notes.push('ince tel için pals kısaltıldı'); }
+    if (['Blond', 'Grey'].includes(st.color)) { b.p += 15; notes.push('açık renk kıl için pals uzatıldı'); }
+    if (st.density === 'Thick') { b.e -= 5; notes.push('sık kılda toplu ısınmayı önlemek için enerji düşürüldü'); }
+    if (['Face', 'Bikini'].includes(st.area)) { b.e -= 5; notes.push('hassas bölge için enerji düşürüldü'); }
+    b.e = Math.min(100, Math.max(5, b.e)); b.p = Math.min(200, Math.max(10, b.p)); b.f = Math.min(10, Math.max(1, b.f));
+    return { ...b, notes };
+  }
+
+  confirmBtn.addEventListener('click', () => {
+    if (!allSelected()) {
+      confirmBtn.classList.remove('shake'); void confirmBtn.offsetWidth; confirmBtn.classList.add('shake');
+      warn.textContent = 'Lütfen tüm seçimleri tamamlayın (bölge + 4 profil).'; warn.classList.add('on');
+      return;
+    }
+    const sum = document.getElementById('hrpSum');
+    sum.innerHTML = '';
+    [['Bölge', st.area], ['Cilt', 'Tip ' + ['I', 'II', 'III', 'IV', 'V', 'VI'][st.skin - 1]], ['Kıl', st.color], ['Yoğunluk', st.density], ['Kalınlık', st.thickness]]
+      .forEach(([k, v]) => { const s = document.createElement('span'); s.textContent = k + ': ' + v; sum.appendChild(s); });
+    const expl = document.getElementById('hrpExpl');
+    const pInt = document.getElementById('hrpPInt'), pPulse = document.getElementById('hrpPPulse'), pFreq = document.getElementById('hrpPFreq');
+    if (st.color === 'White') {
+      pInt.textContent = pPulse.textContent = pFreq.textContent = '—';
+      expl.innerHTML = '<b>Uygulama önerilmez:</b> beyaz kıl melanin içermediği için lazer enerjisi folikülde emilmez. Lumina Pro, beyaz hariç tüm kıl renklerinde etkilidir.';
+    } else {
+      const p = computeParams(), wl = activeWl();
+      pInt.textContent = '%' + p.e; pPulse.textContent = p.p + 'ms'; pFreq.textContent = p.f + 'Hz';
+      expl.innerHTML = '<b>Aktif dalga boyu: ' + wl.join('nm + ') + 'nm.</b> ' + (p.notes.length ? p.notes.join('; ') + '.' : 'Standart başlangıç seti uygulandı.');
+    }
+    hrp.classList.add('done');
+  });
+
+  function reset() {
+    Object.keys(st).forEach(k => st[k] = null);
+    hrp.querySelectorAll('.sel').forEach(s => s.classList.remove('sel'));
+    hrp.classList.remove('done');
+    update();
+  }
+  document.getElementById('hrpBack').addEventListener('click', reset);
+  document.getElementById('hrpAgain').addEventListener('click', reset);
+
+  // tooltip
+  const tip = document.createElement('div'); tip.className = 'hrp-tip'; document.body.appendChild(tip);
+  hrp.addEventListener('mouseover', e => {
+    const t = e.target.closest('[data-tip]');
+    if (!t || !hrp.contains(t)) { tip.classList.remove('on'); return; }
+    tip.textContent = t.dataset.tip; tip.classList.add('on');
+    const r = t.getBoundingClientRect();
+    tip.style.left = Math.max(8, Math.min(innerWidth - 240, r.left + r.width / 2 - 115)) + 'px';
+    tip.style.top = (r.top - 10 - tip.offsetHeight) + 'px';
+  });
+  hrp.addEventListener('mouseleave', () => tip.classList.remove('on'));
+  update();
+})();
 
 // LIGHTBOX (galeri tıkla-büyüt + ok tuşları)
 (function () {

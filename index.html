@@ -160,10 +160,27 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,24,38,.88);backdrop-fi
 
 /* galeri */
 .gallery{margin-top:18px}
-.shot{background:#f4f8fb;border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
-.shot img{width:100%;aspect-ratio:16/9;object-fit:cover}
-.shot figcaption{display:flex;align-items:center;gap:9px;padding:11px 16px;font-size:.83rem;color:#33566b;background:#eaf2f7;font-weight:600}
-.shot .ico{width:17px;height:17px;color:#0b7ea1}
+.shot{position:relative;background:var(--panel);border-radius:var(--r);overflow:hidden;border:1px solid var(--line);cursor:zoom-in;transition:transform .3s,border-color .3s,box-shadow .3s}
+.shot:hover{transform:translateY(-4px);border-color:rgba(95,217,255,.45);box-shadow:0 18px 44px rgba(0,0,0,.4)}
+.shot img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.shot figcaption{display:flex;align-items:center;gap:9px;padding:12px 16px;font-size:.83rem;color:var(--ice2);background:rgba(8,28,43,.72);font-weight:600}
+.shot .ico{width:17px;height:17px;color:var(--ice)}
+.shot .zoom{position:absolute;top:12px;right:12px;width:38px;height:38px;border-radius:11px;background:rgba(7,24,38,.72);backdrop-filter:blur(6px);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ice2);opacity:0;transform:scale(.9);transition:.25s}
+.shot:hover .zoom{opacity:1;transform:scale(1)}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(4,12,20,.93);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:28px;opacity:0;transition:opacity .25s}
+.lb.on{display:flex;opacity:1}
+.lb figure{max-width:96vw;max-height:92vh;display:flex;flex-direction:column;gap:12px;align-items:center}
+.lb img{max-width:100%;max-height:84vh;border-radius:14px;box-shadow:0 30px 90px rgba(0,0,0,.6);border:1px solid var(--line);animation:lbin .3s ease}
+@keyframes lbin{from{transform:scale(.96);opacity:.4}to{transform:scale(1);opacity:1}}
+.lb figcaption{color:var(--ice2);font-size:.9rem;font-weight:600}
+.lb .close{position:absolute;top:20px;right:24px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid var(--line);color:#fff;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.25s}
+.lb .close:hover{background:rgba(255,255,255,.2);transform:rotate(90deg)}
+.lb .nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid var(--line);color:#fff;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.25s}
+.lb .nav:hover{background:rgba(255,255,255,.2)}
+.lb .prev{left:24px}.lb .next{right:24px}
+@media(max-width:640px){.lb .nav{display:none}}
 
 /* modlar */
 .modes{display:grid;gap:12px;margin-top:20px}
@@ -278,6 +295,7 @@ footer a{color:var(--ice2);font-weight:600}
   <symbol id="i-wave" viewBox="0 0 24 24"><path d="M2 12c2.5 0 2.5-6 5-6s2.5 9 5 9 2.5-9 5-9 2.5 6 5 6"/></symbol>
   <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M10 8.5v7l6-3.5z" fill="currentColor" stroke="none"/></symbol>
   <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 18a9 9 0 1 1 16 0"/><path d="m12 14 4.5-5.5"/><circle cx="12" cy="14" r="1.6" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-zoom" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></symbol>
 </svg>
 
 <div class="announce">🇹🇷 <b>Türkiye geneli kurulum · uygulama eğitimi · satış sonrası destek</b> — <a href="tel:+902163899580">0216 389 95 80</a></div>
@@ -470,8 +488,16 @@ footer a{color:var(--ice2);font-weight:600}
       </div>
     </div>
     <div class="grid2 gallery">
-      <figure class="shot reveal"><img src="assets/img/lumina-pro-on.jpg" alt="Lumina Pro önden görünüm" loading="lazy"><figcaption><svg class="ico"><use href="#i-screen"/></svg>15.6" renkli dokunmatik ana ekran</figcaption></figure>
-      <figure class="shot reveal"><img src="assets/img/lumina-pro-arka.jpg" alt="Lumina Pro yandan görünüm" loading="lazy"><figcaption><svg class="ico"><use href="#i-tips"/></svg>Ergonomik gövde, akıllı başlık yuvası</figcaption></figure>
+      <figure class="shot reveal" data-full="assets/img/lumina-pro-studio-on.jpg" data-cap="15.6&quot; renkli dokunmatik ana ekran">
+        <span class="zoom"><svg class="ico" style="width:18px;height:18px"><use href="#i-zoom"/></svg></span>
+        <img src="assets/img/lumina-pro-studio-on.jpg" alt="Lumina Pro önden stüdyo görünüm" loading="lazy">
+        <figcaption><svg class="ico"><use href="#i-screen"/></svg>15.6" renkli dokunmatik ana ekran</figcaption>
+      </figure>
+      <figure class="shot reveal" data-full="assets/img/lumina-pro-studio-arka.jpg" data-cap="Ergonomik gövde, akıllı başlık yuvası">
+        <span class="zoom"><svg class="ico" style="width:18px;height:18px"><use href="#i-zoom"/></svg></span>
+        <img src="assets/img/lumina-pro-studio-arka.jpg" alt="Lumina Pro yandan stüdyo görünüm" loading="lazy">
+        <figcaption><svg class="ico"><use href="#i-tips"/></svg>Ergonomik gövde, akıllı başlık yuvası</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -658,6 +684,14 @@ footer a{color:var(--ice2);font-weight:600}
   <a class="btn btn-wa" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%20Pro%20i%C3%A7in%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp</a>
 </div>
 
+<!-- LIGHTBOX -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Görsel önizleme">
+  <button class="close" aria-label="Kapat">✕</button>
+  <button class="nav prev" aria-label="Önceki">‹</button>
+  <button class="nav next" aria-label="Sonraki">›</button>
+  <figure><img src="" alt=""><figcaption></figcaption></figure>
+</div>
+
 <script>
 // görünürlük yardımcıları — IO'ya bağımlılık yok, her ortamda deterministik.
 // Öğe viewport'a girmiş VEYA yukarısında kalmışsa göster: çapa zıplaması / hızlı
@@ -703,6 +737,24 @@ document.querySelectorAll('.faq button').forEach(btn => {
     if (!open) { f.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
   });
 });
+
+// LIGHTBOX (galeri tıkla-büyüt + ok tuşları)
+(function () {
+  const lb = document.getElementById('lightbox');
+  if (!lb) return;
+  const img = lb.querySelector('img'), cap = lb.querySelector('figcaption');
+  const shots = Array.from(document.querySelectorAll('.shot[data-full]'));
+  let idx = 0;
+  function show(i) { idx = (i + shots.length) % shots.length; const s = shots[idx]; img.src = s.dataset.full; img.alt = s.querySelector('img').alt; cap.textContent = s.dataset.cap || ''; }
+  function open(i) { show(i); lb.classList.add('on'); document.body.style.overflow = 'hidden'; }
+  function close() { lb.classList.remove('on'); document.body.style.overflow = ''; }
+  shots.forEach((s, i) => s.addEventListener('click', () => open(i)));
+  lb.querySelector('.close').addEventListener('click', close);
+  lb.querySelector('.prev').addEventListener('click', e => { e.stopPropagation(); show(idx - 1); });
+  lb.querySelector('.next').addEventListener('click', e => { e.stopPropagation(); show(idx + 1); });
+  lb.addEventListener('click', e => { if (e.target === lb || e.target.tagName === 'FIGURE') close(); });
+  addEventListener('keydown', e => { if (!lb.classList.contains('on')) return; if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') show(idx - 1); else if (e.key === 'ArrowRight') show(idx + 1); });
+})();
 
 // statik OSM karo harita (iframe engellerine takılmaz) — EsteTouch ana sitedeki çözümün JS uyarlaması
 (function () {

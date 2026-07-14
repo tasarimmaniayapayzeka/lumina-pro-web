@@ -100,6 +100,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,24,38,.88);backdrop-fi
 .cert{display:inline-flex;align-items:center;gap:7px;font-size:.75rem;font-weight:700;letter-spacing:.06em;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:7px 12px;background:rgba(255,255,255,.02)}
 .cert b{color:var(--ice2)}
 .hero-img{position:relative}
+.hero-img[data-full]{cursor:zoom-in}
 .hero-img img{border-radius:22px;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px var(--line),0 0 90px rgba(95,217,255,.12)}
 .tag{position:absolute;background:rgba(7,24,38,.9);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:13px;padding:9px 15px;font-size:.76rem;font-weight:600;color:var(--mut)}
 .tag b{display:block;font-family:'Sora';font-size:1rem;color:var(--ice)}
@@ -726,7 +727,7 @@ footer a{color:var(--ice2);font-weight:600}
         <span class="cert"><b>ISO</b> Kalite Yönetimi</span>
       </div>
     </div>
-    <div class="hero-img reveal in">
+    <div class="hero-img reveal in" data-full="assets/img/lumina-pro.webp" data-cap="Lumina Pro — 1600W · 4 dalga boylu (755/808/940/1064nm) diyot lazer" title="Büyütmek için tıklayın">
       <img src="assets/img/lumina-pro.webp" alt="Lumina Pro 4 dalga boyu buz lazer epilasyon cihazı" width="1000" height="1000">
       <div class="tag t1"><b>-5°C</b>Safir Buz Başlık</div>
       <div class="tag t2"><b>1600W</b>Sistem Gücü</div>
@@ -1902,7 +1903,7 @@ document.querySelectorAll('.faq button').forEach(btn => {
   const lb = document.getElementById('lightbox');
   if (!lb) return;
   const img = lb.querySelector('img'), cap = lb.querySelector('figcaption');
-  const shots = Array.from(document.querySelectorAll('.shot[data-full]'));
+  const shots = Array.from(document.querySelectorAll('.hero-img[data-full], .shot[data-full]'));
   let idx = 0;
   function show(i) { idx = (i + shots.length) % shots.length; const s = shots[idx]; img.src = s.dataset.full; img.alt = s.querySelector('img').alt; cap.textContent = s.dataset.cap || ''; }
   function open(i) { show(i); lb.classList.add('on'); document.body.style.overflow = 'hidden'; }

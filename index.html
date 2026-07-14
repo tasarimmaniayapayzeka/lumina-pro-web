@@ -52,7 +52,9 @@ section{padding:64px 0}
 /* duyuru + header */
 .announce{background:#040f18;color:#8fb2c4;font-size:.78rem;padding:8px 0;text-align:center;border-bottom:1px solid rgba(154,232,255,.08)}
 .announce b{color:#d9f1fb}
-.announce a{color:var(--ice);font-weight:700}
+.announce a{color:var(--ice);font-weight:700;white-space:nowrap}
+@media(max-width:600px){.announce{font-size:.64rem;padding:7px 12px;line-height:1.5;letter-spacing:-.01em}}
+@media(max-width:380px){.announce{font-size:.59rem;padding:6px 10px}}
 header{position:sticky;top:0;z-index:50;background:rgba(7,24,38,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;gap:22px;padding:12px 0}
 .logo{display:flex;align-items:center}

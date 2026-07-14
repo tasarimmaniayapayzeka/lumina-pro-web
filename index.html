@@ -338,11 +338,20 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,24,38,.88);backdrop-fi
 .offer .panel{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:18px;padding:28px 26px;display:grid;gap:12px}
 .offer .panel h3{font-family:'Sora';font-size:1.1rem;margin-bottom:4px}
 .mapwrap{margin-top:46px}
-.map-frame{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);height:420px;background:#0d2a40}
-.map-frame .pin{position:absolute;left:50%;top:50%;transform:translate(-50%,-100%);z-index:3;filter:drop-shadow(0 3px 5px rgba(0,0,0,.5))}
-.map-frame .attr{position:absolute;right:8px;bottom:6px;z-index:3;font:600 10px/1.4 sans-serif;color:#33475b;background:rgba(255,255,255,.82);padding:1px 7px;border-radius:5px}
-.map-frame .veil{position:absolute;inset:0;z-index:2;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(154,232,255,.12),inset 0 30px 60px rgba(7,24,38,.35)}
-.map-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px}
+.map-frame{position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(95,217,255,.18);height:400px;background:#081827;box-shadow:0 26px 64px rgba(0,0,0,.5),0 0 60px rgba(95,217,255,.07)}
+.map-frame .tile{filter:grayscale(1) invert(.92) brightness(.9) contrast(.92)}   /* ham OSM → koyu monokrom (temaya uyar) */
+.map-frame .pin{position:absolute;left:50%;top:50%;transform:translate(-50%,-100%);z-index:3;filter:drop-shadow(0 3px 6px rgba(0,0,0,.6))}
+.map-frame .pin::after{content:"";position:absolute;left:50%;bottom:-5px;width:20px;height:20px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(95,217,255,.55),transparent 70%);animation:pinPulse 2.4s ease-in-out infinite}
+@keyframes pinPulse{0%,100%{opacity:.45;transform:translateX(-50%) scale(.75)}50%{opacity:1;transform:translateX(-50%) scale(1.6)}}
+.map-frame .attr{position:absolute;right:8px;bottom:6px;z-index:3;font:600 10px/1.4 sans-serif;color:rgba(200,225,240,.5);background:rgba(7,20,33,.5);padding:2px 8px;border-radius:6px}
+.map-frame .veil{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to bottom,rgba(7,22,36,.85),rgba(18,50,78,.16) 17%,rgba(18,50,78,.16) 83%,rgba(7,22,36,.85)),linear-gradient(to right,rgba(7,22,36,.55),transparent 12%,transparent 88%,rgba(7,22,36,.55));box-shadow:inset 0 0 0 1px rgba(154,232,255,.13),inset 0 0 90px rgba(7,22,36,.42)}
+.map-frame .map-card{position:absolute;left:20px;bottom:20px;z-index:4;width:min(330px,calc(100% - 40px));background:rgba(8,26,41,.82);backdrop-filter:blur(9px);border:1px solid rgba(95,217,255,.3);border-radius:15px;padding:17px 19px;box-shadow:0 16px 44px rgba(0,0,0,.55)}
+.map-frame .map-card b{display:block;font-family:'Sora';font-size:.96rem;color:var(--ice2);margin-bottom:4px}
+.map-frame .map-card>span{display:block;font-size:.82rem;color:var(--mut);margin-bottom:13px;line-height:1.45}
+.map-frame .map-card .btn{width:100%;justify-content:center}
+.map-frame .map-card .mc-link{display:inline-block;margin-top:11px;font-size:.8rem;color:var(--ice2);text-decoration:none;border-bottom:1px solid rgba(95,217,255,.3)}
+.map-frame .map-card .mc-link:hover{color:var(--ice)}
+@media(max-width:560px){.map-frame{height:460px}.map-frame .map-card{left:12px;right:12px;bottom:12px;width:auto}}
 
 /* footer */
 footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mut);font-size:.84rem}
@@ -1433,12 +1442,14 @@ footer a{color:var(--ice2);font-weight:600}
     <div class="mapwrap" id="harita">
       <div class="map-frame reveal" id="mapBox">
         <div class="veil"></div>
-        <div class="pin"><svg width="38" height="38" viewBox="0 0 24 24" fill="#e74c3c" stroke="#fff" stroke-width="1"><path d="M12 22s-7.5-6-7.5-12a7.5 7.5 0 0 1 15 0c0 6-7.5 12-7.5 12z"/><circle cx="12" cy="10" r="3" fill="#fff" stroke="none"/></svg></div>
+        <div class="pin"><svg width="38" height="38" viewBox="0 0 24 24" fill="#5fd9ff" stroke="#04141f" stroke-width="1.2"><path d="M12 22s-7.5-6-7.5-12a7.5 7.5 0 0 1 15 0c0 6-7.5 12-7.5 12z"/><circle cx="12" cy="10" r="3" fill="#04141f" stroke="none"/></svg></div>
+        <div class="map-card">
+          <b>EsteTouch Medikal · Showroom</b>
+          <span>Yakacık Yeni Mah., Samandıra Cad. No:49/B, Kartal / İstanbul</span>
+          <a class="btn btn-ice btn-sm" href="https://www.google.com/maps/dir/?api=1&destination=Yakac%C4%B1k%20Yeni%20Mah.%20Samand%C4%B1ra%20Cad.%20No%3A49%2FB%20Kartal%20%C4%B0stanbul" target="_blank" rel="noopener"><svg class="ico" style="width:16px;height:16px"><use href="#i-pin"/></svg>Yol Tarifi Al</a>
+          <a class="mc-link" href="https://www.openstreetmap.org/?mlat=40.9251804&mlon=29.2224525#map=17/40.9251804/29.2224525" target="_blank" rel="noopener">Haritada aç →</a>
+        </div>
         <span class="attr">© OpenStreetMap</span>
-      </div>
-      <div class="map-actions reveal">
-        <a class="btn btn-ice btn-sm" href="https://www.google.com/maps/dir/?api=1&destination=Yakac%C4%B1k%20Yeni%20Mah.%20Samand%C4%B1ra%20Cad.%20No%3A49%2FB%20Kartal%20%C4%B0stanbul" target="_blank" rel="noopener"><svg class="ico" style="width:16px;height:16px"><use href="#i-pin"/></svg>Yol Tarifi Al</a>
-        <a class="btn btn-ghost btn-sm" href="https://www.openstreetmap.org/?mlat=40.9251804&mlon=29.2224525#map=17/40.9251804/29.2224525" target="_blank" rel="noopener">Haritada Aç</a>
       </div>
     </div>
   </div>

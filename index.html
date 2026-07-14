@@ -125,6 +125,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,24,38,.88);backdrop-fi
 .ribbon .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-block:22px}
 .ribbon p{font-family:'Sora';font-weight:700;font-size:1.05rem}
 .ribbon p span{color:var(--ice)}
+.ribbon .rb-txt{max-width:660px}
+.ribbon .rb-txt small{display:block;margin-top:6px;font-size:.87rem;font-weight:400;color:var(--mut);line-height:1.55}
 .ribbon .side{display:flex;flex-wrap:wrap;gap:10px}
 
 /* kartlar */
@@ -730,7 +732,10 @@ footer a{color:var(--ice2);font-weight:600}
 <!-- CTA ŞERİDİ 1 -->
 <div class="ribbon">
   <div class="wrap">
-    <p>Kliniğiniz için <span>aynı gün fiyat teklifi</span> alın.</p>
+    <div class="rb-txt">
+      <p>Kliniğiniz için <span>aynı gün fiyat teklifi</span> alın.</p>
+      <small>Kurulum, uygulamalı kullanım eğitimi ve satış sonrası teknik destek dahil; kliniğinize özel ödeme planını birlikte kuralım.</small>
+    </div>
     <div class="side">
       <a class="btn btn-ice btn-sm" href="tel:+902163899580"><svg class="ico" style="width:16px;height:16px"><use href="#i-phone"/></svg>Hemen Ara</a>
       <a class="btn btn-wa btn-sm" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%20Pro%20fiyat%20teklifi%20rica%20ediyorum." target="_blank" rel="noopener">WhatsApp'tan Yaz</a>

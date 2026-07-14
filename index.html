@@ -63,7 +63,26 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,24,38,.88);backdrop-fi
 .menu a:hover{color:var(--ice2)}
 .switch{font-size:.76rem;font-weight:700;color:var(--ice2);border:1.5px solid rgba(95,217,255,.5);border-radius:999px;padding:7px 14px;white-space:nowrap;transition:.25s}
 .switch:hover{background:var(--ice);color:#04141f}
-@media(max-width:1060px){.menu{display:none}}
+/* mobil hamburger menü */
+.burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:40px;padding:0 10px;background:rgba(95,217,255,.08);border:1px solid var(--line);border-radius:11px;cursor:pointer;flex:none}
+.burger span{display:block;height:2px;width:100%;border-radius:2px;background:var(--ice2);transition:transform .28s,opacity .28s}
+.burger.on span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.on span:nth-child(2){opacity:0}
+.burger.on span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mnav{position:absolute;top:100%;left:0;right:0;display:none;flex-direction:column;background:rgba(7,24,38,.98);backdrop-filter:blur(14px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);box-shadow:0 22px 46px rgba(0,0,0,.5);z-index:49}
+.mnav.open{display:flex;animation:mnavIn .22s ease}
+@keyframes mnavIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.mnav a{padding:14px 24px;color:var(--txt);font-weight:500;font-size:.95rem;border-bottom:1px solid rgba(154,232,255,.06)}
+.mnav a:hover,.mnav a:active{background:rgba(95,217,255,.08);color:var(--ice2)}
+.mnav .mnav-switch{color:var(--ice2);font-weight:700;border-bottom:none}
+@media(max-width:1060px){
+  .menu{display:none}
+  .switch{display:none}          /* Lumina 1200W üstten kalktı → menüye taşındı */
+  .burger{display:flex}
+  .nav{gap:12px}
+  .nav .btn{margin-left:auto}     /* Ara + hamburger sağa */
+  .logo{margin-left:10px}         /* logo az sağa */
+}
 
 /* hero */
 .hero{position:relative;padding:64px 0 56px;background:
@@ -667,7 +686,20 @@ footer a{color:var(--ice2);font-weight:600}
     </nav>
     <a class="switch" href="lumina-1200.html">Lumina 1200W →</a>
     <a class="btn btn-ice btn-sm" href="tel:+902163899580"><svg class="ico" style="width:17px;height:17px"><use href="#i-phone"/></svg>Ara</a>
+    <button class="burger" id="burger" type="button" aria-label="Menü" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
+  <!-- mobil menü paneli -->
+  <nav class="mnav" id="mnav">
+    <a href="#video">Video</a>
+    <a href="#dalga">Dalga Boyları</a>
+    <a href="#basliklar">Başlıklar</a>
+    <a href="#canli-demo">Canlı Demo</a>
+    <a href="#sogutma">Soğutma</a>
+    <a href="#teknik">Teknik</a>
+    <a href="#sss">SSS</a>
+    <a href="#iletisim">İletişim</a>
+    <a class="mnav-switch" href="lumina-1200.html">Lumina 1200W →</a>
+  </nav>
 </header>
 
 <!-- HERO -->
@@ -1503,6 +1535,22 @@ let etLastY = -1, etLastH = -1;
 })();
 addEventListener('load', etTick);
 setInterval(etTick, 900); // kısılmış/arka plan sekmelerde de akışı garantiler
+
+// MOBİL HAMBURGER MENÜ
+(function () {
+  const burger = document.getElementById('burger'), mnav = document.getElementById('mnav');
+  if (!burger || !mnav) return;
+  function close() { mnav.classList.remove('open'); burger.classList.remove('on'); burger.setAttribute('aria-expanded', 'false'); }
+  burger.addEventListener('click', e => {
+    e.stopPropagation();
+    const open = mnav.classList.toggle('open');
+    burger.classList.toggle('on', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mnav.addEventListener('click', e => { if (e.target.closest('a')) close(); });
+  document.addEventListener('click', e => { if (!e.target.closest('#mnav') && !e.target.closest('#burger')) close(); });
+  addEventListener('resize', () => { if (innerWidth > 1060) close(); });
+})();
 
 // YouTube facade'ler → tıklayınca gerçek videoyu yükle (autoplay)
 (function () {

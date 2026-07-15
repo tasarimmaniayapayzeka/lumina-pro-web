@@ -50,10 +50,11 @@ section{padding:64px 0}
 .btn-sm{padding:10px 18px;font-size:.85rem}
 /* buton hover cilası + anlamlı 3D ikon animasyonları */
 .btn{position:relative;overflow:hidden}
-.btn:not(.btn-glow)::after{content:"";position:absolute;top:0;left:-85%;width:55%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-18deg);transition:left .55s cubic-bezier(.2,.7,.3,1);pointer-events:none}
-.btn:not(.btn-glow):hover::after{left:145%}
+.btn:not(.btn-glow)::after{content:"";position:absolute;top:0;left:-85%;width:60%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-18deg);transition:left .5s cubic-bezier(.2,.7,.3,1);pointer-events:none}
+.btn:not(.btn-glow):hover::after{left:150%}
+.btn:hover{transform:translateY(-3px);filter:brightness(1.08)}
 .btn .ico{transition:transform .3s cubic-bezier(.34,1.56,.64,1),filter .3s ease}
-.btn:hover .ico{transform:scale(1.15);filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
+.btn:hover .ico{transform:scale(1.28);filter:drop-shadow(0 3px 5px rgba(0,0,0,.45))}
 .btn:has(use[href="#i-phone"]):hover .ico{animation:icoRing .6s ease}
 @keyframes icoRing{0%,100%{transform:rotate(0) scale(1.15)}15%{transform:rotate(-17deg) scale(1.18)}32%{transform:rotate(14deg) scale(1.18)}50%{transform:rotate(-10deg) scale(1.16)}68%{transform:rotate(7deg) scale(1.15)}84%{transform:rotate(-3deg) scale(1.15)}}
 .btn:has(use[href="#i-doc"]):hover .ico{animation:icoDown .55s ease}

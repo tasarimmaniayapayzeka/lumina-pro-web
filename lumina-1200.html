@@ -42,6 +42,21 @@ p.lead{color:var(--mut);max-width:700px;font-size:1.05rem}
 .btn-line:hover{background:var(--teal);color:#fff;border-color:transparent}
 .btn-wa{background:#1fbf5f;color:#fff;box-shadow:0 10px 26px rgba(31,191,95,.28)}
 .btn-wa:hover{transform:translateY(-2px)}
+/* buton hover cilası + anlamlı 3D ikon animasyonları */
+.btn{position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;top:0;left:-85%;width:55%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.26),transparent);transform:skewX(-18deg);transition:left .55s cubic-bezier(.2,.7,.3,1);pointer-events:none}
+.btn:hover::after{left:145%}
+.btn .ico{transition:transform .3s cubic-bezier(.34,1.56,.64,1),filter .3s ease}
+.btn:hover .ico{transform:scale(1.15);filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
+.btn:has(use[href="#i-phone"]):hover .ico{animation:icoRing .6s ease}
+@keyframes icoRing{0%,100%{transform:rotate(0) scale(1.15)}15%{transform:rotate(-17deg) scale(1.18)}32%{transform:rotate(14deg) scale(1.18)}50%{transform:rotate(-10deg) scale(1.16)}68%{transform:rotate(7deg) scale(1.15)}84%{transform:rotate(-3deg) scale(1.15)}}
+.btn:has(use[href="#i-doc"]):hover .ico{animation:icoDown .55s ease}
+@keyframes icoDown{0%,100%{transform:translateY(0) scale(1.15)}45%{transform:translateY(5px) scale(1.15)}}
+.btn:has(use[href="#i-pin"]):hover .ico{animation:icoBob .6s ease}
+@keyframes icoBob{0%,100%{transform:translateY(0) scale(1.15)}40%{transform:translateY(-4px) scale(1.24)}}
+.btn-wa:hover{animation:waPulse 1.1s ease-in-out infinite}
+@keyframes waPulse{0%,100%{box-shadow:0 10px 26px rgba(31,191,95,.3)}50%{box-shadow:0 12px 34px rgba(31,191,95,.55),0 0 0 4px rgba(31,191,95,.16)}}
+@media(prefers-reduced-motion:reduce){.btn::after,.btn .ico{transition:none}.btn:hover .ico,.btn-wa:hover,.btn:has(use):hover .ico{animation:none}}
 
 /* duyuru + nav */
 .announce{background:var(--dark);color:#c8bfe0;font-size:.8rem;padding:9px 0;text-align:center}
@@ -288,7 +303,7 @@ footer a{color:var(--teal-d);font-weight:600}
   <symbol id="i-screen" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
   <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 2v20M4.9 6.5 19.1 17.5M19.1 6.5 4.9 17.5M12 6l-2.5-2.5M12 6l2.5-2.5M12 18l-2.5 2.5M12 18l2.5 2.5"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></symbol>
-</svg>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol><symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol></svg>
 
 <div class="announce">🇹🇷 <b>Türkiye geneli kurulum + uygulama eğitimi + satış sonrası destek</b> — Hemen arayın: <a href="tel:+902163899580">0216 389 95 80</a></div>
 
@@ -306,7 +321,7 @@ footer a{color:var(--teal-d);font-weight:600}
       <a href="#sss">SSS</a>
     </nav>
     <a class="switch" href="index.html">Lumina Pro 1600W →</a>
-    <a class="btn btn-ink" href="tel:+902163899580">📞 Ara</a>
+    <a class="btn btn-ink" href="tel:+902163899580"><svg class="ico" style="width:16px;height:16px"><use href="#i-phone"/></svg>Ara</a>
   </div>
 </header>
 
@@ -318,7 +333,7 @@ footer a{color:var(--teal-d);font-weight:600}
       <h1>Işığın gücü,<br><em>kliniğinizin</em> kazancı.</h1>
       <p class="sub">755, 808, 940 ve 1064nm — dört dalga boyunu tek platformda birleştiren Lumina, tüm cilt fototiplerinde ve kıl renklerinde güvenli, etkili ve kalıcı epilasyonu 5 farklı tedavi başlığıyla sunar.</p>
       <div class="cta-row">
-        <a class="btn btn-teal" href="tel:+902163899580">📞 Fiyat Teklifi Alın</a>
+        <a class="btn btn-teal" href="tel:+902163899580"><svg class="ico" style="width:16px;height:16px"><use href="#i-phone"/></svg>Fiyat Teklifi Alın</a>
         <a class="btn btn-wa" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%201200W%20diyot%20lazer%20cihaz%C4%B1%20i%C3%A7in%20fiyat%20teklifi%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp Teklif</a>
         <a class="btn btn-line" href="assets/docs/lumina-1200-brosur.pdf" target="_blank" rel="noopener">Broşür (PDF)</a>
       </div>
@@ -364,7 +379,7 @@ footer a{color:var(--teal-d);font-weight:600}
       </ul>
       <div class="cta-row reveal">
         <a class="btn btn-teal" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%201200W%20i%C3%A7in%20canl%C4%B1%20demo%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener">Canlı Demo Randevusu</a>
-        <a class="btn btn-line" href="tel:+902163899580">📞 0216 389 95 80</a>
+        <a class="btn btn-line" href="tel:+902163899580"><svg class="ico" style="width:16px;height:16px"><use href="#i-phone"/></svg>0216 389 95 80</a>
       </div>
     </div>
     <div class="phone reveal">
@@ -458,7 +473,7 @@ footer a{color:var(--teal-d);font-weight:600}
 <section class="tips" id="basliklar">
   <div class="wrap">
     <div class="reveal tvis">
-      <img src="assets/img/lumina-1200-baslik-mor.png" alt="Lumina 5 çıkarılabilir tedavi başlığı" width="1100" height="1018">
+      <img src="assets/img/lumina-1200-heads-mor.png" alt="Lumina 5 çıkarılabilir tedavi başlığı" width="1100" height="1018">
     </div>
     <div>
       <span class="eyebrow reveal">Güncellenmiş Tedavi Kolu</span>
@@ -513,7 +528,7 @@ footer a{color:var(--teal-d);font-weight:600}
       </div>
       <div class="acts">
         <a class="btn btn-teal" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%201200W%20fiyat%20ve%20%C3%B6deme%20plan%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">Fiyat &amp; Ödeme Planı</a>
-        <a class="btn btn-line" href="tel:+902163899580">📞 0216 389 95 80</a>
+        <a class="btn btn-line" href="tel:+902163899580"><svg class="ico" style="width:16px;height:16px"><use href="#i-phone"/></svg>0216 389 95 80</a>
       </div>
     </div>
   </div>
@@ -544,7 +559,7 @@ footer a{color:var(--teal-d);font-weight:600}
           <div class="row"><span>Sertifikalar</span><b>CE · FDA · ISO · ROHS</b></div>
         </div>
         <div class="cta-row reveal" style="margin-top:24px">
-          <a class="btn btn-line" style="padding:11px 20px;font-size:.85rem" href="assets/docs/lumina-1200-brosur.pdf" target="_blank" rel="noopener">📄 Broşür (PDF)</a>
+          <a class="btn btn-line" style="padding:11px 20px;font-size:.85rem" href="assets/docs/lumina-1200-brosur.pdf" target="_blank" rel="noopener"><svg class="ico" style="width:16px;height:16px"><use href="#i-doc"/></svg>Broşür (PDF)</a>
           <a class="btn btn-teal" style="padding:11px 20px;font-size:.85rem" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%201200W%20teknik%20%C5%9Fartnamesi%20ve%20fiyat%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">Teknik Şartname</a>
         </div>
       </div>
@@ -647,9 +662,9 @@ footer a{color:var(--teal-d);font-weight:600}
     </div>
     <div class="panel">
       <h3>Hemen ulaşın</h3>
-      <a class="btn btn-teal" href="tel:+902163899580">📞 0216 389 95 80</a>
+      <a class="btn btn-teal" href="tel:+902163899580"><svg class="ico" style="width:16px;height:16px"><use href="#i-phone"/></svg>0216 389 95 80</a>
       <a class="btn btn-wa" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%201200W%20i%C3%A7in%20fiyat%20teklifi%20ve%20demo%20talep%20ediyorum." target="_blank" rel="noopener">WhatsApp: 0533 334 74 31</a>
-      <a class="btn btn-line" style="border-color:#c9a8f6;color:#c9a8f6" href="assets/docs/lumina-1200-brosur.pdf" target="_blank" rel="noopener">📄 Broşürü İndir</a>
+      <a class="btn btn-line" style="border-color:#c9a8f6;color:#c9a8f6" href="assets/docs/lumina-1200-brosur.pdf" target="_blank" rel="noopener"><svg class="ico" style="width:16px;height:16px"><use href="#i-doc"/></svg>Broşürü İndir</a>
     </div>
   </div>
 </section>
@@ -689,7 +704,7 @@ footer a{color:var(--teal-d);font-weight:600}
 </a>
 
 <div class="mobilebar">
-  <a class="btn btn-ink" href="tel:+902163899580">📞 Hemen Ara</a>
+  <a class="btn btn-ink" href="tel:+902163899580"><svg class="ico" style="width:16px;height:16px"><use href="#i-phone"/></svg>Hemen Ara</a>
   <a class="btn btn-wa" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%201200W%20i%C3%A7in%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp</a>
 </div>
 

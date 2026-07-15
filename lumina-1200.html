@@ -83,6 +83,12 @@ header .btn{padding:10px 20px;font-size:.86rem}
   .hero-visual{max-width:400px;margin:0 auto}
   .chip.c1{left:-6px}.chip.c2{right:-6px}
 }
+@media(max-width:600px){
+  .hero-visual{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:9px;max-width:none;margin:0 auto}
+  .hero-visual::before{inset:0 20% auto;top:2%;height:56%}
+  .hero-visual img{flex:0 0 100%;max-height:380px;margin:0 auto 6px}
+  .chip{position:static;top:auto;right:auto;bottom:auto;left:auto;box-shadow:0 8px 20px rgba(0,0,0,.45)}
+}
 
 /* koyu istatistik bandı */
 .stats{background:var(--dark);color:#fff;padding:44px 0}

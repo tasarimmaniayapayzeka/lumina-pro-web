@@ -84,9 +84,10 @@ header .btn{padding:10px 20px;font-size:.86rem}
   .chip.c1{left:-6px}.chip.c2{right:-6px}
 }
 @media(max-width:600px){
-  .hero-visual{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:9px;max-width:none;margin:0 auto}
-  .hero-visual::before{inset:0 20% auto;top:2%;height:56%}
-  .hero-visual img{flex:0 0 100%;max-height:380px;margin:0 auto 6px}
+  .hero-visual{display:flex;flex-direction:column;align-items:center;gap:14px;max-width:none;margin:0 auto}
+  .hero-visual::before{inset:0 18% auto;top:2%;height:58%}
+  .hero-visual img{max-height:360px;width:auto;height:auto;max-width:88%;margin:0 auto}
+  .cwrap{display:flex;flex-wrap:wrap;justify-content:center;gap:9px}
   .chip{position:static;top:auto;right:auto;bottom:auto;left:auto;box-shadow:0 8px 20px rgba(0,0,0,.45)}
 }
 
@@ -330,9 +331,11 @@ footer a{color:var(--teal-d);font-weight:600}
     </div>
     <div class="hero-visual reveal in">
       <img src="assets/img/lumina-1200-cihaz-mor.png" alt="Lumina 1200W diyot lazer epilasyon cihazı">
-      <div class="chip c1"><b>4D</b>4 Dalga Boyu</div>
-      <div class="chip c2"><b>100M</b>Atış Garantisi</div>
-      <div class="chip c3"><b>15.6"</b>Dokunmatik Ekran</div>
+      <div class="cwrap">
+        <div class="chip c1"><b>4D</b>4 Dalga Boyu</div>
+        <div class="chip c2"><b>100M</b>Atış Garantisi</div>
+        <div class="chip c3"><b>15.6"</b>Dokunmatik Ekran</div>
+      </div>
     </div>
   </div>
 </section>

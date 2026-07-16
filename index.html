@@ -143,6 +143,16 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,24,38,.88);backdrop-fi
 .stat b{font-family:'Sora';font-size:clamp(1.4rem,2.8vw,1.9rem);font-weight:800;color:var(--ice)}
 .stat span{display:block;color:var(--mut);font-size:.8rem;margin-top:2px}
 @media(max-width:760px){.stats .wrap{grid-template-columns:repeat(2,1fr);gap:14px 0}.stat:nth-child(3){border-left:none}}
+/* hero kutu hover'ları (1200 ile eşitleme) */
+.chip{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s,background .3s}
+.chip:hover{transform:translateY(-3px) scale(1.04);border-color:rgba(95,217,255,.5);box-shadow:0 14px 30px rgba(0,0,0,.3),0 0 22px rgba(95,217,255,.2);background:rgba(95,217,255,.1)}
+.tag{transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s}
+.tag:hover{transform:translateY(-4px) scale(1.04);border-color:rgba(95,217,255,.5);box-shadow:0 18px 40px rgba(0,0,0,.35),0 0 24px rgba(95,217,255,.22)}
+.tag:hover b{color:var(--ice2)}
+.cert{position:relative;overflow:hidden;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s}
+.cert::after{content:"";position:absolute;top:0;left:-85%;width:55%;height:100%;background:linear-gradient(105deg,transparent,rgba(154,232,255,.35),transparent);transform:skewX(-18deg);transition:left .5s cubic-bezier(.2,.7,.3,1);pointer-events:none}
+.cert:hover::after{left:150%}
+.cert:hover{transform:translateY(-2px);border-color:rgba(95,217,255,.45);box-shadow:0 10px 24px rgba(0,0,0,.28),0 0 18px rgba(95,217,255,.16)}
 
 /* video bölümü */
 .video-sec{background:linear-gradient(180deg,#081c2b,#0a2235)}
@@ -202,27 +212,92 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,24,38,.88);backdrop-fi
 .beam{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:radial-gradient(460px 300px at 50% 38%,rgba(23,110,145,.5),#081c2b);padding:38px 30px;text-align:center}
 .beam h3{font-size:1.15rem;margin-bottom:8px}
 .beam p{color:var(--mut);font-size:.9rem}
-/* fototermal kesit infografiği */
-.pt-fig{width:100%;max-width:330px;margin:0 auto 18px;display:block}
-.pt-fig svg{width:100%;height:auto;display:block}
-.pt-shot{animation:ptShot 1.6s linear infinite}
-.pt-shot.s2{animation-delay:.53s}
-.pt-shot.s3{animation-delay:1.06s}
-@keyframes ptShot{0%{transform:translateY(0);opacity:0}12%{opacity:1}80%{opacity:1}100%{transform:translateY(118px);opacity:0}}
-.pt-heat{transform-box:fill-box;transform-origin:center;animation:ptHeat 1.6s ease-in-out infinite}
-@keyframes ptHeat{0%,50%{opacity:0;transform:scale(.5)}78%{opacity:1;transform:scale(1.25)}100%{opacity:.15;transform:scale(.8)}}
-.pt-follicle{animation:ptFoll 1.6s ease-in-out infinite}
-@keyframes ptFoll{0%,50%{fill:#241408}72%{fill:#b8551f}82%{fill:#e8781f}100%{fill:#3a2214}}
-.pt-cool{animation:ptCool 2.6s ease-in-out infinite}
-@keyframes ptCool{0%,100%{opacity:.45}50%{opacity:.85}}
-.pt-beam{animation:ptBeam 1.6s ease-in-out infinite}
-@keyframes ptBeam{0%,55%,100%{opacity:.18}70%{opacity:.5}}
-.pt-lbl{fill:#f4faff;font:700 10.5px 'Inter',sans-serif;letter-spacing:.02em;paint-order:stroke;stroke:rgba(6,16,24,.72);stroke-width:3.2px;stroke-linejoin:round}
-.pt-lbl.cool{fill:#d7f4ff}
-.pt-lbl.hot{fill:#ffd7ac}
-.pt-tag{fill:#04141f;font:800 9px 'Inter',sans-serif;letter-spacing:.06em}
-.pt-lead{stroke:rgba(244,250,255,.5);stroke-width:1.2;stroke-dasharray:2 3}
-@media(prefers-reduced-motion:reduce){.pt-shot,.pt-heat,.pt-follicle,.pt-cool,.pt-beam{animation:none}}
+/* NEDEN BİZ — kanıt & taahhüt katmanı (soru → cevap → kanıt rozeti), cyan */
+.gcard-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:38px}
+@media(max-width:980px){.gcard-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.gcard-grid{grid-template-columns:1fr}}
+.gcard{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px 22px;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s}
+@media(max-width:560px){.gcard{padding:22px 18px}}
+.gcard-grid .gcard:hover{transform:translateY(-6px);border-color:rgba(95,217,255,.5);box-shadow:0 24px 52px rgba(0,0,0,.42),0 0 32px rgba(95,217,255,.12)}
+.gcard .q{display:flex;gap:9px;align-items:flex-start;font-family:'Sora',sans-serif;font-style:italic;font-size:.94rem;color:var(--mut);line-height:1.5}
+.gcard .q .ico{color:var(--ice2);opacity:.55;margin-top:3px;transition:opacity .3s}
+.gcard-grid .gcard:hover .q .ico{opacity:1}
+.gcard .hair{border-top:1px solid var(--line);margin:14px 0}
+.gcard h3{font-family:'Sora',sans-serif;font-weight:700;font-size:1.12rem;color:var(--txt);margin:0 0 8px}
+.gcard p{color:var(--mut);font-size:.88rem;line-height:1.6}
+.gcard .proof{margin-top:auto;padding-top:16px}
+.gcard .proof span{display:inline-flex;align-items:center;gap:6px;background:var(--ice-dim);border:1px solid rgba(95,217,255,.3);color:var(--ice2);font-size:.7rem;font-weight:700;letter-spacing:.05em;padding:6px 11px;border-radius:999px;line-height:1.4}
+.gclose{text-align:center;margin:34px auto 0;max-width:780px}
+.gclose em{color:var(--ice2);font-style:italic}
+/* fototermal — broşürün 3 gerçek çizimi, sürekli hareketli infografik (cyan) */
+.pt-intro{text-align:center;max-width:760px;margin:0 auto}
+.pt-intro .desc{margin:14px auto 0}
+.pt-title{text-align:center;font-family:'Sora',sans-serif;font-size:.82rem;font-weight:700;color:var(--ice2);letter-spacing:.08em;text-transform:uppercase;margin-top:34px}
+.pt-row{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:960px;margin:22px auto 0;position:relative}
+@media(max-width:760px){.pt-row{grid-template-columns:1fr;max-width:340px;gap:26px}}
+.pt-p{text-align:center;position:relative;animation:ptLift 1.6s ease-in-out infinite}
+.pt-p[data-s="2"]{animation-delay:.53s}
+.pt-p[data-s="3"]{animation-delay:1.06s}
+@keyframes ptLift{0%,72%,100%{transform:none}30%{transform:translateY(-5px)}}
+.pt-img{position:relative;background:linear-gradient(180deg,#eef8fc,#d6ebf5);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.4);animation:ptGlow 1.6s ease-in-out infinite}
+.pt-p[data-s="2"] .pt-img{animation-delay:.53s}
+.pt-p[data-s="3"] .pt-img{animation-delay:1.06s}
+@keyframes ptGlow{0%,74%,100%{border-color:var(--line);box-shadow:0 16px 40px rgba(0,0,0,.4)}30%{border-color:rgba(95,217,255,.55);box-shadow:0 20px 48px rgba(0,0,0,.45),0 0 30px rgba(95,217,255,.32)}}
+.pt-img img{display:block;width:100%;height:auto}
+.pt-fx{position:absolute;inset:0;pointer-events:none;z-index:2;will-change:transform,opacity}
+/* ORTA panel: sürekli inen lazer ışınları */
+.pt-ray{position:absolute;top:6%;width:6px;height:20%;transform:translateX(-50%);border-radius:6px;background:linear-gradient(180deg,transparent,rgba(154,232,255,.95) 38%,#fff 68%,rgba(154,232,255,.95) 86%,transparent);box-shadow:0 0 10px 2px rgba(95,217,255,.85);filter:blur(.3px);opacity:0;animation:ptRay 1.6s linear infinite}
+.pt-ray.r1{left:15%}
+.pt-ray.r2{left:19%;animation-delay:.53s}
+.pt-ray.r3{left:23%;animation-delay:1.06s}
+@keyframes ptRay{0%{transform:translateX(-50%) translateY(0);opacity:0}10%{opacity:1}80%{opacity:.95}100%{transform:translateX(-50%) translateY(280%);opacity:0}}
+.pt-col{position:absolute;left:19%;top:2%;width:20%;height:52%;transform:translateX(-50%);border-radius:40px;background:linear-gradient(180deg,transparent,rgba(154,232,255,.4),rgba(95,217,255,.28) 70%,transparent);filter:blur(4px);animation:ptBeam 1.6s ease-in-out infinite}
+@keyframes ptBeam{0%,55%,100%{opacity:.25}70%{opacity:.65}}
+/* kızgın folikül ısı nabzı (turuncu — cyan temada bile ısı sıcak kalır) */
+.pt-heatO{position:absolute;left:17%;top:62%;width:28%;height:26%;transform:translate(-50%,-50%) scale(.6);border-radius:50%;background:radial-gradient(circle,rgba(255,120,44,.82),rgba(232,120,31,.34) 46%,transparent 72%);filter:blur(4px);mix-blend-mode:screen;opacity:0;animation:ptHeatO 1.6s ease-in-out infinite;animation-delay:.2s}
+@keyframes ptHeatO{0%,42%{opacity:.12;transform:translate(-50%,-50%) scale(.6)}80%{opacity:.95;transform:translate(-50%,-50%) scale(1.22)}100%{opacity:.18;transform:translate(-50%,-50%) scale(.85)}}
+/* SOL panel: hedefleme tarama + emilim */
+.pt-scan{position:absolute;left:0;right:0;top:27%;height:12%;background:linear-gradient(180deg,transparent,rgba(154,232,255,.55) 46%,rgba(95,217,255,.9) 56%,rgba(154,232,255,.55) 66%,transparent);filter:blur(.6px);opacity:0;animation:ptScan 1.6s linear infinite}
+@keyframes ptScan{0%{transform:translateY(0);opacity:0}14%{opacity:.9}82%{opacity:.9}100%{transform:translateY(340%);opacity:0}}
+.pt-absorb{position:absolute;left:14%;top:62%;width:24%;height:22%;transform:translate(-50%,-50%) scale(.7);border-radius:50%;background:radial-gradient(circle,rgba(154,232,255,.55),transparent 66%);filter:blur(5px);mix-blend-mode:screen;animation:ptCool 2.6s ease-in-out infinite}
+/* SAĞ panel: soğuma nabzı */
+.pt-cool{position:absolute;left:22%;top:57%;width:34%;height:34%;transform:translate(-50%,-50%) scale(.6);border-radius:50%;background:radial-gradient(circle,rgba(154,232,255,.5),rgba(95,217,255,.2) 55%,transparent 70%);filter:blur(6px);mix-blend-mode:screen;animation:ptCool 2.6s ease-in-out infinite}
+@keyframes ptCool{0%,100%{opacity:.14;transform:translate(-50%,-50%) scale(.6)}50%{opacity:.5;transform:translate(-50%,-50%) scale(1)}}
+/* BAĞLAÇ: kartlar arası akan enerji noktası */
+.pt-link{position:absolute;top:52%;height:3px;width:22px;pointer-events:none;z-index:4;mix-blend-mode:screen;background:linear-gradient(90deg,transparent,rgba(154,232,255,.65),transparent)}
+.pt-link.l1{left:calc(33.33% - 11px)}
+.pt-link.l2{left:calc(66.66% - 11px)}
+.pt-link::after{content:"";position:absolute;top:50%;left:0;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:radial-gradient(circle,#d6f6ff,rgba(95,217,255,.2) 60%,transparent);box-shadow:0 0 8px rgba(95,217,255,.8);animation:ptLink 1.6s linear infinite}
+.pt-link.l2::after{animation-delay:.53s}
+@keyframes ptLink{0%{left:-4px;opacity:0}20%{opacity:1}80%{opacity:1}100%{left:20px;opacity:0}}
+.pt-p b{display:block;font-family:'Sora',sans-serif;font-weight:700;font-size:1.02rem;color:var(--ice2);margin:15px 0 5px}
+.pt-p .d{display:block;font-size:.85rem;color:var(--mut);line-height:1.5;max-width:250px;margin:0 auto}
+/* SAĞ panel: işlem sonrası yükselip sönen enerji zerreleri (cyan) */
+.pt-rise{position:absolute;top:60%;width:16px;height:16px;border-radius:50%;background:radial-gradient(circle,#ffffff,rgba(154,232,255,.95) 36%,rgba(95,217,255,.45) 62%,transparent 75%);box-shadow:0 0 15px 3px rgba(95,217,255,.75);opacity:0;pointer-events:none;animation:ptRise 2s ease-in-out infinite}
+.pt-rise.a{left:18%}
+.pt-rise.b{left:23%;animation-delay:.5s}
+.pt-rise.c{left:20%;animation-delay:1s}
+.pt-rise.d{left:25%;animation-delay:1.5s}
+@keyframes ptRise{0%{opacity:0;transform:translateY(12px) scale(.4)}12%{opacity:1}50%{opacity:.78}100%{opacity:0;transform:translateY(-142px) scale(1.6)}}
+@media(max-width:760px){
+  .pt-ray.r3{display:none}
+  .pt-link{width:3px;height:26px;left:50%!important;margin-left:-1.5px;top:auto;background:linear-gradient(180deg,transparent,rgba(154,232,255,.65),transparent)}
+  .pt-link.l1{top:calc(33.33% - 13px)}
+  .pt-link.l2{top:calc(66.66% - 13px)}
+  .pt-link::after{animation:ptLinkV 1.6s linear infinite}
+  .pt-link.l2::after{animation-delay:.53s}
+}
+@keyframes ptLinkV{0%{top:-4px;opacity:0}20%{opacity:1}80%{opacity:1}100%{top:22px;opacity:0}}
+@media(prefers-reduced-motion:reduce){
+  .pt-p,.pt-img,.pt-ray,.pt-col,.pt-heatO,.pt-scan,.pt-absorb,.pt-cool,.pt-rise,.pt-link::after{animation:none}
+  .pt-heatO{opacity:.55;transform:translate(-50%,-50%) scale(1)}
+  .pt-col{opacity:.5}
+  .pt-ray{opacity:.6;transform:translateX(-50%) translateY(120%)}
+  .pt-cool{opacity:.3;transform:translate(-50%,-50%) scale(.9)}
+  .pt-absorb{opacity:.4}
+  .pt-rise.b{opacity:.55;transform:translateY(-46px) scale(1)}.pt-rise.a,.pt-rise.c,.pt-rise.d{opacity:0}
+  .pt-scan,.pt-link::after{opacity:0}
+}
 
 /* galeri */
 .gallery{margin-top:18px}
@@ -681,6 +756,7 @@ footer a{color:var(--ice2);font-weight:600}
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></symbol>
   <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 5 3 8.4 7 10 4-1.6 7-5 7-10V6z"/><path d="m9 11.6 2.3 2.3L15.4 9.8"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3.2 9.5h17.6M3.2 14.5h17.6"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></symbol>
   <symbol id="i-wave" viewBox="0 0 24 24"><path d="M2 12c2.5 0 2.5-6 5-6s2.5 9 5 9 2.5-9 5-9 2.5 6 5 6"/></symbol>
   <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M10 8.5v7l6-3.5z" fill="currentColor" stroke="none"/></symbol>
   <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 18a9 9 0 1 1 16 0"/><path d="m12 14 4.5-5.5"/><circle cx="12" cy="14" r="1.6" fill="currentColor" stroke="none"/></symbol>
@@ -705,6 +781,7 @@ footer a{color:var(--ice2);font-weight:600}
       <a href="#canli-demo">Canlı Demo</a>
       <a href="#sogutma">Soğutma</a>
       <a href="#teknik">Teknik</a>
+      <a href="#guven">Neden Biz?</a>
       <a href="#sss">SSS</a>
       <a href="#iletisim">İletişim</a>
     </nav>
@@ -720,6 +797,7 @@ footer a{color:var(--ice2);font-weight:600}
     <a href="#canli-demo">Canlı Demo</a>
     <a href="#sogutma">Soğutma</a>
     <a href="#teknik">Teknik</a>
+    <a href="#guven">Neden Biz?</a>
     <a href="#sss">SSS</a>
     <a href="#iletisim">İletişim</a>
     <a class="mnav-switch" href="lumina-1200.html">Lumina 1200W →</a>
@@ -851,53 +929,37 @@ footer a{color:var(--ice2);font-weight:600}
 
 <!-- TEKNOLOJİ -->
 <section id="teknoloji" style="background:linear-gradient(180deg,#081c2b,#0a2235)">
-  <div class="wrap duo">
-    <div>
+  <div class="wrap">
+    <div class="pt-intro">
       <span class="eyebrow reveal">Bilimsel Üstünlük</span>
-      <h2 class="reveal">Ayrışma Seçici <span class="grad">Fototermal Etki</span></h2>
-      <p class="desc reveal">Lazer enerjisi doğrudan kıl kökündeki melanin pigmentine odaklanır; folikülde ısıya dönüşerek kökü kalıcı olarak etkisiz bırakır, çevre dokuyu korur.</p>
-      <ul class="flist">
-        <li class="reveal"><svg class="ico"><use href="#i-target"/></svg><p><b>Maksimum etki:</b> enerji tam hedefe odaklanır, atış başına en yüksek verim.</p></li>
-        <li class="reveal"><svg class="ico"><use href="#i-shield"/></svg><p><b>Minimum risk:</b> epidermal doku korunur, yan etki en aza iner.</p></li>
-        <li class="reveal"><svg class="ico"><use href="#i-snow"/></svg><p><b>Üst düzey konfor:</b> güçlü soğutma ile ağrısız seans deneyimi.</p></li>
-      </ul>
+      <h2 class="reveal" style="margin-top:8px">Ayrışma Seçici <span class="grad">Fototermal</span></h2>
+      <p class="desc reveal">Lazer enerjisi kıl kökündeki melanine seçici olarak odaklanır; folikülde ısıya dönüşerek kökü kalıcı olarak etkisiz bırakır ve çevre dokuyu korur.</p>
     </div>
-    <div class="beam reveal">
-      <div class="pt-fig">
-        <svg viewBox="0 0 340 300" role="img" aria-label="Ayrışma seçici fototermal etki — cilt kesiti animasyonu">
-          <defs>
-            <linearGradient id="ptEpi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eed2ad"/><stop offset="1" stop-color="#ddb98d"/></linearGradient>
-            <linearGradient id="ptDerm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cf9d73"/><stop offset="1" stop-color="#a06b45"/></linearGradient>
-            <linearGradient id="ptTip" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6f8ff"/><stop offset="1" stop-color="#5fd9ff"/></linearGradient>
-            <radialGradient id="ptHeatG"><stop offset="0" stop-color="#ffbf72"/><stop offset="55%" stop-color="rgba(255,120,40,.45)"/><stop offset="100%" stop-color="rgba(255,120,40,0)"/></radialGradient>
-            <linearGradient id="ptBeamG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(95,217,255,.6)"/><stop offset="1" stop-color="rgba(95,217,255,0)"/></linearGradient>
-          </defs>
-          <!-- deri katmanları -->
-          <rect x="30" y="50" width="280" height="234" rx="14" fill="url(#ptDerm)"/>
-          <rect x="30" y="50" width="280" height="48" fill="url(#ptEpi)"/>
-          <!-- kıl + folikül -->
-          <path d="M170 52 C 167 104 175 152 170 190" stroke="#3a2414" stroke-width="5" fill="none" stroke-linecap="round"/>
-          <ellipse class="pt-follicle" cx="170" cy="200" rx="15" ry="21" fill="#2c1a10"/>
-          <!-- ısı halesi -->
-          <circle class="pt-heat" cx="170" cy="200" r="36" fill="url(#ptHeatG)"/>
-          <!-- lazer huzmesi konisi -->
-          <path class="pt-beam" d="M151 48 L189 48 L182 194 L158 194 Z" fill="url(#ptBeamG)"/>
-          <!-- lazer atışları (tepeden foliküle) -->
-          <g class="pt-shot"><ellipse cx="170" cy="58" rx="4.5" ry="10" fill="#cdf2ff"/></g>
-          <g class="pt-shot s2"><ellipse cx="170" cy="58" rx="4.5" ry="10" fill="#cdf2ff"/></g>
-          <g class="pt-shot s3"><ellipse cx="170" cy="58" rx="4.5" ry="10" fill="#cdf2ff"/></g>
-          <!-- safir soğutma ucu + korunan epidermis -->
-          <rect class="pt-cool" x="30" y="50" width="280" height="16" fill="rgba(95,217,255,.45)"/>
-          <rect x="118" y="10" width="104" height="34" rx="9" fill="url(#ptTip)"/>
-          <text class="pt-tag" x="170" y="31" text-anchor="middle">❄ SAFİR SOĞUTMA</text>
-          <!-- etiketler + gösterge çizgileri -->
-          <text class="pt-lbl cool" x="40" y="84">Epidermis korunur</text>
-          <line class="pt-lead" x1="188" y1="200" x2="214" y2="200"/>
-          <text class="pt-lbl hot" x="218" y="204">Melanin · folikül</text>
-        </svg>
-      </div>
-      <h3>Hedefe Odaklanan Enerji</h3>
-      <p>Lazer atışı safir soğutma ucundan geçer, melanin tarafından emilir ve ısıya dönüşerek folikülü devre dışı bırakır — epidermis yüzeyi soğuk kalır, korunur.</p>
+    <div class="pt-title reveal">Lazer darbelerine maruz kalma</div>
+    <div class="pt-row">
+      <span class="pt-link l1"></span>
+      <span class="pt-link l2"></span>
+      <figure class="pt-p reveal" data-s="1">
+        <div class="pt-img">
+          <img src="assets/img/pt-once-3d.jpg" alt="Önce — kıl folikülü ve melanin sağlam" width="900" height="1200">
+          <span class="pt-fx"><span class="pt-scan"></span><span class="pt-absorb"></span></span>
+        </div>
+        <b>Önce</b><span class="d">Kıl folikülü ve melanin pigmenti hedeflenir.</span>
+      </figure>
+      <figure class="pt-p reveal" data-s="2">
+        <div class="pt-img">
+          <img src="assets/img/pt-melanin-3d.jpg" alt="Melanin ısıyı emer — lazer folikülü ısıtır" width="900" height="1200">
+          <span class="pt-fx"><span class="pt-col"></span><span class="pt-ray r1"></span><span class="pt-ray r2"></span><span class="pt-ray r3"></span><span class="pt-heatO"></span></span>
+        </div>
+        <b>Melanin ısıyı emer</b><span class="d">Lazer darbesi melanin tarafından emilir; folikül ısınarak yükselir.</span>
+      </figure>
+      <figure class="pt-p reveal" data-s="3">
+        <div class="pt-img">
+          <img src="assets/img/pt-sonra-3d.jpg" alt="Sonra — folikül etkisiz kalır" width="900" height="1200">
+          <span class="pt-fx"><span class="pt-cool"></span><span class="pt-rise a"></span><span class="pt-rise b"></span><span class="pt-rise c"></span><span class="pt-rise d"></span></span>
+        </div>
+        <b>Sonra</b><span class="d">Folikül etkisiz kalır; kıl zayıflar ve dökülür.</span>
+      </figure>
     </div>
   </div>
 </section>
@@ -1473,6 +1535,53 @@ footer a{color:var(--ice2);font-weight:600}
         <a class="btn btn-wa" href="https://wa.me/905333347431?text=Merhaba%2C%20Lumina%20Pro%20i%C3%A7in%20video%20demo%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan Yaz</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- NEDEN BİZ — kanıt & taahhüt katmanı -->
+<section id="guven">
+  <div class="wrap">
+    <span class="eyebrow reveal">Cihazdan Önce Firmayı Seçersiniz</span>
+    <h2 class="reveal">Söz veren çok, <span class="grad">belgeleyen</span> az</h2>
+    <p class="desc reveal" style="max-width:760px;margin-top:14px">Bir lazer cihazı yıllarca kliniğinizde kalır; bu sürenin tamamında muhatabınız cihaz değil, onu size satan firmadır. Aşağıdakiler pazarlama iddiası değil — sorabileceğiniz, arayabileceğiniz, belgesini isteyebileceğiniz maddelerdir.</p>
+    <div class="gcard-grid">
+      <div class="gcard reveal">
+        <div class="q"><svg class="ico"><use href="#i-shield"/></svg><span>“Bir sorun çıkarsa kimi arayacağım, top kimde kalır?”</span></div>
+        <div class="hair"></div>
+        <h3>Üretimden servise tek çatı</h3>
+        <p>EsteTouch Medikal; üretim, satış, eğitim ve teknik servis süreçlerinin tamamını kendi bünyesinde yürütür. Araya ithalatçı–bayi–taşeron zinciri girmediği için sorumluluk devredilemez: “bu bizim işimiz değil” cümlesini duymazsınız, çünkü işaret edilecek başka kimse yok.</p>
+        <div class="proof"><span>TEK ÇATI — üretim + satış + eğitim + servis aynı bünyede</span></div>
+      </div>
+      <div class="gcard reveal">
+        <div class="q"><svg class="ico"><use href="#i-clock"/></svg><span>“Cihaz serviste kalırsa kliniğim kaç gün durur?”</span></div>
+        <div class="hair"></div>
+        <h3>Cihazınız serviste, kliniğiniz açık</h3>
+        <p>Duran bir cihaz; iptal edilen randevu, ertelenen seans ve geri ödenen paket demektir. Bu yüzden arızalı cihazınız serviste kaldığı sürece yerine <b>ikame cihaz</b> veriyoruz — hizmetiniz kesintiye uğramaz. 7/24 teknik destek, randevulu ve acil servis seçenekleriyle çalışıyoruz.</p>
+        <div class="proof"><span>İKAME CİHAZ — servis süresince yedek cihaz + 7/24 destek</span></div>
+      </div>
+      <div class="gcard reveal">
+        <div class="q"><svg class="ico"><use href="#i-globe"/></svg><span>“İstanbul dışındayım; servis gerçekten gelir mi?”</span></div>
+        <div class="hair"></div>
+        <h3>81 ilde ve 7 ülkede sahadayız</h3>
+        <p>Teknik servis ağımız Türkiye’nin 81 iline; ayrıca KKTC, Avusturya, Almanya, Kosova, İran, Irak ve Azerbaycan’a hizmet veriyor. Üstelik marka ve model bağımsız servis veriyoruz — kliniğinizdeki diğer cihazlar da bu ağın kapsamında.</p>
+        <div class="proof"><span>81 İL + 7 ÜLKE — marka/model bağımsız servis ağı</span></div>
+      </div>
+      <div class="gcard reveal">
+        <div class="q"><svg class="ico"><use href="#i-pin"/></svg><span>“İki yıl sonra bu firmayı bulabilecek miyim?”</span></div>
+        <div class="hair"></div>
+        <h3>Kapısı olan firma kaybolmaz</h3>
+        <p>Cihazı kargolayıp aradan çekilen bir satıcıyı iki yıl sonra arattığınızda bulamayabilirsiniz. EsteTouch Medikal, 20 yılı aşkın sektör tecrübesine sahip bir ekip tarafından 2018’de kuruldu; bugün Türkiye genelinde yüzlerce salon ve kliniğe hizmet veriyor. Cihazı görmeye geldiğiniz Kartal’daki kapı, yıllar sonra parça için geldiğinizde de aynı kapıdır.</p>
+        <div class="proof"><span>2018’DEN BERİ — Kartal’da ziyaret edilebilir showroom</span></div>
+      </div>
+      <div class="gcard reveal">
+        <div class="q"><svg class="ico"><use href="#i-doc"/></svg><span>“Etikette yazan güç gerçek mi, broşür rakamı mı?”</span></div>
+        <div class="hair"></div>
+        <h3>Etikette değil, raporda 1600W</h3>
+        <p>Bu sektörde etikette yazan güç ile koldan çıkan güç her zaman aynı sayı değildir. Lumina Pro’nun 1600W kol gücü test raporuna dayanır; içindeki lazer barı ABD menşeli Coherent’tir. Cihaz CE, FDA, ISO ve RoHS belgelidir. Karşılaştırdığınız her cihaz için aynı belgeleri isteyin.</p>
+        <div class="proof"><span>TEST RAPORLU — 1600W ölçüm raporu + CE / FDA / ISO / RoHS</span></div>
+      </div>
+    </div>
+    <p class="desc gclose reveal">Bu beş soruyu teklif aldığınız <em>her firmaya</em> sorun. Cevapları yan yana koyduğunuzda karar zaten verilmiş olur.</p>
   </div>
 </section>
 

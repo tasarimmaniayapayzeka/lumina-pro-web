@@ -161,39 +161,71 @@ header .btn{padding:10px 20px;font-size:.86rem}
 .wcard h3{font-size:1rem;margin:6px 0 8px}
 .wcard p{color:var(--mut);font-size:.89rem}
 
-/* ayrışma seçici fototermal — hareketli cilt kesiti (ametist) */
-.pt-block{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
-@media(max-width:900px){.pt-block{grid-template-columns:1fr;gap:34px}}
-.pt-steps{display:grid;gap:12px;margin-top:26px}
-.pt-step{position:relative;padding:14px 18px 14px 22px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(160deg,rgba(168,111,224,.06),rgba(31,22,48,.5));overflow:hidden;animation:ptStep 4.5s ease-in-out infinite}
-.pt-step::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--teal),var(--teal-d));animation:ptStepBar 4.5s ease-in-out infinite}
-.pt-step[data-s="2"],.pt-step[data-s="2"]::before{animation-delay:1.5s}
-.pt-step[data-s="3"],.pt-step[data-s="3"]::before{animation-delay:3s}
-@keyframes ptStep{0%,22%,100%{border-color:var(--line)}8%{border-color:rgba(168,111,224,.6);box-shadow:0 0 24px rgba(168,111,224,.2)}}
-@keyframes ptStepBar{0%,22%,100%{opacity:.35}8%{opacity:1}}
-.pt-step b{display:block;font-family:'Playfair Display',serif;font-size:1.02rem;color:var(--teal-d);margin-bottom:3px}
-.pt-step span{font-size:.86rem;color:var(--mut);line-height:1.5}
-.pt-fig{width:100%;max-width:360px;margin:0 auto}
-.pt-fig svg{width:100%;height:auto;display:block}
-.pt-cap{text-align:center;font-size:.83rem;color:var(--mut);margin:14px auto 0;max-width:350px;line-height:1.5}
-.pt-shot{animation:ptShot 4.5s linear infinite}
-.pt-shot.s2{animation-delay:.18s}.pt-shot.s3{animation-delay:.36s}
-@keyframes ptShot{0%,33%{transform:translateY(0);opacity:0}36%{opacity:1}55%{opacity:1;transform:translateY(115px)}58%,100%{opacity:0;transform:translateY(118px)}}
-.pt-beam{animation:ptBeam 4.5s ease-in-out infinite}
-@keyframes ptBeam{0%,34%,66%,100%{opacity:0}42%,58%{opacity:.5}}
-.pt-heat{transform-box:fill-box;transform-origin:center;animation:ptHeat 4.5s ease-in-out infinite}
-@keyframes ptHeat{0%,40%{opacity:0;transform:scale(.4)}58%{opacity:1;transform:scale(1.3)}70%{opacity:.7;transform:scale(1.1)}80%,100%{opacity:0;transform:scale(.6)}}
-.pt-follicle{transform-box:fill-box;transform-origin:center;animation:ptFoll 4.5s ease-in-out infinite}
-@keyframes ptFoll{0%,40%{fill:#2a1520;transform:scale(1)}58%{fill:#ff5fc0}66%{fill:#e83f9f}80%{fill:#3a1f30;transform:scale(.72)}100%{fill:#2a1520;transform:scale(1)}}
-.pt-hair{animation:ptHair 4.5s ease-in-out infinite}
-@keyframes ptHair{0%,66%{opacity:1}84%{opacity:.28}92%,100%{opacity:.14}}
-.pt-cool{animation:ptCool 4.5s ease-in-out infinite}
-@keyframes ptCool{0%,100%{opacity:.45}48%{opacity:.85}}
-.pt-lbl{fill:#f0e7fb;font:700 10.5px 'Inter',sans-serif;paint-order:stroke;stroke:rgba(14,9,23,.75);stroke-width:3.2px;stroke-linejoin:round}
-.pt-lbl.hot{fill:#ffc7ec}
-.pt-tag{fill:#0e0917;font:800 9px 'Inter',sans-serif;letter-spacing:.05em}
-.pt-lead{stroke:rgba(240,231,251,.5);stroke-width:1.2;stroke-dasharray:2 3}
-@media(prefers-reduced-motion:reduce){.pt-shot,.pt-beam,.pt-heat,.pt-follicle,.pt-hair,.pt-cool,.pt-step,.pt-step::before{animation:none}}
+/* ayrışma seçici fototermal — broşürün 3 gerçek çizimi, sıralı vurgu (ametist) */
+.pt-intro{text-align:center;max-width:760px;margin:0 auto}
+.pt-intro .lead{margin:14px auto 0}
+.pt-title{text-align:center;font-size:.82rem;font-weight:700;color:var(--teal-d);letter-spacing:.08em;text-transform:uppercase;margin-top:34px}
+.pt-row{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:960px;margin:22px auto 0}
+@media(max-width:760px){.pt-row{grid-template-columns:1fr;max-width:340px;gap:26px}}
+/* CANLI İNFOGRAFİK: 1600 ritmi (1.6s tek kalp + 1/3 döngü faz merdiveni), gerçek broşür fotoğrafları korunur */
+.pt-p{text-align:center;position:relative;animation:ptLift 1.6s ease-in-out infinite}
+.pt-p[data-s="2"]{animation-delay:.53s}
+.pt-p[data-s="3"]{animation-delay:1.06s}
+@keyframes ptLift{0%,72%,100%{transform:none}30%{transform:translateY(-5px)}}
+.pt-img{position:relative;background:linear-gradient(180deg,#f6f2fc,#e9e1f5);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.4);animation:ptGlow 1.6s ease-in-out infinite}
+.pt-p[data-s="2"] .pt-img{animation-delay:.53s}
+.pt-p[data-s="3"] .pt-img{animation-delay:1.06s}
+@keyframes ptGlow{0%,74%,100%{border-color:var(--line);box-shadow:0 16px 40px rgba(0,0,0,.4)}30%{border-color:rgba(168,111,224,.6);box-shadow:0 20px 48px rgba(0,0,0,.45),0 0 30px rgba(168,111,224,.34)}}
+.pt-img img{display:block;width:100%;height:auto}
+/* overlay katmanları: fotoğrafa dokunmaz, üstüne ışık bindirir (blend katman-bazlı) */
+.pt-fx{position:absolute;inset:0;pointer-events:none;z-index:2;will-change:transform,opacity}
+/* ORTA panel: sürekli inen staggered lazer ışınları (1600 ptShot portu) — normal blend, açık zeminde de görünür */
+.pt-ray{position:absolute;top:6%;width:6px;height:20%;transform:translateX(-50%);border-radius:6px;background:linear-gradient(180deg,transparent,rgba(201,168,246,.95) 38%,#fff 68%,rgba(201,168,246,.95) 86%,transparent);box-shadow:0 0 10px 2px rgba(168,111,224,.85);filter:blur(.3px);opacity:0;animation:ptRay 1.6s linear infinite}
+.pt-ray.r1{left:20%}
+.pt-ray.r2{left:24%;animation-delay:.53s}
+.pt-ray.r3{left:28%;animation-delay:1.06s}
+@keyframes ptRay{0%{transform:translateX(-50%) translateY(0);opacity:0}10%{opacity:1}80%{opacity:.95}100%{transform:translateX(-50%) translateY(280%);opacity:0}}
+/* pembe kolon nabzı (ptBeam portu) — normal blend */
+.pt-col{position:absolute;left:24%;top:4%;width:13%;height:50%;transform:translateX(-50%);border-radius:40px;background:linear-gradient(180deg,transparent,rgba(201,168,246,.4),rgba(168,111,224,.28) 70%,transparent);filter:blur(4px);animation:ptBeam 1.6s ease-in-out infinite}
+@keyframes ptBeam{0%,55%,100%{opacity:.25}70%{opacity:.65}}
+/* kızgın folikül ısı nabzı — koyu-kırmızı bulb (ptFoll+ptHeat portu), screen: koyu folikülü ısıtır */
+.pt-heatO{position:absolute;left:22%;top:66%;width:28%;height:26%;transform:translate(-50%,-50%) scale(.6);border-radius:50%;background:radial-gradient(circle,rgba(255,120,44,.82),rgba(232,120,31,.34) 46%,transparent 72%);filter:blur(4px);mix-blend-mode:screen;opacity:0;animation:ptHeatO 1.6s ease-in-out infinite;animation-delay:.2s}
+@keyframes ptHeatO{0%,42%{opacity:.12;transform:translate(-50%,-50%) scale(.6)}80%{opacity:.95;transform:translate(-50%,-50%) scale(1.22)}100%{opacity:.18;transform:translate(-50%,-50%) scale(.85)}}
+/* SOL panel: hedefleme tarama çizgisi + emilim glow'u — normal blend, cilt üstünde görünür */
+.pt-scan{position:absolute;left:0;right:0;top:34%;height:12%;background:linear-gradient(180deg,transparent,rgba(201,168,246,.55) 46%,rgba(168,111,224,.9) 56%,rgba(201,168,246,.55) 66%,transparent);filter:blur(.6px);opacity:0;animation:ptScan 1.6s linear infinite}
+@keyframes ptScan{0%{transform:translateY(0);opacity:0}14%{opacity:.9}82%{opacity:.9}100%{transform:translateY(340%);opacity:0}}
+.pt-absorb{position:absolute;left:13%;top:66%;width:24%;height:22%;transform:translate(-50%,-50%) scale(.7);border-radius:50%;background:radial-gradient(circle,rgba(201,168,246,.55),transparent 66%);filter:blur(5px);mix-blend-mode:screen;animation:ptCool 2.6s ease-in-out infinite}
+/* SAĞ panel: soğuma nabzı — soluk folikül, screen */
+.pt-cool{position:absolute;left:25%;top:64%;width:34%;height:34%;transform:translate(-50%,-50%) scale(.6);border-radius:50%;background:radial-gradient(circle,rgba(201,168,246,.5),rgba(168,111,224,.2) 55%,transparent 70%);filter:blur(6px);mix-blend-mode:screen;animation:ptCool 2.6s ease-in-out infinite}
+@keyframes ptCool{0%,100%{opacity:.14;transform:translate(-50%,-50%) scale(.6)}50%{opacity:.5;transform:translate(-50%,-50%) scale(1)}}
+/* BAĞLAÇ: kartlar arası akan glow noktası (faz-kilitli) */
+.pt-row{position:relative}
+.pt-link{position:absolute;top:52%;height:3px;width:22px;pointer-events:none;z-index:4;mix-blend-mode:screen;background:linear-gradient(90deg,transparent,rgba(201,168,246,.65),transparent)}
+.pt-link.l1{left:calc(33.33% - 11px)}
+.pt-link.l2{left:calc(66.66% - 11px)}
+.pt-link::after{content:"";position:absolute;top:50%;left:0;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:radial-gradient(circle,#e6d4ff,rgba(168,111,224,.2) 60%,transparent);box-shadow:0 0 8px rgba(168,111,224,.8);animation:ptLink 1.6s linear infinite}
+.pt-link.l2::after{animation-delay:.53s}
+@keyframes ptLink{0%{left:-4px;opacity:0}20%{opacity:1}80%{opacity:1}100%{left:20px;opacity:0}}
+.pt-p b{display:block;font-family:'Playfair Display',serif;font-size:1.06rem;color:var(--teal-d);margin:15px 0 5px}
+.pt-p .d{display:block;font-size:.85rem;color:var(--mut);line-height:1.5;max-width:250px;margin:0 auto}
+@media(max-width:760px){
+  .pt-ray.r3{display:none}
+  .pt-link{width:3px;height:26px;left:50%!important;margin-left:-1.5px;top:auto;background:linear-gradient(180deg,transparent,rgba(201,168,246,.65),transparent)}
+  .pt-link.l1{top:calc(33.33% - 13px)}
+  .pt-link.l2{top:calc(66.66% - 13px)}
+  .pt-link::after{animation:ptLinkV 1.6s linear infinite}
+  .pt-link.l2::after{animation-delay:.53s}
+}
+@keyframes ptLinkV{0%{top:-4px;opacity:0}20%{opacity:1}80%{opacity:1}100%{top:22px;opacity:0}}
+@media(prefers-reduced-motion:reduce){
+  .pt-p,.pt-img,.pt-ray,.pt-col,.pt-heatO,.pt-scan,.pt-absorb,.pt-cool,.pt-link::after{animation:none}
+  .pt-heatO{opacity:.55;transform:translate(-50%,-50%) scale(1)}
+  .pt-col{opacity:.5}
+  .pt-ray{opacity:.6;transform:translateX(-50%) translateY(120%)}
+  .pt-cool{opacity:.3;transform:translate(-50%,-50%) scale(.9)}
+  .pt-absorb{opacity:.4}
+  .pt-scan,.pt-link::after{opacity:0}
+}
 
 /* başlıklar */
 .tips .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:52px;align-items:center}
@@ -542,46 +574,36 @@ footer a{color:var(--teal-d);font-weight:600}
 <!-- AYRIŞMA SEÇİCİ FOTOTERMAL -->
 <section id="fototermal" class="seam" style="background:linear-gradient(180deg,var(--bg),var(--bg2))">
   <div class="wrap">
-    <div class="pt-block">
-      <div>
-        <span class="eyebrow reveal">Bilimsel Üstünlük</span>
-        <h2 class="sec reveal">Ayrışma Seçici <em>Fototermal</em></h2>
-        <p class="lead reveal">Kıl folikülündeki melanin, lazer enerjisini seçici olarak emer. Cihazın yaydığı enerji, epidermal dokuya zarar vermeden folikülde ısıya dönüşür ve kökü kalıcı olarak etkisiz bırakır.</p>
-        <div class="pt-steps">
-          <div class="pt-step reveal" data-s="1"><b>1 · Önce</b><span>Kıl folikülü ve melanin pigmenti hedeflenir.</span></div>
-          <div class="pt-step reveal" data-s="2"><b>2 · Melanin ısıyı emer</b><span>Lazer darbesi melanin tarafından emilir; folikül ısınır.</span></div>
-          <div class="pt-step reveal" data-s="3"><b>3 · Sonra</b><span>Folikül etkisiz kalır; kıl zayıflar ve dökülür.</span></div>
+    <div class="pt-intro">
+      <span class="eyebrow reveal">Bilimsel Üstünlük</span>
+      <h2 class="sec reveal" style="margin-top:12px">Ayrışma Seçici <em>Fototermal</em></h2>
+      <p class="lead reveal">Kıl folikülündeki melanin, lazer enerjisini seçici olarak emer. Cihazın yaydığı enerji, epidermal dokuya zarar vermeden folikülde ısıya dönüşür ve kökü kalıcı olarak etkisiz bırakır.</p>
+    </div>
+    <div class="pt-title reveal">Lazer darbelerine maruz kalma</div>
+    <div class="pt-row">
+      <span class="pt-link l1"></span>
+      <span class="pt-link l2"></span>
+      <figure class="pt-p reveal" data-s="1">
+        <div class="pt-img">
+          <img src="assets/img/pt-once.jpg" alt="Önce — kıl folikülü ve melanin sağlam" width="618" height="869">
+          <span class="pt-fx"><span class="pt-scan"></span><span class="pt-absorb"></span></span>
         </div>
-      </div>
-      <div class="pt-side reveal">
-        <div class="pt-fig">
-          <svg viewBox="0 0 340 300" role="img" aria-label="Ayrışma seçici fototermal — cilt kesiti animasyonu">
-            <defs>
-              <linearGradient id="ptEpi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eed2ad"/><stop offset="1" stop-color="#ddb98d"/></linearGradient>
-              <linearGradient id="ptDerm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cf9d73"/><stop offset="1" stop-color="#a06b45"/></linearGradient>
-              <linearGradient id="ptTip" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#efe6ff"/><stop offset="1" stop-color="#b98cf0"/></linearGradient>
-              <radialGradient id="ptHeatG"><stop offset="0" stop-color="#ffc2ec"/><stop offset="50%" stop-color="rgba(232,63,159,.5)"/><stop offset="100%" stop-color="rgba(232,63,159,0)"/></radialGradient>
-              <linearGradient id="ptBeamG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(185,140,240,.6)"/><stop offset="1" stop-color="rgba(185,140,240,0)"/></linearGradient>
-            </defs>
-            <rect x="30" y="50" width="280" height="234" rx="14" fill="url(#ptDerm)"/>
-            <rect x="30" y="50" width="280" height="48" fill="url(#ptEpi)"/>
-            <path class="pt-hair" d="M170 52 C 167 104 175 152 170 190" stroke="#3a2414" stroke-width="5" fill="none" stroke-linecap="round"/>
-            <ellipse class="pt-follicle" cx="170" cy="200" rx="15" ry="21" fill="#2a1520"/>
-            <circle class="pt-heat" cx="170" cy="200" r="36" fill="url(#ptHeatG)"/>
-            <path class="pt-beam" d="M151 48 L189 48 L182 194 L158 194 Z" fill="url(#ptBeamG)"/>
-            <g class="pt-shot"><ellipse cx="170" cy="58" rx="4.5" ry="10" fill="#e8d5ff"/></g>
-            <g class="pt-shot s2"><ellipse cx="170" cy="58" rx="4.5" ry="10" fill="#e8d5ff"/></g>
-            <g class="pt-shot s3"><ellipse cx="170" cy="58" rx="4.5" ry="10" fill="#e8d5ff"/></g>
-            <rect class="pt-cool" x="30" y="50" width="280" height="16" fill="rgba(185,140,240,.5)"/>
-            <rect x="118" y="10" width="104" height="34" rx="9" fill="url(#ptTip)"/>
-            <text class="pt-tag" x="170" y="31" text-anchor="middle">❄ SAFİR SOĞUTMA</text>
-            <text class="pt-lbl" x="40" y="84">Epidermis korunur</text>
-            <line class="pt-lead" x1="188" y1="200" x2="214" y2="200"/>
-            <text class="pt-lbl hot" x="218" y="204">Melanin · folikül</text>
-          </svg>
+        <b>Önce</b><span class="d">Kıl folikülü ve melanin pigmenti hedeflenir.</span>
+      </figure>
+      <figure class="pt-p reveal" data-s="2">
+        <div class="pt-img">
+          <img src="assets/img/pt-melanin.jpg" alt="Melanin ısıyı emer — lazer folikülü ısıtır" width="618" height="869">
+          <span class="pt-fx"><span class="pt-col"></span><span class="pt-ray r1"></span><span class="pt-ray r2"></span><span class="pt-ray r3"></span><span class="pt-heatO"></span></span>
         </div>
-        <div class="pt-cap">Lazer darbesine maruz kalma — melanin ısıyı emer ve ısınır; safir soğutma sayesinde epidermis yüzeyi soğuk kalır.</div>
-      </div>
+        <b>Melanin ısıyı emer</b><span class="d">Lazer darbesi melanin tarafından emilir; folikül ısınarak yükselir.</span>
+      </figure>
+      <figure class="pt-p reveal" data-s="3">
+        <div class="pt-img">
+          <img src="assets/img/pt-sonra.jpg" alt="Sonra — folikül etkisiz kalır" width="618" height="869">
+          <span class="pt-fx"><span class="pt-cool"></span></span>
+        </div>
+        <b>Sonra</b><span class="d">Folikül etkisiz kalır; kıl zayıflar ve dökülür.</span>
+      </figure>
     </div>
   </div>
 </section>

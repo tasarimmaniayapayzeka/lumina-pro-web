@@ -181,22 +181,22 @@ header .btn{padding:10px 20px;font-size:.86rem}
 .pt-fx{position:absolute;inset:0;pointer-events:none;z-index:2;will-change:transform,opacity}
 /* ORTA panel: sürekli inen staggered lazer ışınları (1600 ptShot portu) — normal blend, açık zeminde de görünür */
 .pt-ray{position:absolute;top:6%;width:6px;height:20%;transform:translateX(-50%);border-radius:6px;background:linear-gradient(180deg,transparent,rgba(201,168,246,.95) 38%,#fff 68%,rgba(201,168,246,.95) 86%,transparent);box-shadow:0 0 10px 2px rgba(168,111,224,.85);filter:blur(.3px);opacity:0;animation:ptRay 1.6s linear infinite}
-.pt-ray.r1{left:20%}
-.pt-ray.r2{left:24%;animation-delay:.53s}
-.pt-ray.r3{left:28%;animation-delay:1.06s}
+.pt-ray.r1{left:15%}
+.pt-ray.r2{left:19%;animation-delay:.53s}
+.pt-ray.r3{left:23%;animation-delay:1.06s}
 @keyframes ptRay{0%{transform:translateX(-50%) translateY(0);opacity:0}10%{opacity:1}80%{opacity:.95}100%{transform:translateX(-50%) translateY(280%);opacity:0}}
 /* pembe kolon nabzı (ptBeam portu) — normal blend */
-.pt-col{position:absolute;left:24%;top:4%;width:13%;height:50%;transform:translateX(-50%);border-radius:40px;background:linear-gradient(180deg,transparent,rgba(201,168,246,.4),rgba(168,111,224,.28) 70%,transparent);filter:blur(4px);animation:ptBeam 1.6s ease-in-out infinite}
+.pt-col{position:absolute;left:19%;top:2%;width:20%;height:52%;transform:translateX(-50%);border-radius:40px;background:linear-gradient(180deg,transparent,rgba(201,168,246,.4),rgba(168,111,224,.28) 70%,transparent);filter:blur(4px);animation:ptBeam 1.6s ease-in-out infinite}
 @keyframes ptBeam{0%,55%,100%{opacity:.25}70%{opacity:.65}}
 /* kızgın folikül ısı nabzı — koyu-kırmızı bulb (ptFoll+ptHeat portu), screen: koyu folikülü ısıtır */
-.pt-heatO{position:absolute;left:22%;top:66%;width:28%;height:26%;transform:translate(-50%,-50%) scale(.6);border-radius:50%;background:radial-gradient(circle,rgba(255,120,44,.82),rgba(232,120,31,.34) 46%,transparent 72%);filter:blur(4px);mix-blend-mode:screen;opacity:0;animation:ptHeatO 1.6s ease-in-out infinite;animation-delay:.2s}
+.pt-heatO{position:absolute;left:17%;top:62%;width:28%;height:26%;transform:translate(-50%,-50%) scale(.6);border-radius:50%;background:radial-gradient(circle,rgba(255,120,44,.82),rgba(232,120,31,.34) 46%,transparent 72%);filter:blur(4px);mix-blend-mode:screen;opacity:0;animation:ptHeatO 1.6s ease-in-out infinite;animation-delay:.2s}
 @keyframes ptHeatO{0%,42%{opacity:.12;transform:translate(-50%,-50%) scale(.6)}80%{opacity:.95;transform:translate(-50%,-50%) scale(1.22)}100%{opacity:.18;transform:translate(-50%,-50%) scale(.85)}}
 /* SOL panel: hedefleme tarama çizgisi + emilim glow'u — normal blend, cilt üstünde görünür */
-.pt-scan{position:absolute;left:0;right:0;top:34%;height:12%;background:linear-gradient(180deg,transparent,rgba(201,168,246,.55) 46%,rgba(168,111,224,.9) 56%,rgba(201,168,246,.55) 66%,transparent);filter:blur(.6px);opacity:0;animation:ptScan 1.6s linear infinite}
+.pt-scan{position:absolute;left:0;right:0;top:27%;height:12%;background:linear-gradient(180deg,transparent,rgba(201,168,246,.55) 46%,rgba(168,111,224,.9) 56%,rgba(201,168,246,.55) 66%,transparent);filter:blur(.6px);opacity:0;animation:ptScan 1.6s linear infinite}
 @keyframes ptScan{0%{transform:translateY(0);opacity:0}14%{opacity:.9}82%{opacity:.9}100%{transform:translateY(340%);opacity:0}}
-.pt-absorb{position:absolute;left:13%;top:66%;width:24%;height:22%;transform:translate(-50%,-50%) scale(.7);border-radius:50%;background:radial-gradient(circle,rgba(201,168,246,.55),transparent 66%);filter:blur(5px);mix-blend-mode:screen;animation:ptCool 2.6s ease-in-out infinite}
+.pt-absorb{position:absolute;left:14%;top:62%;width:24%;height:22%;transform:translate(-50%,-50%) scale(.7);border-radius:50%;background:radial-gradient(circle,rgba(201,168,246,.55),transparent 66%);filter:blur(5px);mix-blend-mode:screen;animation:ptCool 2.6s ease-in-out infinite}
 /* SAĞ panel: soğuma nabzı — soluk folikül, screen */
-.pt-cool{position:absolute;left:25%;top:64%;width:34%;height:34%;transform:translate(-50%,-50%) scale(.6);border-radius:50%;background:radial-gradient(circle,rgba(201,168,246,.5),rgba(168,111,224,.2) 55%,transparent 70%);filter:blur(6px);mix-blend-mode:screen;animation:ptCool 2.6s ease-in-out infinite}
+.pt-cool{position:absolute;left:22%;top:57%;width:34%;height:34%;transform:translate(-50%,-50%) scale(.6);border-radius:50%;background:radial-gradient(circle,rgba(201,168,246,.5),rgba(168,111,224,.2) 55%,transparent 70%);filter:blur(6px);mix-blend-mode:screen;animation:ptCool 2.6s ease-in-out infinite}
 @keyframes ptCool{0%,100%{opacity:.14;transform:translate(-50%,-50%) scale(.6)}50%{opacity:.5;transform:translate(-50%,-50%) scale(1)}}
 /* BAĞLAÇ: kartlar arası akan glow noktası (faz-kilitli) */
 .pt-row{position:relative}
@@ -585,21 +585,21 @@ footer a{color:var(--teal-d);font-weight:600}
       <span class="pt-link l2"></span>
       <figure class="pt-p reveal" data-s="1">
         <div class="pt-img">
-          <img src="assets/img/pt-once.jpg" alt="Önce — kıl folikülü ve melanin sağlam" width="618" height="869">
+          <img src="assets/img/pt-once-3d.jpg" alt="Önce — kıl folikülü ve melanin sağlam" width="900" height="1200">
           <span class="pt-fx"><span class="pt-scan"></span><span class="pt-absorb"></span></span>
         </div>
         <b>Önce</b><span class="d">Kıl folikülü ve melanin pigmenti hedeflenir.</span>
       </figure>
       <figure class="pt-p reveal" data-s="2">
         <div class="pt-img">
-          <img src="assets/img/pt-melanin.jpg" alt="Melanin ısıyı emer — lazer folikülü ısıtır" width="618" height="869">
+          <img src="assets/img/pt-melanin-3d.jpg" alt="Melanin ısıyı emer — lazer folikülü ısıtır" width="900" height="1200">
           <span class="pt-fx"><span class="pt-col"></span><span class="pt-ray r1"></span><span class="pt-ray r2"></span><span class="pt-ray r3"></span><span class="pt-heatO"></span></span>
         </div>
         <b>Melanin ısıyı emer</b><span class="d">Lazer darbesi melanin tarafından emilir; folikül ısınarak yükselir.</span>
       </figure>
       <figure class="pt-p reveal" data-s="3">
         <div class="pt-img">
-          <img src="assets/img/pt-sonra.jpg" alt="Sonra — folikül etkisiz kalır" width="618" height="869">
+          <img src="assets/img/pt-sonra-3d.jpg" alt="Sonra — folikül etkisiz kalır" width="900" height="1200">
           <span class="pt-fx"><span class="pt-cool"></span></span>
         </div>
         <b>Sonra</b><span class="d">Folikül etkisiz kalır; kıl zayıflar ve dökülür.</span>

@@ -7,8 +7,13 @@
   var MODEL = (SC.dataset && SC.dataset.model) === '1200' ? '1200' : '1600';
   var PAGE = (SC.dataset && SC.dataset.page) || (MODEL === '1200' ? 'lumina-1200' : 'index');
   var LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-  // Yerel WP (PHP yerleşik sunucu) /wp-json rewrite yapmaz → ?rest_route= biçimi; canlıda normal wp-json yolu.
-  var API = LOCAL ? 'http://127.0.0.1:8081/?rest_route=/estetouch/v1' : 'https://estetouchmedikal.com/wp-json/estetouch/v1';
+  // MİMARİ: Lumina landing'leri (mavi 1600 + mor 1200) EsteTouch WP sitesinden AYRI alan adında
+  // yaşar; widget WP'ye ÇAPRAZ-DOMAIN bağlanır. WP adresi değişirse script etiketine
+  // data-api="https://wp-alan-adi.com/wp-json/estetouch/v1" ekleyin — kod değişmez.
+  // (Yeni landing domaini WP tarafında etp_lumina_origins option'ına da eklenmeli — CORS allowlist.)
+  // Yerel WP (PHP yerleşik sunucu) /wp-json rewrite yapmaz → ?rest_route= biçimi.
+  var API = (SC.dataset && SC.dataset.api) ||
+    (LOCAL ? 'http://127.0.0.1:8081/?rest_route=/estetouch/v1' : 'https://estetouchmedikal.com/wp-json/estetouch/v1');
   var WA_FALLBACK = 'https://wa.me/905333347431?text=' + encodeURIComponent('Merhaba, Lumina ' + MODEL + 'W hakkında bilgi almak istiyorum.');
   // Bölüm hangi sayfada? (çapraz bağlantı için)
   var IDS_1600 = ['video', 'dalga', 'teknoloji', 'basliklar', 'canli-demo', 'donanim', 'sogutma', 'anatomi', 'klinik', 'teknik', 'guven', 'iletisim'];

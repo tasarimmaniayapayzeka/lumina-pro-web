@@ -322,6 +322,25 @@ header .btn{padding:10px 20px;font-size:.86rem}
 .step h3{font-size:1rem;margin:12px 0 8px}
 .step p{color:var(--mut);font-size:.88rem}
 
+/* NEDEN BİZ — kanıt & taahhüt katmanı (soru → cevap → kanıt rozeti) */
+.gcard-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:38px}
+@media(max-width:980px){.gcard-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.gcard-grid{grid-template-columns:1fr}}
+.gcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 22px;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,box-shadow .3s}
+@media(max-width:560px){.gcard{padding:22px 18px}}
+/* specificity: .reveal.in{transform:none} ile çakışmasın diye ebeveynli seçici */
+.gcard-grid .gcard:hover{transform:translateY(-6px);border-color:rgba(168,111,224,.5);box-shadow:0 24px 52px rgba(0,0,0,.42),0 0 32px rgba(168,111,224,.14)}
+.gcard .q{display:flex;gap:9px;align-items:flex-start;font-family:'Playfair Display',serif;font-style:italic;font-size:.95rem;color:var(--mut);line-height:1.5}
+.gcard .q .ico{opacity:.55;margin-top:3px;transition:color .3s,opacity .3s}
+.gcard-grid .gcard:hover .q .ico{color:var(--teal-d);opacity:1}
+.gcard .hair{border-top:1px solid var(--line);margin:14px 0}
+.gcard h3{font-family:'Playfair Display',serif;font-weight:600;font-size:1.12rem;color:var(--ink);margin:0 0 8px}
+.gcard p{color:var(--mut);font-size:.88rem;line-height:1.6}
+.gcard .proof{margin-top:auto;padding-top:16px}
+.gcard .proof span{display:inline-flex;align-items:center;gap:6px;background:var(--teal-bg);border:1px solid rgba(168,111,224,.3);color:var(--teal-d);font-size:.7rem;font-weight:700;letter-spacing:.05em;padding:6px 11px;border-radius:999px;line-height:1.4}
+.gclose{text-align:center;margin:34px auto 0;max-width:780px}
+.gclose em{color:var(--teal-d);font-style:italic}
+
 /* sss — minimal akordiyon: kartsız, alt çizgili */
 .faq-list{margin-top:34px;display:grid;max-width:800px;border-top:1px solid var(--line)}
 .faq{border-bottom:1px solid var(--line)}
@@ -409,7 +428,10 @@ footer a{color:var(--teal-d);font-weight:600}
   <symbol id="i-screen" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
   <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 2v20M4.9 6.5 19.1 17.5M19.1 6.5 4.9 17.5M12 6l-2.5-2.5M12 6l2.5-2.5M12 18l-2.5 2.5M12 18l2.5 2.5"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></symbol>
-<symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol><symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol></svg>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol><symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 21s7-3.5 7-9V6l-7-3-7 3v6c0 5.5 7 9 7 9z"/><path d="M9.2 12.2l2 2 3.6-4"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3.2 9.5h17.6M3.2 14.5h17.6"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></symbol></svg>
 
 <div class="announce">🇹🇷 <b>Türkiye geneli kurulum + uygulama eğitimi + satış sonrası destek</b> — Hemen arayın: <a href="tel:+902163899580">0216 389 95 80</a></div>
 
@@ -424,6 +446,7 @@ footer a{color:var(--teal-d);font-weight:600}
       <a href="#sogutma">Soğutma</a>
       <a href="#teknik">Teknik</a>
       <a href="#karsilastir">Karşılaştır</a>
+      <a href="#guven">Neden Biz?</a>
       <a href="#sss">SSS</a>
     </nav>
     <a class="switch" href="index.html">Lumina Pro 1600W →</a>
@@ -439,6 +462,7 @@ footer a{color:var(--teal-d);font-weight:600}
     <a href="#sogutma">Soğutma</a>
     <a href="#teknik">Teknik</a>
     <a href="#karsilastir">Karşılaştır</a>
+    <a href="#guven">Neden Biz?</a>
     <a href="#sss">SSS</a>
     <a class="mnav-switch" href="index.html">Lumina Pro 1600W →</a>
   </nav>
@@ -800,6 +824,53 @@ footer a{color:var(--teal-d);font-weight:600}
       <div class="step reveal"><div class="n">3</div><h3>Kurulum + Eğitim</h3><p>Türkiye genelinde yerinde kurulum ve ekibinize uygulamalı kullanım eğitimi veriyoruz.</p></div>
       <div class="step reveal"><div class="n">4</div><h3>Satış Sonrası Destek</h3><p>Teknik servis ve yedek parça desteğiyle cihazınız hep çalışır durumda kalır.</p></div>
     </div>
+  </div>
+</section>
+
+<!-- NEDEN BİZ — kanıt & taahhüt katmanı -->
+<section id="guven" class="seam">
+  <div class="wrap">
+    <span class="eyebrow reveal">Cihazdan Önce Firmayı Seçersiniz</span>
+    <h2 class="sec reveal">Söz veren çok, <em>belgeleyen</em> az</h2>
+    <p class="lead reveal" style="max-width:760px;margin-top:14px">Bir lazer cihazı yıllarca kliniğinizde kalır; bu sürenin tamamında muhatabınız cihaz değil, onu size satan firmadır. Aşağıdakiler pazarlama iddiası değil — sorabileceğiniz, arayabileceğiniz, belgesini isteyebileceğiniz maddelerdir.</p>
+    <div class="gcard-grid">
+      <div class="gcard reveal">
+        <div class="q"><svg class="ico"><use href="#i-shield"/></svg><span>“Bir sorun çıkarsa kimi arayacağım, top kimde kalır?”</span></div>
+        <div class="hair"></div>
+        <h3>Üretimden servise tek çatı</h3>
+        <p>EsteTouch Medikal; üretim, satış, eğitim ve teknik servis süreçlerinin tamamını kendi bünyesinde yürütür. Araya ithalatçı–bayi–taşeron zinciri girmediği için sorumluluk devredilemez: “bu bizim işimiz değil” cümlesini duymazsınız, çünkü işaret edilecek başka kimse yok.</p>
+        <div class="proof"><span>TEK ÇATI — üretim + satış + eğitim + servis aynı bünyede</span></div>
+      </div>
+      <div class="gcard reveal">
+        <div class="q"><svg class="ico"><use href="#i-clock"/></svg><span>“Cihaz serviste kalırsa kliniğim kaç gün durur?”</span></div>
+        <div class="hair"></div>
+        <h3>Cihazınız serviste, kliniğiniz açık</h3>
+        <p>Duran bir cihaz; iptal edilen randevu, ertelenen seans ve geri ödenen paket demektir. Bu yüzden arızalı cihazınız serviste kaldığı sürece yerine <b>ikame cihaz</b> veriyoruz — hizmetiniz kesintiye uğramaz. 7/24 teknik destek, randevulu ve acil servis seçenekleriyle çalışıyoruz.</p>
+        <div class="proof"><span>İKAME CİHAZ — servis süresince yedek cihaz + 7/24 destek</span></div>
+      </div>
+      <div class="gcard reveal">
+        <div class="q"><svg class="ico"><use href="#i-globe"/></svg><span>“İstanbul dışındayım; servis gerçekten gelir mi?”</span></div>
+        <div class="hair"></div>
+        <h3>81 ilde ve 7 ülkede sahadayız</h3>
+        <p>Teknik servis ağımız Türkiye’nin 81 iline; ayrıca KKTC, Avusturya, Almanya, Kosova, İran, Irak ve Azerbaycan’a hizmet veriyor. Üstelik marka ve model bağımsız servis veriyoruz — kliniğinizdeki diğer cihazlar da bu ağın kapsamında.</p>
+        <div class="proof"><span>81 İL + 7 ÜLKE — marka/model bağımsız servis ağı</span></div>
+      </div>
+      <div class="gcard reveal">
+        <div class="q"><svg class="ico"><use href="#i-pin"/></svg><span>“İki yıl sonra bu firmayı bulabilecek miyim?”</span></div>
+        <div class="hair"></div>
+        <h3>Kapısı olan firma kaybolmaz</h3>
+        <p>Cihazı kargolayıp aradan çekilen bir satıcıyı iki yıl sonra arattığınızda bulamayabilirsiniz. EsteTouch Medikal, 20 yılı aşkın sektör tecrübesine sahip bir ekip tarafından 2018’de kuruldu; bugün Türkiye genelinde yüzlerce salon ve kliniğe hizmet veriyor. Cihazı görmeye geldiğiniz Kartal’daki kapı, yıllar sonra parça için geldiğinizde de aynı kapıdır.</p>
+        <div class="proof"><span>2018’DEN BERİ — Kartal’da ziyaret edilebilir showroom</span></div>
+      </div>
+      <div class="gcard reveal">
+        <div class="q"><svg class="ico"><use href="#i-doc"/></svg><span>“Etikette yazan güç gerçek mi, broşür rakamı mı?”</span></div>
+        <div class="hair"></div>
+        <h3>Etikette değil, raporda 1200W</h3>
+        <p>Bu sektörde etikette yazan güç ile koldan çıkan güç her zaman aynı sayı değildir. Lumina’nın 1200W kol gücü test raporuna dayanır; içindeki lazer barı ABD menşeli Coherent’tir. Cihaz CE, FDA, ISO ve RoHS belgelidir. Karşılaştırdığınız her cihaz için aynı belgeleri isteyin.</p>
+        <div class="proof"><span>TEST RAPORLU — 1200W ölçüm raporu + CE / FDA / ISO / RoHS</span></div>
+      </div>
+    </div>
+    <p class="lead gclose reveal">Bu beş soruyu teklif aldığınız <em>her firmaya</em> sorun. Cevapları yan yana koyduğunuzda karar zaten verilmiş olur.</p>
   </div>
 </section>
 

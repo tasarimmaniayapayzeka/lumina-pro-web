@@ -197,7 +197,14 @@ header .btn{padding:10px 20px;font-size:.86rem}
 .pt-absorb{position:absolute;left:14%;top:62%;width:24%;height:22%;transform:translate(-50%,-50%) scale(.7);border-radius:50%;background:radial-gradient(circle,rgba(201,168,246,.55),transparent 66%);filter:blur(5px);mix-blend-mode:screen;animation:ptCool 2.6s ease-in-out infinite}
 /* SAĞ panel: soğuma nabzı — soluk folikül, screen */
 .pt-cool{position:absolute;left:22%;top:57%;width:34%;height:34%;transform:translate(-50%,-50%) scale(.6);border-radius:50%;background:radial-gradient(circle,rgba(201,168,246,.5),rgba(168,111,224,.2) 55%,transparent 70%);filter:blur(6px);mix-blend-mode:screen;animation:ptCool 2.6s ease-in-out infinite}
-@keyframes ptCool{0%,100%{opacity:.14;transform:translate(-50%,-50%) scale(.6)}50%{opacity:.5;transform:translate(-50%,-50%) scale(1)}}
+@keyframes ptCool{0%,100%{opacity:.16;transform:translate(-50%,-50%) scale(.6)}50%{opacity:.6;transform:translate(-50%,-50%) scale(1)}}
+/* SAĞ panel: işlem sonrası folikülden yükselip sönen enerji zerreleri (ısı dağılır, folikül etkisiz) */
+.pt-rise{position:absolute;top:60%;width:16px;height:16px;border-radius:50%;background:radial-gradient(circle,#ffffff,rgba(208,172,252,.95) 36%,rgba(168,111,224,.45) 62%,transparent 75%);box-shadow:0 0 15px 3px rgba(178,130,235,.8);opacity:0;pointer-events:none;animation:ptRise 2s ease-in-out infinite}
+.pt-rise.a{left:18%}
+.pt-rise.b{left:23%;animation-delay:.5s}
+.pt-rise.c{left:20%;animation-delay:1s}
+.pt-rise.d{left:25%;animation-delay:1.5s}
+@keyframes ptRise{0%{opacity:0;transform:translateY(12px) scale(.4)}12%{opacity:1}50%{opacity:.78}100%{opacity:0;transform:translateY(-142px) scale(1.6)}}
 /* BAĞLAÇ: kartlar arası akan glow noktası (faz-kilitli) */
 .pt-row{position:relative}
 .pt-link{position:absolute;top:52%;height:3px;width:22px;pointer-events:none;z-index:4;mix-blend-mode:screen;background:linear-gradient(90deg,transparent,rgba(201,168,246,.65),transparent)}
@@ -218,7 +225,8 @@ header .btn{padding:10px 20px;font-size:.86rem}
 }
 @keyframes ptLinkV{0%{top:-4px;opacity:0}20%{opacity:1}80%{opacity:1}100%{top:22px;opacity:0}}
 @media(prefers-reduced-motion:reduce){
-  .pt-p,.pt-img,.pt-ray,.pt-col,.pt-heatO,.pt-scan,.pt-absorb,.pt-cool,.pt-link::after{animation:none}
+  .pt-p,.pt-img,.pt-ray,.pt-col,.pt-heatO,.pt-scan,.pt-absorb,.pt-cool,.pt-rise,.pt-link::after{animation:none}
+  .pt-rise.b{opacity:.55;transform:translateY(-46px) scale(1)}.pt-rise.a,.pt-rise.c{opacity:0}
   .pt-heatO{opacity:.55;transform:translate(-50%,-50%) scale(1)}
   .pt-col{opacity:.5}
   .pt-ray{opacity:.6;transform:translateX(-50%) translateY(120%)}
@@ -600,7 +608,7 @@ footer a{color:var(--teal-d);font-weight:600}
       <figure class="pt-p reveal" data-s="3">
         <div class="pt-img">
           <img src="assets/img/pt-sonra-3d.jpg" alt="Sonra — folikül etkisiz kalır" width="900" height="1200">
-          <span class="pt-fx"><span class="pt-cool"></span></span>
+          <span class="pt-fx"><span class="pt-cool"></span><span class="pt-rise a"></span><span class="pt-rise b"></span><span class="pt-rise c"></span><span class="pt-rise d"></span></span>
         </div>
         <b>Sonra</b><span class="d">Folikül etkisiz kalır; kıl zayıflar ve dökülür.</span>
       </figure>

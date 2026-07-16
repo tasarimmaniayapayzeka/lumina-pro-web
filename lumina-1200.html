@@ -72,7 +72,26 @@ header{position:sticky;top:0;z-index:50;background:rgba(23,16,31,.88);backdrop-f
 .switch{font-size:.78rem;font-weight:700;color:var(--teal-d);border:1.5px solid var(--teal);border-radius:999px;padding:7px 14px;white-space:nowrap}
 .switch:hover{background:var(--teal);color:#fff}
 header .btn{padding:10px 20px;font-size:.86rem}
-@media(max-width:1020px){.menu{display:none}}
+/* mobil hamburger menü (1600 ile aynı) */
+.burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:40px;padding:0 10px;background:rgba(168,111,224,.12);border:1px solid var(--line);border-radius:11px;cursor:pointer;flex:none}
+.burger span{display:block;height:2px;width:100%;border-radius:2px;background:var(--teal-d);transition:transform .28s,opacity .28s}
+.burger.on span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.on span:nth-child(2){opacity:0}
+.burger.on span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mnav{position:absolute;top:100%;left:0;right:0;display:none;flex-direction:column;background:rgba(23,16,31,.98);backdrop-filter:blur(14px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);box-shadow:0 22px 46px rgba(0,0,0,.55);z-index:49}
+.mnav.open{display:flex;animation:mnavIn .22s ease}
+@keyframes mnavIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.mnav a{padding:14px 24px;color:var(--ink);font-weight:500;font-size:.95rem;border-bottom:1px solid rgba(168,111,224,.08)}
+.mnav a:hover,.mnav a:active{background:rgba(168,111,224,.1);color:var(--teal-d)}
+.mnav .mnav-switch{color:var(--teal-d);font-weight:700;border-bottom:none}
+@media(max-width:1020px){
+  .menu{display:none}
+  .switch{display:none}
+  .burger{display:flex}
+  .nav{gap:12px}
+  .nav .btn{margin-left:auto}
+  .logo{margin-left:10px}
+}
 
 /* hero */
 .hero{padding:70px 0 40px;background:
@@ -84,7 +103,10 @@ header .btn{padding:10px 20px;font-size:.86rem}
 .hero .sub{color:var(--mut);font-size:1.08rem;max-width:530px;margin:20px 0 26px}
 .cta-row{display:flex;flex-wrap:wrap;gap:13px}
 .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-.badge{font-size:.78rem;font-weight:700;letter-spacing:.08em;color:var(--mut);border:1px solid var(--line);background:var(--card);border-radius:10px;padding:8px 14px}
+.badge{position:relative;overflow:hidden;font-size:.78rem;font-weight:700;letter-spacing:.08em;color:var(--mut);border:1px solid var(--line);background:var(--card);border-radius:10px;padding:8px 14px;transition:border-color .25s,transform .25s}
+.badge::after{content:"";position:absolute;top:0;left:-95%;width:60%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-18deg);transition:left .5s cubic-bezier(.2,.7,.3,1);pointer-events:none}
+.badge:hover::after{left:150%}
+.badge:hover{border-color:rgba(168,111,224,.5);transform:translateY(-2px)}
 .badge b{color:var(--ink)}
 .hero-visual{position:relative;text-align:center}
 .hero-visual::before{content:"";position:absolute;inset:8% 12% 0;background:radial-gradient(closest-side,rgba(168,111,224,.14),transparent);border-radius:50%}
@@ -323,7 +345,20 @@ footer a{color:var(--teal-d);font-weight:600}
     </nav>
     <a class="switch" href="index.html">Lumina Pro 1600W →</a>
     <a class="btn btn-ink" href="tel:+902163899580"><svg class="ico" style="width:16px;height:16px"><use href="#i-phone"/></svg>Ara</a>
+    <button class="burger" id="burger" type="button" aria-label="Menü" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
+  <!-- mobil menü paneli -->
+  <nav class="mnav" id="mnav">
+    <a href="#video">Video</a>
+    <a href="#neden">Neden Lumina?</a>
+    <a href="#dalga">Dalga Boyları</a>
+    <a href="#basliklar">Başlıklar</a>
+    <a href="#sogutma">Soğutma</a>
+    <a href="#teknik">Teknik</a>
+    <a href="#karsilastir">Karşılaştır</a>
+    <a href="#sss">SSS</a>
+    <a class="mnav-switch" href="index.html">Lumina Pro 1600W →</a>
+  </nav>
 </header>
 
 <!-- HERO -->
@@ -726,6 +761,22 @@ let etLastY = -1, etLastH = -1;
 })();
 addEventListener('load', etTick);
 setInterval(etTick, 900);
+
+// MOBİL HAMBURGER MENÜ
+(function () {
+  const burger = document.getElementById('burger'), mnav = document.getElementById('mnav');
+  if (!burger || !mnav) return;
+  function close() { mnav.classList.remove('open'); burger.classList.remove('on'); burger.setAttribute('aria-expanded', 'false'); }
+  burger.addEventListener('click', e => {
+    e.stopPropagation();
+    const open = mnav.classList.toggle('open');
+    burger.classList.toggle('on', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mnav.addEventListener('click', e => { if (e.target.closest('a')) close(); });
+  document.addEventListener('click', e => { if (!e.target.closest('#mnav') && !e.target.closest('#burger')) close(); });
+  addEventListener('resize', () => { if (innerWidth > 1020) close(); });
+})();
 
 // YouTube facade → tıklayınca gerçek videoyu yükle
 (function () {

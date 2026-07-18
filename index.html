@@ -8,6 +8,10 @@
 <meta property="og:title" content="Lumina Pro — 1600W 4D Diyot Lazer">
 <meta property="og:description" content="Dört dalga boyu, tek cihaz. Kliniğiniz için profesyonel buz lazer epilasyon platformu.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://www.luminapro.com.tr/">
+<meta property="og:image" content="https://www.luminapro.com.tr/assets/img/lumina-pro-studio-on.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.luminapro.com.tr/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23081c2b'/%3E%3Ccircle cx='32' cy='32' r='14' fill='none' stroke='%235fd9ff' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%235fd9ff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,7 +87,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,24,38,.88);backdrop-fi
 .logo{display:flex;align-items:center}
 .logo img{height:34px;width:auto}
 .menu{display:flex;gap:19px;margin-left:auto;font-size:.87rem;font-weight:500;color:var(--mut)}
+.menu a{white-space:nowrap} /* iki kelimeli öğeler ("Canlı Demo", "Neden Biz?") kendi içinde kırılmasın */
 .menu a:hover{color:var(--ice2)}
+@media(max-width:1300px){.menu{gap:13px;font-size:.83rem}.nav{gap:15px}} /* dar masaüstünde sığdır — kırılmadan */
 .switch{font-size:.76rem;font-weight:700;color:var(--ice2);border:1.5px solid rgba(95,217,255,.5);border-radius:999px;padding:7px 14px;white-space:nowrap;transition:.25s}
 .switch:hover{background:var(--ice);color:#04141f}
 /* mobil hamburger menü */

@@ -13,7 +13,7 @@
   // (Yeni landing domaini WP tarafında etp_lumina_origins option'ına da eklenmeli — CORS allowlist.)
   // Yerel WP (PHP yerleşik sunucu) /wp-json rewrite yapmaz → ?rest_route= biçimi.
   var API = (SC.dataset && SC.dataset.api) ||
-    (LOCAL ? 'http://127.0.0.1:8081/?rest_route=/estetouch/v1' : 'https://estetouchmedikal.com/wp-json/estetouch/v1');
+    (LOCAL ? 'http://127.0.0.1:8081/?rest_route=/estetouch/v1' : 'https://www.luminapro.com.tr/wp-json/estetouch/v1');
   var WA_FALLBACK = 'https://wa.me/905333347431?text=' + encodeURIComponent('Merhaba, Lumina ' + MODEL + 'W hakkında bilgi almak istiyorum.');
   // Bölüm hangi sayfada? (çapraz bağlantı için)
   var IDS_1600 = ['video', 'dalga', 'teknoloji', 'basliklar', 'canli-demo', 'donanim', 'sogutma', 'anatomi', 'klinik', 'teknik', 'guven', 'iletisim'];
